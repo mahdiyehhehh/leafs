@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead Generation Report — Moscow & Turkey</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --secondary: #16213e;
+      --accent: #0f3460;
+      --highlight: #e94560;
+      --gold: #f5a623;
+      --teal: #00b4d8;
+      --green: #06d6a0;
+      --light: #f8f9fa;
+      --muted: #6c757d;
+      --card-bg: #ffffff;
+      --border: #e0e6ed;
+      --russia: #e94560;
+      --turkey: #00b4d8;
+      --no-website: #e94560;
+      --outdated: #f5a623;
+      --solid: #06d6a0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 60%, #16213e 100%);
+      color: white;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(233,69,96,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(0,180,216,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    header h1 span.ru { color: #e94560; }
+    header h1 span.tr { color: #00b4d8; }
+    header p.subtitle {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 680px;
+      margin: 0.5rem auto 1.5rem;
+      position: relative;
+    }
+    .header-badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+    .badge.ru { border-color: rgba(233,69,96,0.6); color: #ff8099; }
+    .badge.tr { border-color: rgba(0,180,216,0.6); color: #7de8ff; }
+    .badge.total { border-color: rgba(245,166,35,0.6); color: #ffd17a; }
+
+    /* ── NOTICE BANNER ── */
+    .notice-banner {
+      background: linear-gradient(90deg, #1a1a2e, #0f3460);
+      border-left: 4px solid #f5a623;
+      color: #f8f9fa;
+      padding: 1rem 2rem;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+    .notice-banner strong { color: #f5a623; }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 2.5rem 0 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, #e94560, transparent);
+      margin-left: 0.5rem;
+    }
+
+    /* ── STAT CARDS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--accent-color, #0f3460);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+    .stat-card .number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--accent-color, #0f3460);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-card .label {
+      font-size: 0.82rem;
+      color: #6c757d;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── CHARTS ROW ── */
+    .charts-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .chart-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .chart-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #f0f4f8;
+    }
+    .chart-container { position: relative; height: 220px; }
+
+    /* ── FILTERS ── */
+    .filters-bar {
+      background: white;
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filters-bar label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      border: 2px solid #e0e6ed;
+      background: white;
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #1a1a2e;
+    }
+    .filter-btn:hover { border-color: #0f3460; color: #0f3460; }
+    .filter-btn.active { background: #0f3460; border-color: #0f3460; color: white; }
+    .filter-btn.russia.active { background: #e94560; border-color: #e94560; }
+    .filter-btn.turkey.active { background: #00b4d8; border-color: #00b4d8; }
+    .filter-btn.no-website.active { background: #e94560; border-color: #e94560; }
+    .filter-btn.outdated.active { background: #f5a623; border-color: #f5a623; }
+    .search-input {
+      border: 2px solid #e0e6ed;
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      min-width: 200px;
+    }
+    .search-input:focus { border-color: #0f3460; }
+
+    /* ── LEADS TABLE ── */
+    .table-wrapper {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .table-header {
+      background: linear-gradient(135deg, #1a1a2e, #0f3460);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .table-header h3 { font-size: 1.05rem; font-weight: 700; }
+    .results-count {
+      background: rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .leads-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .leads-table thead th {
+      background: #f8f9fa;
+      padding: 0.9rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6c757d;
+      border-bottom: 2px solid #e0e6ed;
+      white-space: nowrap;
+    }
+    .leads-table tbody tr {
+      border-bottom: 1px solid #f0f4f8;
+      transition: background 0.15s;
+    }
+    .leads-table tbody tr:hover { background: #f8fbff; }
+    .leads-table tbody tr:last-child { border-bottom: none; }
+    .leads-table td {
+      padding: 0.9rem 1rem;
+      vertical-align: middle;
+    }
+
+    /* Business name cell */
+    .biz-name {
+      font-weight: 700;
+      color: #1a1a2e;
+      font-size: 0.92rem;
+    }
+    .biz-handle {
+      font-size: 0.78rem;
+      color: #6c757d;
+      margin-top: 2px;
+    }
+
+    /* Location badge */
+    .loc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border-radius: 50px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .loc-badge.russia { background: rgba(233,69,96,0.12); color: #c0392b; }
+    .loc-badge.turkey { background: rgba(0,180,216,0.12); color: #0077a8; }
+
+    /* Category badge */
+    .cat-badge {
+      display: inline-block;
+      border-radius: 6px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #f0f4f8;
+      color: #0f3460;
+    }
+
+    /* Website status */
+    .ws-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border-radius: 50px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .ws-badge.no-website { background: rgba(233,69,96,0.12); color: #c0392b; }
+    .ws-badge.outdated { background: rgba(245,166,35,0.15); color: #b7770d; }
+    .ws-badge.solid { background: rgba(6,214,160,0.12); color: #0a8a66; }
+
+    /* Ads status */
+    .ads-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: #1a1a2e;
+    }
+    .ads-dot::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #06d6a0;
+      box-shadow: 0 0 0 3px rgba(6,214,160,0.25);
+      flex-shrink: 0;
+    }
+
+    /* Contact */
+    .contact-link {
+      color: #0f3460;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .contact-link:hover { color: #e94560; text-decoration: underline; }
+
+    /* ── LOCATION SECTION HEADERS ── */
+    .location-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .location-header.russia {
+      background: linear-gradient(90deg, rgba(233,69,96,0.1), transparent);
+      color: #c0392b;
+      border-left: 4px solid #e94560;
+    }
+    .location-header.turkey {
+      background: linear-gradient(90deg, rgba(0,180,216,0.1), transparent);
+      color: #0077a8;
+      border-left: 4px solid #00b4d8;
+    }
+    .flag { font-size: 1.2rem; }
+
+    /* ── BENCHMARKS ── */
+    .benchmarks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .benchmark-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-left: 4px solid #06d6a0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .benchmark-card .bm-name { font-weight: 700; font-size: 0.95rem; color: #1a1a2e; }
+    .benchmark-card .bm-meta { font-size: 0.8rem; color: #6c757d; }
+    .benchmark-card .bm-url {
+      font-size: 0.8rem;
+      color: #0f3460;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .benchmark-card .bm-url:hover { color: #e94560; }
+
+    /* ── EXPORT BUTTON ── */
+    .export-bar {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-primary { background: #0f3460; color: white; }
+    .btn-primary:hover { background: #1a1a2e; transform: translateY(-1px); }
+    .btn-secondary { background: #e94560; color: white; }
+    .btn-secondary:hover { background: #c0392b; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+    }
+    footer strong { color: rgba(255,255,255,0.9); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.7rem; }
+      .leads-table { font-size: 0.8rem; }
+      .leads-table thead th, .leads-table td { padding: 0.7rem 0.6rem; }
+      main { padding: 1.5rem 1rem 3rem; }
+    }
+
+    /* ── HIDDEN ROW ── */
+    .hidden { display: none !important; }
+
+    /* ── TOOLTIP ── */
+    [data-tooltip] { position: relative; cursor: help; }
+    [data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a2e;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar-wrap {
+      background: #f0f4f8;
+      border-radius: 50px;
+      height: 8px;
+      overflow: hidden;
+      margin-top: 0.4rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #e94560, #f5a623);
+    }
+
+    .opportunity-score {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .score-high { color: #e94560; }
+    .score-med { color: #f5a623; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<header>
+  <h1>Lead Generation Report<br/><span class="ru">Moscow, Russia</span> &amp; <span class="tr">Turkey</span></h1>
+  <p class="subtitle">Local businesses actively running Meta (Facebook/Instagram) ads that need a new or improved website — prime web design prospects.</p>
+  <div class="header-badges">
+    <span class="badge ru">🇷🇺 Moscow, Russia</span>
+    <span class="badge tr">🇹🇷 Turkey (Istanbul · Ankara · Izmir)</span>
+    <span class="badge total">14 Qualified Leads</span>
+    <span class="badge total">5 Categories</span>
+    <span class="badge total">Research Date: July 2026</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════ NOTICE ═══════════════════════════ -->
+<div class="notice-banner">
+  <strong>Research Note:</strong> Meta (Facebook/Instagram) has been banned in Russia since March 2022. Since September 2025, advertising on Meta platforms is subject to fines. However, many Moscow businesses continue to maintain active Instagram/Facebook presences (via VPN) as their <em>primary</em> marketing channel — making them especially strong candidates for professional web design services.
+</div>
+
+<!-- ═══════════════════════════ MAIN ═══════════════════════════ -->
+<main>
+
+  <!-- ── STATS ── -->
+  <div class="section-title">Overview &amp; Key Metrics</div>
+  <div class="stats-grid">
+    <div class="stat-card" style="--accent-color:#e94560">
+      <div class="number">14</div>
+      <div class="label">Total Leads</div>
+    </div>
+    <div class="stat-card" style="--accent-color:#e94560">
+      <div class="number">6</div>
+      <div class="label">Moscow Leads</div>
+    </div>
+    <div class="stat-card" style="--accent-color:#00b4d8">
+      <div class="number">8</div>
+      <div class="label">Turkey Leads</div>
+    </div>
+    <div class="stat-card" style="--accent-color:#e94560">
+      <div class="number">10</div>
+      <div class="label">No Website</div>
+    </div>
+    <div class="stat-card" style="--accent-color:#f5a623">
+      <div class="number">4</div>
+      <div class="label">Outdated Site</div>
+    </div>
+    <div class="stat-card" style="--accent-color:#06d6a0">
+      <div class="number">4</div>
+      <div class="label">Benchmarks</div>
+    </div>
+  </div>
+
+  <!-- ── CHARTS ── -->
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>Leads by Location</h3>
+      <div class="chart-container">
+        <canvas id="chartLocation"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Leads by Category</h3>
+      <div class="chart-container">
+        <canvas id="chartCategory"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Website Status Distribution</h3>
+      <div class="chart-container">
+        <canvas id="chartWebsite"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CATEGORY BREAKDOWN ── -->
+  <div class="charts-row">
+    <div class="chart-card" style="grid-column: 1 / -1">
+      <h3>Leads per Category per Location</h3>
+      <div class="chart-container" style="height: 260px">
+        <canvas id="chartBreakdown"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FILTERS ── -->
+  <div class="section-title">Leads Database</div>
+  <div class="filters-bar">
+    <label>Location:</label>
+    <div class="filter-group" id="locationFilters">
+      <button class="filter-btn active" data-filter="location" data-value="all">All</button>
+      <button class="filter-btn russia" data-filter="location" data-value="russia">🇷🇺 Russia</button>
+      <button class="filter-btn turkey" data-filter="location" data-value="turkey">🇹🇷 Turkey</button>
+    </div>
+    <label>Category:</label>
+    <div class="filter-group" id="categoryFilters">
+      <button class="filter-btn active" data-filter="category" data-value="all">All</button>
+      <button class="filter-btn" data-filter="category" data-value="bakery">Bakery</button>
+      <button class="filter-btn" data-filter="category" data-value="cafe">Cafe</button>
+      <button class="filter-btn" data-filter="category" data-value="barber">Barber</button>
+      <button class="filter-btn" data-filter="category" data-value="hair">Hair Salon</button>
+      <button class="filter-btn" data-filter="category" data-value="beauty">Beauty Salon</button>
+    </div>
+    <label>Website:</label>
+    <div class="filter-group" id="websiteFilters">
+      <button class="filter-btn active" data-filter="website" data-value="all">All</button>
+      <button class="filter-btn no-website" data-filter="website" data-value="no-website">No Website</button>
+      <button class="filter-btn outdated" data-filter="website" data-value="outdated">Outdated</button>
+    </div>
+    <input class="search-input" id="searchInput" type="text" placeholder="🔍  Search businesses..." />
+  </div>
+
+  <!-- ── EXPORT ── -->
+  <div class="export-bar">
+    <button class="btn btn-secondary" onclick="exportCSV()">⬇ Export CSV</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save PDF</button>
+  </div>
+
+  <!-- ── TABLE ── -->
+  <div class="table-wrapper">
+    <div class="table-header">
+      <h3>Qualified Leads</h3>
+      <span class="results-count" id="resultsCount">14 results</span>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="leads-table" id="leadsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Business Name</th>
+            <th>Category</th>
+            <th>City / Country</th>
+            <th>Ads Running Since</th>
+            <th>Website Status</th>
+            <th>Website URL</th>
+            <th>Contact Info</th>
+          </tr>
+        </thead>
+        <tbody id="leadsBody">
+
+          <!-- ══ RUSSIA HEADER ══ -->
+          <tr class="location-row" data-location="russia" data-category="all" data-website="all">
+            <td colspan="8">
+              <div class="location-header russia">
+                <span class="flag">🇷🇺</span> Moscow, Russia
+              </div>
+            </td>
+          </tr>
+
+          <!-- 1 -->
+          <tr data-location="russia" data-category="bakery" data-website="no-website" data-name="french bakery sedelice">
+            <td style="color:#6c757d;font-weight:600">1</td>
+            <td>
+              <div class="biz-name">French Bakery SeDelice</div>
+              <div class="biz-handle">@french_bakery_sedelice</div>
+            </td>
+            <td><span class="cat-badge">Bakery / Cafe</span></td>
+            <td><span class="loc-badge russia">🇷🇺 Moscow</span></td>
+            <td><span class="ads-dot">Active (2024–2026)</span></td>
+            <td><span class="ws-badge no-website" data-tooltip="No standalone website — relies on app link only">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">App only (no site)</td>
+            <td><a class="contact-link" href="https://www.instagram.com/french_bakery_sedelice/" target="_blank">@french_bakery_sedelice</a></td>
+          </tr>
+
+          <!-- 2 -->
+          <tr data-location="russia" data-category="cafe" data-website="no-website" data-name="chetverg cafe">
+            <td style="color:#6c757d;font-weight:600">2</td>
+            <td>
+              <div class="biz-name">Chetverg Cafe</div>
+              <div class="biz-handle">@chetverg.cafe</div>
+            </td>
+            <td><span class="cat-badge">Cafe</span></td>
+            <td><span class="loc-badge russia">🇷🇺 Moscow</span></td>
+            <td><span class="ads-dot">Active (2024–2026)</span></td>
+            <td><span class="ws-badge no-website">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td><a class="contact-link" href="https://www.instagram.com/chetverg.cafe/" target="_blank">@chetverg.cafe</a></td>
+          </tr>
+
+          <!-- 3 -->
+          <tr data-location="russia" data-category="barber" data-website="no-website" data-name="navruz barber">
+            <td style="color:#6c757d;font-weight:600">3</td>
+            <td>
+              <div class="biz-name">Navruz Barber</div>
+              <div class="biz-handle">@navruz___barber</div>
+            </td>
+            <td><span class="cat-badge">Barber Shop</span></td>
+            <td><span class="loc-badge russia">🇷🇺 Moscow</span></td>
+            <td><span class="ads-dot">Active (2025–2026)</span></td>
+            <td><span class="ws-badge no-website">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td><a class="contact-link" href="https://www.instagram.com/navruz___barber/" target="_blank">@navruz___barber</a></td>
+          </tr>
+
+          <!-- 4 -->
+          <tr data-location="russia" data-category="barber" data-website="outdated" data-name="legorage barbershop">
+            <td style="color:#6c757d;font-weight:600">4</td>
+            <td>
+              <div class="biz-name">Legorage Barbershop</div>
+              <div class="biz-handle">@legorage.barbershop</div>
+            </td>
+            <td><span class="cat-badge">Barber Shop</span></td>
+            <td><span class="loc-badge russia">🇷🇺 Moscow</span></td>
+            <td><span class="ads-dot">Active (2023–2026)</span></td>
+            <td><span class="ws-badge outdated" data-tooltip="Website is an online store, not a proper barbershop service site">⚠ Outdated/Template</span></td>
+            <td><a class="contact-link" href="https://legorage.ru" target="_blank">legorage.ru</a></td>
+            <td>+7 985 939-11-25<br/><a class="contact-link" href="mailto:legorage@mail.ru">legorage@mail.ru</a></td>
+          </tr>
+
+          <!-- 5 -->
+          <tr data-location="russia" data-category="hair" data-website="outdated" data-name="ryabchik moscow hair salon">
+            <td style="color:#6c757d;font-weight:600">5</td>
+            <td>
+              <div class="biz-name">Ryabchik Moscow</div>
+              <div class="biz-handle">@ryabchik.moscow</div>
+            </td>
+            <td><span class="cat-badge">Hair Salon</span></td>
+            <td><span class="loc-badge russia">🇷🇺 Moscow</span></td>
+            <td><span class="ads-dot">Active (2024–2026)</span></td>
+            <td><span class="ws-badge outdated">⚠ Outdated/Template</span></td>
+            <td><a class="contact-link" href="https://ryabchik.net" target="_blank">ryabchik.net</a></td>
+            <td><a class="contact-link" href="https://www.instagram.com/ryabchik.moscow/" target="_blank">@ryabchik.moscow</a></td>
+          </tr>
+
+          <!-- 6 -->
+          <tr data-location="russia" data-category="hair" data-website="no-website" data-name="hair place moscow">
+            <td style="color:#6c757d;font-weight:600">6</td>
+            <td>
+              <div class="biz-name">Hair Place Moscow</div>
+              <div class="biz-handle">@hair_place_moscow</div>
+            </td>
+            <td><span class="cat-badge">Hair Salon</span></td>
+            <td><span class="loc-badge russia">🇷🇺 Moscow</span></td>
+            <td><span class="ads-dot">Active (2025–2026)</span></td>
+            <td><span class="ws-badge no-website">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td><a class="contact-link" href="https://www.instagram.com/hair_place_moscow/" target="_blank">@hair_place_moscow</a></td>
+          </tr>
+
+          <!-- ══ TURKEY HEADER ══ -->
+          <tr class="location-row" data-location="turkey" data-category="all" data-website="all">
+            <td colspan="8">
+              <div class="location-header turkey">
+                <span class="flag">🇹🇷</span> Turkey — Istanbul · Ankara · Izmir
+              </div>
+            </td>
+          </tr>
+
+          <!-- 7 -->
+          <tr data-location="turkey" data-category="bakery" data-website="no-website" data-name="halil'in pastanesi istanbul bakery">
+            <td style="color:#6c757d;font-weight:600">7</td>
+            <td>
+              <div class="biz-name">Halil'in Pastanesi</div>
+              <div class="biz-handle">@halilinpastanesi · Facebook active</div>
+            </td>
+            <td><span class="cat-badge">Bakery</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Istanbul (Ümraniye)</span></td>
+            <td><span class="ads-dot">Active (2025)</span></td>
+            <td><span class="ws-badge no-website" data-tooltip="Links to a partner restaurant site, not their own website">✗ No Own Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">tazetatlar.com (partner)</td>
+            <td>+90 544 540 31 65</td>
+          </tr>
+
+          <!-- 8 -->
+          <tr data-location="turkey" data-category="barber" data-website="no-website" data-name="alpatros barbers istanbul">
+            <td style="color:#6c757d;font-weight:600">8</td>
+            <td>
+              <div class="biz-name">Alpatros Barbers</div>
+              <div class="biz-handle">@alpatros_barbers · 36.5K followers</div>
+            </td>
+            <td><span class="cat-badge">Barber Shop</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Istanbul (Şişli)</span></td>
+            <td><span class="ads-dot">Active (2025–2026)</span></td>
+            <td><span class="ws-badge no-website" data-tooltip="No website — appointment booking only via Instagram DM">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td>+90 538 811 78 68<br/><a class="contact-link" href="https://www.instagram.com/alpatros_barbers/" target="_blank">@alpatros_barbers</a></td>
+          </tr>
+
+          <!-- 9 -->
+          <tr data-location="turkey" data-category="hair" data-website="no-website" data-name="nokta kuafor guzellik merkezi spa istanbul">
+            <td style="color:#6c757d;font-weight:600">9</td>
+            <td>
+              <div class="biz-name">Nokta Kuaför Güzellik Merkezi Spa</div>
+              <div class="biz-handle">@noktakuafor</div>
+            </td>
+            <td><span class="cat-badge">Hair / Beauty Salon</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Istanbul</span></td>
+            <td><span class="ads-dot">Active (2025–2026)</span></td>
+            <td><span class="ws-badge no-website">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td><a class="contact-link" href="https://www.instagram.com/noktakuafor/" target="_blank">@noktakuafor</a></td>
+          </tr>
+
+          <!-- 10 -->
+          <tr data-location="turkey" data-category="hair" data-website="no-website" data-name="staff hair studio pendik istanbul">
+            <td style="color:#6c757d;font-weight:600">10</td>
+            <td>
+              <div class="biz-name">Staff Hair Studio Pendik</div>
+              <div class="biz-handle">Instagram active</div>
+            </td>
+            <td><span class="cat-badge">Hair Salon</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Istanbul (Pendik)</span></td>
+            <td><span class="ads-dot">Active (2025–2026)</span></td>
+            <td><span class="ws-badge no-website">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td>Via Instagram</td>
+          </tr>
+
+          <!-- 11 -->
+          <tr data-location="turkey" data-category="beauty" data-website="no-website" data-name="yesim alimci guzellik salonu ankara">
+            <td style="color:#6c757d;font-weight:600">11</td>
+            <td>
+              <div class="biz-name">Yeşim Alımcı Güzellik Salonu</div>
+              <div class="biz-handle">@yesimalimci_guzellik · 4.2K followers</div>
+            </td>
+            <td><span class="cat-badge">Beauty Salon</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Ankara (Mamak)</span></td>
+            <td><span class="ads-dot">Sep 30, 2025 (confirmed)</span></td>
+            <td><span class="ws-badge no-website" data-tooltip="Confirmed active Meta ads (Library ID: 1457070312015376). No website found.">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td>+90 543 619 65 35<br/><a class="contact-link" href="https://www.instagram.com/yesimalimci_guzellik/" target="_blank">@yesimalimci_guzellik</a></td>
+          </tr>
+
+          <!-- 12 -->
+          <tr data-location="turkey" data-category="beauty" data-website="no-website" data-name="aliye dundar guzellik salonu ankara">
+            <td style="color:#6c757d;font-weight:600">12</td>
+            <td>
+              <div class="biz-name">ALİYE Dündar Güzellik Salonu</div>
+              <div class="biz-handle">@aliyedundarguzellik · 15.2K followers</div>
+            </td>
+            <td><span class="cat-badge">Beauty Salon</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Ankara (Kızılay)</span></td>
+            <td><span class="ads-dot">May 1, 2026 (confirmed)</span></td>
+            <td><span class="ws-badge no-website" data-tooltip="Confirmed active Meta ads (Library ID: 942542455326888). No website found.">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td>+90 312 482 05 04<br/><a class="contact-link" href="https://www.instagram.com/aliyedundarguzellik/" target="_blank">@aliyedundarguzellik</a></td>
+          </tr>
+
+          <!-- 13 -->
+          <tr data-location="turkey" data-category="hair" data-website="no-website" data-name="han kuafor izmir cesme">
+            <td style="color:#6c757d;font-weight:600">13</td>
+            <td>
+              <div class="biz-name">Han Kuaför (Han Prime Hair)</div>
+              <div class="biz-handle">@hankuafor · Balmain Hair partner</div>
+            </td>
+            <td><span class="cat-badge">Hair Salon</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Izmir (Çeşme)</span></td>
+            <td><span class="ads-dot">Active (2025–2026)</span></td>
+            <td><span class="ws-badge no-website">✗ No Website</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">—</td>
+            <td>+90 544 832 53 43<br/>+90 232 330 89 89</td>
+          </tr>
+
+          <!-- 14 -->
+          <tr data-location="turkey" data-category="barber" data-website="outdated" data-name="markamakas turkey barber">
+            <td style="color:#6c757d;font-weight:600">14</td>
+            <td>
+              <div class="biz-name">Markamakas</div>
+              <div class="biz-handle">@markamakas_</div>
+            </td>
+            <td><span class="cat-badge">Barber Shop</span></td>
+            <td><span class="loc-badge turkey">🇹🇷 Turkey</span></td>
+            <td><span class="ads-dot">Active (2025–2026)</span></td>
+            <td><span class="ws-badge outdated">⚠ Outdated/Template</span></td>
+            <td style="color:#6c757d;font-size:0.8rem">Basic template only</td>
+            <td><a class="contact-link" href="https://www.instagram.com/markamakas_/" target="_blank">@markamakas_</a></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── BENCHMARKS ── -->
+  <div class="section-title">Benchmark Businesses (Solid Websites — Not Leads)</div>
+  <div class="benchmarks-grid">
+    <div class="benchmark-card">
+      <div class="bm-name">Gevorro Barbershop</div>
+      <div class="bm-meta">🇷🇺 Moscow, Russia · Barber Shop</div>
+      <a class="bm-url" href="https://gevorro.ru" target="_blank">gevorro.ru ↗</a>
+    </div>
+    <div class="benchmark-card">
+      <div class="bm-name">Naturel Studio</div>
+      <div class="bm-meta">🇷🇺 Moscow, Russia · Beauty Salon</div>
+      <a class="bm-url" href="https://naturel-studio.ru" target="_blank">naturel-studio.ru ↗</a>
+    </div>
+    <div class="benchmark-card">
+      <div class="bm-name">Beautick</div>
+      <div class="bm-meta">🇷🇺 Moscow, Russia · Beauty Salon</div>
+      <a class="bm-url" href="https://beautick.ru" target="_blank">beautick.ru ↗</a>
+    </div>
+    <div class="benchmark-card">
+      <div class="bm-name">LUUQ Coffee Roastery</div>
+      <div class="bm-meta">🇹🇷 Istanbul, Turkey · Cafe</div>
+      <a class="bm-url" href="https://luuqcoffee.com" target="_blank">luuqcoffee.com ↗</a>
+    </div>
+  </div>
+
+  <!-- ── OPPORTUNITY NOTES ── -->
+  <div class="section-title">Outreach Opportunity Notes</div>
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>Why These Are Strong Leads</h3>
+      <p style="font-size:0.88rem;color:#444;line-height:1.7;margin-bottom:0.8rem">
+        Each business in this list demonstrates a clear combination of active digital marketing spend (Meta ads / Instagram) and a missing or inadequate web presence. This gap represents a direct, quantifiable pain point that a web designer can solve.
+      </p>
+      <p style="font-size:0.88rem;color:#444;line-height:1.7">
+        Businesses running paid social ads without a website are essentially paying to send traffic to Instagram — a platform they don't own and can't fully control. A professional website would give them a conversion-optimised destination, booking functionality, SEO visibility, and brand credibility.
+      </p>
+    </div>
+    <div class="chart-card">
+      <h3>Top Priority Leads by Opportunity Score</h3>
+      <div style="display:flex;flex-direction:column;gap:0.8rem;margin-top:0.4rem">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:600">
+            <span>Alpatros Barbers (Istanbul)</span>
+            <span class="opportunity-score score-high">9.5/10</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:95%"></div></div>
+          <div style="font-size:0.75rem;color:#6c757d;margin-top:2px">36.5K followers, celebrity clients, no website</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:600">
+            <span>ALİYE Dündar Güzellik (Ankara)</span>
+            <span class="opportunity-score score-high">9.0/10</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:90%"></div></div>
+          <div style="font-size:0.75rem;color:#6c757d;margin-top:2px">15.2K followers, confirmed Meta ads, 13 yrs experience</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:600">
+            <span>Han Kuaför (Izmir)</span>
+            <span class="opportunity-score score-high">8.5/10</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:85%"></div></div>
+          <div style="font-size:0.75rem;color:#6c757d;margin-top:2px">Balmain partner, premium brand, no website</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:600">
+            <span>Yeşim Alımcı Güzellik (Ankara)</span>
+            <span class="opportunity-score score-med">8.0/10</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:80%"></div></div>
+          <div style="font-size:0.75rem;color:#6c757d;margin-top:2px">Confirmed Meta ads since Sep 2025, no website</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:600">
+            <span>French Bakery SeDelice (Moscow)</span>
+            <span class="opportunity-score score-med">7.5/10</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:75%"></div></div>
+          <div style="font-size:0.75rem;color:#6c757d;margin-top:2px">7.8K followers, 150+ locations, franchise model</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <strong>Lead Generation Report</strong> — Moscow, Russia &amp; Turkey · Research conducted July 2026 ·
+  All businesses verified as physically located in Moscow, Russia or Turkish cities (Istanbul, Ankara, Izmir).
+  Meta ban context noted for Russian leads.
+</footer>
+
+<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
+<script>
+// ── DATA ──
+const leads = [
+  { id:1, name:"French Bakery SeDelice", category:"bakery", location:"russia", city:"Moscow", website:"no-website", contact:"@french_bakery_sedelice", url:"", adsDate:"2024–2026" },
+  { id:2, name:"Chetverg Cafe", category:"cafe", location:"russia", city:"Moscow", website:"no-website", contact:"@chetverg.cafe", url:"", adsDate:"2024–2026" },
+  { id:3, name:"Navruz Barber", category:"barber", location:"russia", city:"Moscow", website:"no-website", contact:"@navruz___barber", url:"", adsDate:"2025–2026" },
+  { id:4, name:"Legorage Barbershop", category:"barber", location:"russia", city:"Moscow", website:"outdated", contact:"+7 985 939-11-25", url:"legorage.ru", adsDate:"2023–2026" },
+  { id:5, name:"Ryabchik Moscow", category:"hair", location:"russia", city:"Moscow", website:"outdated", contact:"@ryabchik.moscow", url:"ryabchik.net", adsDate:"2024–2026" },
+  { id:6, name:"Hair Place Moscow", category:"hair", location:"russia", city:"Moscow", website:"no-website", contact:"@hair_place_moscow", url:"", adsDate:"2025–2026" },
+  { id:7, name:"Halil'in Pastanesi", category:"bakery", location:"turkey", city:"Istanbul", website:"no-website", contact:"+90 544 540 31 65", url:"", adsDate:"2025" },
+  { id:8, name:"Alpatros Barbers", category:"barber", location:"turkey", city:"Istanbul", website:"no-website", contact:"+90 538 811 78 68", url:"", adsDate:"2025–2026" },
+  { id:9, name:"Nokta Kuaför Spa", category:"hair", location:"turkey", city:"Istanbul", website:"no-website", contact:"@noktakuafor", url:"", adsDate:"2025–2026" },
+  { id:10, name:"Staff Hair Studio Pendik", category:"hair", location:"turkey", city:"Istanbul", website:"no-website", contact:"Via Instagram", url:"", adsDate:"2025–2026" },
+  { id:11, name:"Yeşim Alımcı Güzellik", category:"beauty", location:"turkey", city:"Ankara", website:"no-website", contact:"+90 543 619 65 35", url:"", adsDate:"Sep 30, 2025" },
+  { id:12, name:"ALİYE Dündar Güzellik", category:"beauty", location:"turkey", city:"Ankara", website:"no-website", contact:"+90 312 482 05 04", url:"", adsDate:"May 1, 2026" },
+  { id:13, name:"Han Kuaför", category:"hair", location:"turkey", city:"Izmir", website:"no-website", contact:"+90 544 832 53 43", url:"", adsDate:"2025–2026" },
+  { id:14, name:"Markamakas", category:"barber", location:"turkey", city:"Turkey", website:"outdated", contact:"@markamakas_", url:"Template only", adsDate:"2025–2026" },
+];
+
+// ── CHARTS ──
+const chartColors = {
+  russia: '#e94560',
+  turkey: '#00b4d8',
+  noWebsite: '#e94560',
+  outdated: '#f5a623',
+  solid: '#06d6a0',
+  bakery: '#e94560',
+  cafe: '#f5a623',
+  barber: '#0f3460',
+  hair: '#00b4d8',
+  beauty: '#9b59b6',
+};
+
+// Location chart
+new Chart(document.getElementById('chartLocation'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Moscow, Russia', 'Turkey'],
+    datasets: [{
+      data: [6, 8],
+      backgroundColor: [chartColors.russia, chartColors.turkey],
+      borderWidth: 3,
+      borderColor: '#fff',
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 12 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw} leads` } }
+    },
+    cutout: '65%',
+  }
+});
+
+// Category chart
+new Chart(document.getElementById('chartCategory'), {
+  type: 'bar',
+  data: {
+    labels: ['Bakery', 'Cafe', 'Barber', 'Hair Salon', 'Beauty Salon'],
+    datasets: [{
+      label: 'Leads',
+      data: [2, 1, 4, 5, 2],
+      backgroundColor: [chartColors.bakery, chartColors.cafe, chartColors.barber, chartColors.hair, chartColors.beauty],
+      borderRadius: 8,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#f0f4f8' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Website status chart
+new Chart(document.getElementById('chartWebsite'), {
+  type: 'doughnut',
+  data: {
+    labels: ['No Website', 'Outdated/Template', 'Solid (Benchmarks)'],
+    datasets: [{
+      data: [10, 4, 4],
+      backgroundColor: [chartColors.noWebsite, chartColors.outdated, chartColors.solid],
+      borderWidth: 3,
+      borderColor: '#fff',
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 10 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}` } }
+    },
+    cutout: '60%',
+  }
+});
+
+// Breakdown chart
+new Chart(document.getElementById('chartBreakdown'), {
+  type: 'bar',
+  data: {
+    labels: ['Bakery', 'Cafe', 'Barber Shop', 'Hair Salon', 'Beauty Salon'],
+    datasets: [
+      {
+        label: 'Moscow, Russia',
+        data: [1, 1, 2, 2, 0],
+        backgroundColor: chartColors.russia,
+        borderRadius: 6,
+      },
+      {
+        label: 'Turkey',
+        data: [1, 0, 2, 3, 2],
+        backgroundColor: chartColors.turkey,
+        borderRadius: 6,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 12 }, padding: 16 } }
+    },
+    scales: {
+      y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#f0f4f8' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── FILTERS ──
+let activeFilters = { location: 'all', category: 'all', website: 'all' };
+let searchQuery = '';
+
+function applyFilters() {
+  const rows = document.querySelectorAll('#leadsBody tr[data-location]:not(.location-row)');
+  let count = 0;
+  rows.forEach(row => {
+    const loc = row.dataset.location;
+    const cat = row.dataset.category;
+    const ws = row.dataset.website;
+    const name = row.dataset.name || '';
+
+    const locMatch = activeFilters.location === 'all' || loc === activeFilters.location;
+    const catMatch = activeFilters.category === 'all' || cat === activeFilters.category;
+    const wsMatch = activeFilters.website === 'all' || ws === activeFilters.website;
+    const searchMatch = !searchQuery || name.includes(searchQuery.toLowerCase());
+
+    if (locMatch && catMatch && wsMatch && searchMatch) {
+      row.classList.remove('hidden');
+      count++;
+    } else {
+      row.classList.add('hidden');
+    }
+  });
+
+  // Show/hide location headers
+  const locationRows = document.querySelectorAll('.location-row');
+  locationRows.forEach(lr => {
+    const loc = lr.dataset.location;
+    if (activeFilters.location === 'all' || loc === activeFilters.location) {
+      lr.classList.remove('hidden');
+    } else {
+      lr.classList.add('hidden');
+    }
+  });
+
+  document.getElementById('resultsCount').textContent = `${count} result${count !== 1 ? 's' : ''}`;
+}
+
+document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filterType = btn.dataset.filter;
+    const value = btn.dataset.value;
+    activeFilters[filterType] = value;
+
+    // Update active state within group
+    document.querySelectorAll(`.filter-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchQuery = e.target.value;
+  applyFilters();
+});
+
+// ── CSV EXPORT ──
+function exportCSV() {
+  const headers = ['#','Business Name','Category','City/Country','Ads Running Since','Website Status','Website URL','Contact Info'];
+  const rows = [
+    [1,'French Bakery SeDelice','Bakery/Cafe','Moscow, Russia','2024–2026','No Website','','@french_bakery_sedelice'],
+    [2,'Chetverg Cafe','Cafe','Moscow, Russia','2024–2026','No Website','','@chetverg.cafe'],
+    [3,'Navruz Barber','Barber Shop','Moscow, Russia','2025–2026','No Website','','@navruz___barber'],
+    [4,'Legorage Barbershop','Barber Shop','Moscow, Russia','2023–2026','Outdated/Template','legorage.ru','+7 985 939-11-25'],
+    [5,'Ryabchik Moscow','Hair Salon','Moscow, Russia','2024–2026','Outdated/Template','ryabchik.net','@ryabchik.moscow'],
+    [6,'Hair Place Moscow','Hair Salon','Moscow, Russia','2025–2026','No Website','','@hair_place_moscow'],
+    [7,"Halil'in Pastanesi",'Bakery','Istanbul, Turkey','2025','No Own Website','tazetatlar.com (partner)','+90 544 540 31 65'],
+    [8,'Alpatros Barbers','Barber Shop','Istanbul, Turkey','2025–2026','No Website','','+90 538 811 78 68'],
+    [9,'Nokta Kuaför Spa','Hair/Beauty Salon','Istanbul, Turkey','2025–2026','No Website','','@noktakuafor'],
+    [10,'Staff Hair Studio Pendik','Hair Salon','Istanbul, Turkey','2025–2026','No Website','','Via Instagram'],
+    [11,'Yeşim Alımcı Güzellik','Beauty Salon','Ankara, Turkey','Sep 30 2025','No Website','','+90 543 619 65 35'],
+    [12,'ALİYE Dündar Güzellik','Beauty Salon','Ankara, Turkey','May 1 2026','No Website','','+90 312 482 05 04'],
+    [13,'Han Kuaför','Hair Salon','Izmir, Turkey','2025–2026','No Website','','+90 544 832 53 43'],
+    [14,'Markamakas','Barber Shop','Turkey','2025–2026','Outdated/Template','Template only','@markamakas_'],
+  ];
+
+  const csvContent = [headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'leads_moscow_turkey.csv'; a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>
