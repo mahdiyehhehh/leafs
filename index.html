@@ -174,52 +174,11 @@
             background: rgba(170, 204, 177, 0.35);
         }
 
-        .stat-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 4px 12px;
-            background: rgba(162, 185, 213, 0.15);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 8px 14px;
-            border-radius: 60px;
-            margin-bottom: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-item {
-            font-weight: 500;
-            font-size: 0.75rem;
-            color: #1e2a33;
-            display: flex;
-            align-items: baseline;
-            gap: 2px;
-        }
-
-        .stat-item strong {
-            color: #B01013;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .stat-item .num {
-            background: rgba(244, 242, 226, 0.5);
-            backdrop-filter: blur(4px);
-            padding: 0 8px;
-            border-radius: 30px;
-            color: #B01013;
-            font-weight: 600;
-        }
-
         .section-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin: 20px 0 14px 0;
+            margin: 12px 0 14px 0;
             padding: 0 4px;
             position: relative;
             z-index: 1;
@@ -606,7 +565,6 @@
             .container { padding: 14px 12px; }
             .business-item { padding: 14px 12px; }
             .personal-note { font-size: 0.74rem; padding: 6px 14px; }
-            .stat-item { font-size: 0.7rem; }
             .btn { font-size: 0.55rem; padding: 5px 10px; }
             .btn-ig { font-size: 0.55rem; }
             .btn-ig .handle { font-size: 0.5rem; max-width: 60px; }
@@ -641,15 +599,6 @@
             <span>Strikes</span>
             <span>Statistics</span>
         </div>
-    </div>
-
-    <div class="stat-row">
-        <div class="stat-item"><strong>4.9</strong> Avg</div>
-        <div class="stat-item"><span class="num">45</span> Shot</div>
-        <div class="stat-item"><span class="num">26</span> Dash</div>
-        <div class="stat-item"><span class="num">36%</span> Up</div>
-        <div class="stat-item"><span class="num">46%</span> 10</div>
-        <div class="stat-item"><span class="num">42</span> Res</div>
     </div>
 
     <div class="section-header">
@@ -745,6 +694,7 @@
             { name: "loannis Kostakis Hair Salon", ig: "ioannis_kostakis.hairsalon", tag: "Hair Salon", city: "Melíssia, Greece", note: "A website with online booking would make it easier for clients to schedule appointments." },
             { name: "Morgan Delaney Taylor", ig: "", tag: "Hairstylist", city: "Statesboro, GA", note: "The perfect lived-in blonde! A website would help you showcase your work and book appointments." },
             { name: "Kellie Hanson- Hair Stylist", ig: "", tag: "Hair Salon", city: "Garfield, VIC", note: "By Appointment Only. A website would make booking easier for your clients." },
+            { name: "Posh Hair Lounge", ig: "", tag: "Hair Salon", city: "USA", note: "Styling · Coloring · Luxury Salon. Your Premier Destination for Luxury Hair Services. A website would help you showcase your services and book appointments." },
 
             // Bakeries
             { name: "Ferry Good Treats", ig: "", tag: "Cake Shop", city: "Philadelphia, PA", note: "Just a girl baking herself happy. A website with your menu and order form would help you scale." },
@@ -759,8 +709,7 @@
 
             // Others
             { name: "Liberty Social", ig: "", tag: "Business", city: "Ontario", note: "Created for connection. A website would help you share your content and connect with your audience." },
-            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." },
-            { name: "Posh Hair Lounge", ig: "", tag: "Hair Salon", city: "USA", note: "Styling · Coloring · Luxury Salon. Your Premier Destination for Luxury Hair Services. A website would help you showcase your services and book appointments." }
+            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." }
         ];
 
         const container = document.getElementById('businessList');
