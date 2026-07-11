@@ -19,16 +19,108 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            position: relative;
+        }
+
+        /* Water drop background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(162, 185, 213, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(170, 204, 177, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(176, 16, 19, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: shimmer 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(2%, 1%) scale(1.05); }
         }
 
         .container {
             max-width: 600px;
             width: 100%;
-            background: #F4F2E2;
-            border-radius: 32px;
+            background: rgba(244, 242, 226, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
             padding: 20px 16px 28px;
-            border: 1px solid rgba(176, 16, 19, 0.08);
-            box-shadow: 0 8px 24px rgba(176, 16, 19, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(176, 16, 19, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Floating water drops */
+        .drop {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(162, 185, 213, 0.15));
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.04),
+                inset 4px 4px 8px rgba(255,255,255,0.3);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 12s ease-in-out infinite alternate;
+        }
+
+        .drop:nth-child(1) {
+            width: 180px;
+            height: 180px;
+            top: -40px;
+            right: -60px;
+            animation-delay: 0s;
+        }
+
+        .drop:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            bottom: 20%;
+            left: -50px;
+            animation-delay: 3s;
+        }
+
+        .drop:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            right: -30px;
+            animation-delay: 6s;
+        }
+
+        .drop:nth-child(4) {
+            width: 200px;
+            height: 200px;
+            bottom: -80px;
+            right: -40px;
+            animation-delay: 2s;
+            background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.4), rgba(170, 204, 177, 0.08));
+        }
+
+        .drop:nth-child(5) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: -30px;
+            animation-delay: 5s;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(162, 185, 213, 0.1));
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            100% { transform: translate(10px, 15px) scale(1.03) rotate(3deg); }
         }
 
         .top-bar {
@@ -37,9 +129,11 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 8px 12px;
-            border-bottom: 2px solid #A2B9D5;
+            border-bottom: 2px solid rgba(162, 185, 213, 0.4);
             padding-bottom: 14px;
             margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
         }
 
         .time {
@@ -47,11 +141,14 @@
             font-size: 1.6rem;
             letter-spacing: 0.5px;
             color: #B01013;
-            background: #A2B9D5;
+            background: rgba(162, 185, 213, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 0 18px;
             border-radius: 40px;
             line-height: 1.5;
-            border: 1.5px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
         .badge-group {
@@ -63,16 +160,18 @@
         .badge-group span {
             font-weight: 600;
             font-size: 0.75rem;
-            background: #A2B9D5;
+            background: rgba(162, 185, 213, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 4px 16px;
             border-radius: 40px;
             color: #1e1e1e;
-            border: 1px solid #B01013;
-            box-shadow: 0 2px 0 #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 0 rgba(176, 16, 19, 0.2);
         }
 
         .badge-group span:last-child {
-            background: #AACCB1;
+            background: rgba(170, 204, 177, 0.35);
         }
 
         .stat-row {
@@ -81,11 +180,15 @@
             align-items: center;
             justify-content: center;
             gap: 4px 12px;
-            background: rgba(162, 185, 213, 0.2);
+            background: rgba(162, 185, 213, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 8px 14px;
             border-radius: 60px;
             margin-bottom: 22px;
-            border: 1px solid #A2B9D5;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .stat-item {
@@ -104,7 +207,8 @@
         }
 
         .stat-item .num {
-            background: #F4F2E2;
+            background: rgba(244, 242, 226, 0.5);
+            backdrop-filter: blur(4px);
             padding: 0 8px;
             border-radius: 30px;
             color: #B01013;
@@ -117,16 +221,20 @@
             gap: 12px;
             margin: 20px 0 14px 0;
             padding: 0 4px;
+            position: relative;
+            z-index: 1;
         }
 
         .section-header h2 {
             font-size: 1.1rem;
             font-weight: 700;
             color: #1e2a33;
-            background: #AACCB1;
+            background: rgba(170, 204, 177, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 4px 18px;
             border-radius: 40px;
-            border: 1.5px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -135,18 +243,19 @@
         .section-divider {
             flex: 1;
             height: 2px;
-            background: #A2B9D5;
-            opacity: 0.4;
+            background: rgba(162, 185, 213, 0.3);
         }
 
         .count-badge {
-            background: #B01013;
-            color: #F4F2E2;
+            background: rgba(176, 16, 19, 0.15);
+            backdrop-filter: blur(4px);
+            color: #B01013;
             border-radius: 40px;
             padding: 0 10px;
             font-size: 0.6rem;
             font-weight: 600;
             line-height: 1.8;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .business-list {
@@ -154,14 +263,20 @@
             flex-direction: column;
             gap: 14px;
             margin: 4px 0 8px;
+            position: relative;
+            z-index: 1;
         }
 
         .business-item {
-            background: #fcfaf5;
+            background: rgba(252, 250, 245, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 24px;
             padding: 16px 16px 14px;
-            border: 1.5px solid #A2B9D5;
-            box-shadow: 0 3px 0 #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 4px 16px rgba(176, 16, 19, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -170,13 +285,13 @@
         }
 
         .business-item.done {
-            opacity: 0.75;
-            border-color: #AACCB1;
-            box-shadow: 0 3px 0 #AACCB1;
+            opacity: 0.7;
+            border-color: rgba(170, 204, 177, 0.5);
+            box-shadow: 0 4px 16px rgba(170, 204, 177, 0.1);
         }
 
         .business-item.done .personal-note {
-            background: #e8f0e8;
+            background: rgba(170, 204, 177, 0.15);
         }
 
         .business-item.done .done-check {
@@ -184,7 +299,7 @@
         }
 
         .business-item:active {
-            transform: scale(0.99);
+            transform: scale(0.98);
         }
 
         .business-name {
@@ -198,49 +313,53 @@
         }
 
         .business-name .tag {
-            background: #AACCB1;
+            background: rgba(170, 204, 177, 0.3);
+            backdrop-filter: blur(4px);
             font-size: 0.5rem;
             font-weight: 700;
             padding: 0 12px;
             border-radius: 40px;
             color: #1e2a33;
-            border: 1px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             letter-spacing: 0.2px;
             text-transform: uppercase;
         }
 
         .business-name .city-tag {
-            background: #A2B9D5;
+            background: rgba(162, 185, 213, 0.25);
+            backdrop-filter: blur(4px);
             font-size: 0.5rem;
             font-weight: 600;
             padding: 0 10px;
             border-radius: 40px;
             color: #1e2a33;
-            border: 1px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .done-check {
             display: none;
-            background: #B01013;
-            color: #F4F2E2;
+            background: rgba(176, 16, 19, 0.15);
+            color: #B01013;
             font-size: 0.6rem;
             font-weight: 700;
             padding: 0 10px;
             border-radius: 40px;
             letter-spacing: 0.3px;
             line-height: 1.6;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .personal-note {
             font-size: 0.78rem;
             line-height: 1.5;
-            background: #A2B9D5;
+            background: rgba(162, 185, 213, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 8px 16px;
             border-radius: 20px;
-            border: 1px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: #1e2a33;
             font-weight: 450;
-            backdrop-filter: blur(2px);
             word-break: break-word;
         }
 
@@ -254,7 +373,9 @@
 
         .btn {
             border: none;
-            background: #A2B9D5;
+            background: rgba(162, 185, 213, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 6px 14px;
             border-radius: 60px;
             font-weight: 600;
@@ -262,10 +383,12 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            border: 1.5px solid #B01013;
-            box-shadow: 0 2px 0 #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 
+                0 2px 8px rgba(176, 16, 19, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
             color: #1e2a33;
-            transition: 0.1s ease;
+            transition: 0.15s ease;
             cursor: pointer;
             letter-spacing: 0.2px;
             touch-action: manipulation;
@@ -274,46 +397,79 @@
         }
 
         .btn:active {
-            transform: scale(0.94);
+            transform: scale(0.93);
         }
 
-        .btn-wa { background: #AACCB1; }
-        .btn-ig { background: #A2B9D5; font-size: 0.6rem; }
-        .btn-fb { background: #A2B9D5; }
-        .btn-line { background: #AACCB1; }
+        .btn:hover {
+            background: rgba(162, 185, 213, 0.35);
+            box-shadow: 
+                0 4px 16px rgba(176, 16, 19, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-wa { 
+            background: rgba(170, 204, 177, 0.35);
+        }
+        .btn-wa:hover {
+            background: rgba(170, 204, 177, 0.5);
+        }
+
+        .btn-ig { 
+            background: rgba(162, 185, 213, 0.3);
+            font-size: 0.6rem;
+        }
+
+        .btn-fb { 
+            background: rgba(162, 185, 213, 0.25);
+        }
+
+        .btn-line { 
+            background: rgba(170, 204, 177, 0.35);
+        }
+
         .btn-copy {
-            background: #F4F2E2;
-            border-color: #B01013;
-            box-shadow: 0 2px 0 #B01013;
+            background: rgba(244, 242, 226, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-color: rgba(255, 255, 255, 0.4);
             font-weight: 600;
             cursor: pointer;
             font-size: 0.6rem;
+            box-shadow: 
+                0 2px 8px rgba(176, 16, 19, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
         .btn-copy:active {
-            transform: scale(0.94);
-            background: #B01013;
-            color: #F4F2E2;
+            transform: scale(0.93);
+            background: rgba(176, 16, 19, 0.1);
+        }
+
+        .btn-copy:hover {
+            background: rgba(244, 242, 226, 0.7);
         }
 
         .btn-done {
-            background: #F4F2E2;
-            border-color: #AACCB1;
-            box-shadow: 0 2px 0 #AACCB1;
+            background: rgba(244, 242, 226, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-color: rgba(170, 204, 177, 0.3);
             font-size: 0.6rem;
             cursor: pointer;
             padding: 6px 12px;
+            box-shadow: 
+                0 2px 8px rgba(170, 204, 177, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         .btn-done:hover {
-            background: #AACCB1;
+            background: rgba(170, 204, 177, 0.25);
         }
 
         .btn-done.active {
-            background: #B01013;
-            color: #F4F2E2;
-            border-color: #B01013;
-            box-shadow: 0 2px 0 #B01013;
+            background: rgba(176, 16, 19, 0.15);
+            color: #B01013;
+            border-color: rgba(176, 16, 19, 0.2);
         }
 
         .btn span {
@@ -337,26 +493,31 @@
             align-items: center;
             margin-top: 20px;
             padding-top: 14px;
-            border-top: 2px solid #A2B9D5;
+            border-top: 2px solid rgba(162, 185, 213, 0.2);
             gap: 6px 10px;
             font-size: 0.65rem;
             font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-stats .pill {
-            background: #AACCB1;
+            background: rgba(170, 204, 177, 0.25);
+            backdrop-filter: blur(4px);
             padding: 2px 12px;
             border-radius: 40px;
-            border: 1px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             white-space: nowrap;
         }
 
         .footer-stats .highlight {
-            background: #B01013;
-            color: #F4F2E2;
+            background: rgba(176, 16, 19, 0.12);
+            backdrop-filter: blur(4px);
+            color: #B01013;
             padding: 0 12px;
             border-radius: 40px;
             font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             white-space: nowrap;
         }
 
@@ -367,13 +528,16 @@
             align-items: center;
             margin-top: 14px;
             gap: 10px;
+            position: relative;
+            z-index: 1;
         }
 
         .bottom-row .schedule {
-            background: #A2B9D5;
+            background: rgba(162, 185, 213, 0.2);
+            backdrop-filter: blur(8px);
             padding: 4px 18px;
             border-radius: 60px;
-            border: 1px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
             font-size: 0.8rem;
             display: flex;
@@ -382,24 +546,28 @@
         }
 
         .bottom-row .ron {
-            background: #AACCB1;
+            background: rgba(170, 204, 177, 0.25);
+            backdrop-filter: blur(8px);
             padding: 0 24px;
             border-radius: 60px;
             font-weight: 700;
             font-size: 1.3rem;
-            border: 2px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             line-height: 1.4;
         }
 
         .attribution {
             margin-top: 16px;
             font-size: 0.6rem;
-            background: #A2B9D5;
+            background: rgba(162, 185, 213, 0.15);
+            backdrop-filter: blur(4px);
             padding: 4px 16px;
             border-radius: 60px;
             display: inline-block;
-            border: 1px solid #B01013;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: #1e2a33;
+            position: relative;
+            z-index: 1;
         }
 
         .attribution span {
@@ -412,14 +580,16 @@
             bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            background: #1e2a33;
+            background: rgba(30, 42, 51, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             color: #F4F2E2;
             padding: 10px 24px;
             border-radius: 60px;
             font-weight: 500;
             font-size: 0.85rem;
-            border: 1px solid #AACCB1;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
             opacity: 0;
             transition: opacity 0.25s ease;
             pointer-events: none;
@@ -444,6 +614,7 @@
             .bottom-row .schedule { font-size: 0.7rem; padding: 3px 14px; gap: 10px; }
             .bottom-row .ron { font-size: 1.1rem; padding: 0 18px; }
             .section-header h2 { font-size: 0.95rem; }
+            .drop { display: none; }
         }
 
         @media (max-width: 380px) {
@@ -455,6 +626,13 @@
     </style>
 </head>
 <body>
+
+    <!-- Floating water drops -->
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
 
 <div class="container">
     <div class="top-bar">
@@ -474,7 +652,6 @@
         <div class="stat-item"><span class="num">42</span> Res</div>
     </div>
 
-    <!-- ===== ALL BUSINESSES ===== -->
     <div class="section-header">
         <h2>✨ All Businesses</h2>
         <span class="count-badge" id="totalCount">0</span>
@@ -491,7 +668,7 @@
         <span class="highlight">Rough 33%</span>
     </div>
 
-    <div class="footer-stats" style="border-top: 1px solid #A2B9D5; margin-top: 4px; padding-top: 10px;">
+    <div class="footer-stats" style="border-top: 1px solid rgba(162, 185, 213, 0.15); margin-top: 4px; padding-top: 10px;">
         <span class="pill">Short 100yds</span>
         <span class="pill">Medium 200yds</span>
         <span class="pill">Long 300yds</span>
@@ -515,7 +692,7 @@
 
 <script>
     (function() {
-        // ── ALL BUSINESSES (combined) ──
+        // ── ALL BUSINESSES ──
         const allBusinesses = [
             // NEW ONES (15)
             { name: "KJ Salon Kenya", ig: "", tag: "Hair Salon", city: "Eldoret, Kenya", contact: "wa", wa: "254710472946", note: "Active ads for hydra-facials and hair services. Located at Zion Mall. No website — a simple booking page would help you manage appointments and showcase your services professionally." },
@@ -556,7 +733,7 @@
             { name: "Homenaje", ig: "homenaje.celaya", tag: "Cocina", city: "Mexico", note: "A simple site with your menu and contact info would make you look established." },
             { name: "KoFi & Tonics", ig: "kofitonics", tag: "Music", city: "Mexico", note: "Music, coffee, fashion — a site would bring your community together." },
 
-            // NEW FROM IMAGES (Hair Salons & Bakeries)
+            // NEW FROM IMAGES (Hair Salons)
             { name: "Hair by Jess", ig: "jessicaoesmyhair_", tag: "Hair Salon", city: "Marion, NC", note: "Hairstylist & lover of beauty, style, and slow moments. A website would help you share your work and book clients more easily." },
             { name: "Lawt Hair Salon", ig: "lawt_hair_salon_", tag: "Hair Salon", city: "St. Albert, AB", note: "Special 20% discounts for PwD, Seniors (65+), Veterans. A website would make your services and discounts more visible." },
             { name: "Vogue Hair Salon", ig: "Vogue Hair Salon", tag: "Hair Salon", city: "Choppington, UK", note: "23 years of making you feel amazing! A website would showcase your experience and attract new clients." },
@@ -566,23 +743,30 @@
             { name: "TK Hair Salon", ig: "TK Hair Salon", tag: "Beauty Salon", city: "Zamboanga City, PH", note: "New hair, new energy, new confidence. A website would help you reach more clients in your area." },
             { name: "Taylor Mendoza", ig: "", tag: "Hair Stylist", city: "Glendora, CA", note: "Full salon days have me acting like I ran a marathon! A website would help you book clients and share your work." },
             { name: "loannis Kostakis Hair Salon", ig: "ioannis_kostakis.hairsalon", tag: "Hair Salon", city: "Melíssia, Greece", note: "A website with online booking would make it easier for clients to schedule appointments." },
-            { name: "Morgan Delaney Taylor", ig: "", tag: "Hairstylist", city: "Statesboro, GA", note: "The perfect lived-in blonde! A website would help you showcase your work and book appointments at wildflowerandhoneysalon.com" },
+            { name: "Morgan Delaney Taylor", ig: "", tag: "Hairstylist", city: "Statesboro, GA", note: "The perfect lived-in blonde! A website would help you showcase your work and book appointments." },
             { name: "Kellie Hanson- Hair Stylist", ig: "", tag: "Hair Salon", city: "Garfield, VIC", note: "By Appointment Only. A website would make booking easier for your clients." },
+
+            // Bakeries
             { name: "Ferry Good Treats", ig: "", tag: "Cake Shop", city: "Philadelphia, PA", note: "Just a girl baking herself happy. A website with your menu and order form would help you scale." },
             { name: "Olde Village Bakery", ig: "oldevillagebakery", tag: "Dessert Shop", city: "North Rustico, PEI", note: "A small but mighty bakery by the sea. A website would help you share your hours and menu." },
             { name: "Noraya Bakery", ig: "", tag: "Bakery", city: "Sudbury, ON", note: "Freshly baked happiness. DM to order — a website with order form would save you time." },
             { name: "Bleu Bear Bakery", ig: "", tag: "Bakery", city: "Oaklyn, NJ", note: "100% GLUTEN FREE BAKERY. A website would help you reach more celiac customers." },
             { name: "Woops", ig: "", tag: "Bakery", city: "Coeur d'Alene, ID", note: "Largest French macaron company in the U.S. A website would help you showcase your locations." },
             { name: "Saray Bakery", ig: "", tag: "Bakery", city: "Myrtle Beach, SC", note: "Myrtle Beach's favorite spot for daily fresh pastries. A website would help you reach more customers." },
+            { name: "The Bakery-Waterford", ig: "", tag: "Bakery", city: "Waterford Township, MI", note: "Custom cakes and the best cheesecakes. A website with your menu and ordering would help you scale." },
+            { name: "Rollhouse Bakery", ig: "rollhouse_bakery", tag: "Bakery", city: "Billings, MT", note: "OPEN 7 days a week 7AM–2PM. A website would help you share your daily menu and take orders." },
+            { name: "Butter & Bloom Bakery", ig: "butterandbloombakery25", tag: "Bakery", city: "Grafton, OH", note: "A website would help you showcase your baked goods and reach more customers in Ohio." },
+
+            // Others
             { name: "Liberty Social", ig: "", tag: "Business", city: "Ontario", note: "Created for connection. A website would help you share your content and connect with your audience." },
-            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." }
+            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." },
+            { name: "Posh Hair Lounge", ig: "", tag: "Hair Salon", city: "USA", note: "Styling · Coloring · Luxury Salon. Your Premier Destination for Luxury Hair Services. A website would help you showcase your services and book appointments." }
         ];
 
         const container = document.getElementById('businessList');
         let html = '';
 
         allBusinesses.forEach((biz, index) => {
-            // Build contact button
             let contactHtml = '';
             const igHandle = biz.ig || '';
 
@@ -595,16 +779,12 @@
             } else if (biz.ig) {
                 contactHtml = `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
             } else {
-                contactHtml = `<span class="btn" style="opacity:0.5; cursor:default;">No contact</span>`;
+                contactHtml = `<span class="btn" style="opacity:0.4;cursor:default;pointer-events:none;">No contact</span>`;
             }
 
-            // Facebook link (if IG exists)
             const fbLink = biz.ig ? `https://facebook.com/${biz.ig}` : '#';
-
-            // WhatsApp fallback
             const waLink = biz.ig ? `https://wa.me/?text=Hey! I saw your business on Instagram` : '#';
 
-            // Build actions
             let actionsHtml = `
                 ${contactHtml}
                 <a href="${fbLink}" target="_blank" rel="noopener noreferrer" class="btn btn-fb" ${!biz.ig ? 'style="opacity:0.4;cursor:default;pointer-events:none;"' : ''}><span>📘</span> FB</a>
@@ -629,11 +809,9 @@
         });
 
         container.innerHTML = html;
-
-        // Update total count
         document.getElementById('totalCount').textContent = allBusinesses.length;
 
-        // ── Done toggle functionality ──
+        // ── Done toggle ──
         document.querySelectorAll('.done-toggle').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -656,7 +834,7 @@
             });
         });
 
-        // ── Copy functionality ──
+        // ── Copy ──
         const toast = document.getElementById('toast');
         let toastTimeout = null;
 
