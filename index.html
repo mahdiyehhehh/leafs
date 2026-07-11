@@ -1,831 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Strikes · Business Hub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unfollowers · Instagram ID tool</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
         body {
-            background: #F4F2E2;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            padding: 16px 12px;
+            background: linear-gradient(145deg, #f8f9fc 0%, #eef1f5 100%);
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: flex-start;
-            position: relative;
+            padding: 1.5rem;
         }
-
-        /* Water drop background effect */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(162, 185, 213, 0.15) 0%, transparent 60%),
-                radial-gradient(circle at 80% 70%, rgba(170, 204, 177, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(176, 16, 19, 0.04) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-            animation: shimmer 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(2%, 1%) scale(1.05); }
-        }
-
-        .container {
+        .card {
             max-width: 600px;
             width: 100%;
-            background: rgba(244, 242, 226, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 48px;
+            padding: 2.5rem 2rem 2.8rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25), 0 4px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s ease;
+        }
+        h1 {
+            font-weight: 600;
+            font-size: 2.2rem;
+            letter-spacing: -0.01em;
+            color: #1a1e2b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.4rem;
+        }
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #5b657a;
+            background: rgba(0,0,0,0.04);
+            padding: 0.1rem 0.8rem;
             border-radius: 40px;
-            padding: 20px 16px 28px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 8px 32px rgba(176, 16, 19, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            position: relative;
-            z-index: 1;
+            margin-left: 6px;
         }
-
-        /* Floating water drops */
-        .drop {
-            position: fixed;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(162, 185, 213, 0.15));
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                inset -4px -4px 8px rgba(0,0,0,0.04),
-                inset 4px 4px 8px rgba(255,255,255,0.3);
-            pointer-events: none;
-            z-index: 0;
-            animation: float 12s ease-in-out infinite alternate;
+        .sub {
+            color: #3d4559;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            border-left: 4px solid #d0d9e8;
+            padding-left: 1rem;
+            background: rgba(255,255,255,0.3);
+            border-radius: 0 12px 12px 0;
         }
-
-        .drop:nth-child(1) {
-            width: 180px;
-            height: 180px;
-            top: -40px;
-            right: -60px;
-            animation-delay: 0s;
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 8px 8px 8px 20px;
+            border-radius: 120px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), inset 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #dce2ec;
+            transition: 0.2s;
         }
-
-        .drop:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            bottom: 20%;
-            left: -50px;
-            animation-delay: 3s;
+        .input-group:focus-within {
+            border-color: #8b9bcf;
+            box-shadow: 0 0 0 4px rgba(107, 126, 189, 0.15);
         }
-
-        .drop:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            top: 40%;
-            right: -30px;
-            animation-delay: 6s;
+        .input-group label {
+            font-weight: 500;
+            color: #2c3447;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
-
-        .drop:nth-child(4) {
-            width: 200px;
-            height: 200px;
-            bottom: -80px;
-            right: -40px;
-            animation-delay: 2s;
-            background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.4), rgba(170, 204, 177, 0.08));
+        .input-group label span {
+            background: #eef2f9;
+            border-radius: 30px;
+            padding: 0 8px;
+            font-size: 0.8rem;
+            color: #39405a;
         }
-
-        .drop:nth-child(5) {
-            width: 100px;
-            height: 100px;
-            top: 10%;
-            left: -30px;
-            animation-delay: 5s;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(162, 185, 213, 0.1));
+        .input-group input {
+            border: none;
+            background: transparent;
+            padding: 12px 6px;
+            font-size: 1rem;
+            flex: 1;
+            min-width: 140px;
+            outline: none;
+            color: #141824;
+            font-weight: 450;
         }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            100% { transform: translate(10px, 15px) scale(1.03) rotate(3deg); }
+        .input-group input::placeholder {
+            color: #939cb3;
+            font-weight: 300;
+            letter-spacing: -0.2px;
         }
-
-        .top-bar {
+        .input-group button {
+            background: #1e2538;
+            border: none;
+            color: white;
+            font-weight: 500;
+            padding: 12px 26px;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .input-group button:hover {
+            background: #2d3651;
+            transform: scale(1.01);
+            box-shadow: 0 8px 16px rgba(22, 28, 45, 0.15);
+        }
+        .input-group button:active {
+            transform: scale(0.97);
+        }
+        .status-area {
+            margin-top: 1.8rem;
+            padding: 0.4rem 0 0.2rem;
+            font-size: 0.95rem;
+            color: #2c3447;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 8px 12px;
-            border-bottom: 2px solid rgba(162, 185, 213, 0.4);
-            padding-bottom: 14px;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
         }
-
-        .time {
-            font-weight: 700;
-            font-size: 1.6rem;
-            letter-spacing: 0.5px;
-            color: #B01013;
-            background: rgba(162, 185, 213, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 0 18px;
-            border-radius: 40px;
-            line-height: 1.5;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+        .counter-badge {
+            background: #e6ebf4;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1f2740;
         }
-
-        .badge-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+        #resultContainer {
+            margin-top: 2rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+            max-height: 360px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
         }
-
-        .badge-group span {
-            font-weight: 600;
-            font-size: 0.75rem;
-            background: rgba(162, 185, 213, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 4px 16px;
-            border-radius: 40px;
-            color: #1e1e1e;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 0 rgba(176, 16, 19, 0.2);
+        #resultContainer::-webkit-scrollbar {
+            width: 6px;
         }
-
-        .badge-group span:last-child {
-            background: rgba(170, 204, 177, 0.35);
+        #resultContainer::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.02);
+            border-radius: 20px;
         }
-
-        .section-header {
+        #resultContainer::-webkit-scrollbar-thumb {
+            background: #bfc9dd;
+            border-radius: 20px;
+        }
+        .list-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin: 12px 0 14px 0;
-            padding: 0 4px;
-            position: relative;
-            z-index: 1;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(2px);
+            transition: 0.1s;
         }
-
-        .section-header h2 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1e2a33;
-            background: rgba(170, 204, 177, 0.35);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 4px 18px;
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        .list-item:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+        .list-item .avatar-placeholder {
+            width: 34px;
+            height: 34px;
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .section-divider {
-            flex: 1;
-            height: 2px;
-            background: rgba(162, 185, 213, 0.3);
-        }
-
-        .count-badge {
-            background: rgba(176, 16, 19, 0.15);
-            backdrop-filter: blur(4px);
-            color: #B01013;
-            border-radius: 40px;
-            padding: 0 10px;
-            font-size: 0.6rem;
-            font-weight: 600;
-            line-height: 1.8;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .business-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin: 4px 0 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .business-item {
-            background: rgba(252, 250, 245, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 24px;
-            padding: 16px 16px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 4px 16px rgba(176, 16, 19, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            transition: 0.15s ease;
-            position: relative;
-        }
-
-        .business-item.done {
-            opacity: 0.7;
-            border-color: rgba(170, 204, 177, 0.5);
-            box-shadow: 0 4px 16px rgba(170, 204, 177, 0.1);
-        }
-
-        .business-item.done .personal-note {
-            background: rgba(170, 204, 177, 0.15);
-        }
-
-        .business-item.done .done-check {
-            display: inline-block;
-        }
-
-        .business-item:active {
-            transform: scale(0.98);
-        }
-
-        .business-name {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: #1e2a33;
+            background: #d3dcec;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 6px 10px;
-        }
-
-        .business-name .tag {
-            background: rgba(170, 204, 177, 0.3);
-            backdrop-filter: blur(4px);
-            font-size: 0.5rem;
-            font-weight: 700;
-            padding: 0 12px;
-            border-radius: 40px;
-            color: #1e2a33;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            letter-spacing: 0.2px;
+            justify-content: center;
+            font-weight: 500;
+            color: #1e2538;
+            background: #cdd7ea;
+            font-size: 0.75rem;
             text-transform: uppercase;
         }
-
-        .business-name .city-tag {
-            background: rgba(162, 185, 213, 0.25);
-            backdrop-filter: blur(4px);
-            font-size: 0.5rem;
-            font-weight: 600;
-            padding: 0 10px;
-            border-radius: 40px;
-            color: #1e2a33;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .done-check {
-            display: none;
-            background: rgba(176, 16, 19, 0.15);
-            color: #B01013;
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 0 10px;
-            border-radius: 40px;
-            letter-spacing: 0.3px;
-            line-height: 1.6;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .personal-note {
-            font-size: 0.78rem;
-            line-height: 1.5;
-            background: rgba(162, 185, 213, 0.2);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #1e2a33;
-            font-weight: 450;
-            word-break: break-word;
-        }
-
-        .business-actions {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 6px 8px;
-            margin-top: 2px;
-        }
-
-        .btn {
-            border: none;
-            background: rgba(162, 185, 213, 0.25);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 6px 14px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.65rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 2px 8px rgba(176, 16, 19, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-            color: #1e2a33;
-            transition: 0.15s ease;
-            cursor: pointer;
-            letter-spacing: 0.2px;
-            touch-action: manipulation;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .btn:active {
-            transform: scale(0.93);
-        }
-
-        .btn:hover {
-            background: rgba(162, 185, 213, 0.35);
-            box-shadow: 
-                0 4px 16px rgba(176, 16, 19, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .btn-wa { 
-            background: rgba(170, 204, 177, 0.35);
-        }
-        .btn-wa:hover {
-            background: rgba(170, 204, 177, 0.5);
-        }
-
-        .btn-ig { 
-            background: rgba(162, 185, 213, 0.3);
-            font-size: 0.6rem;
-        }
-
-        .btn-fb { 
-            background: rgba(162, 185, 213, 0.25);
-        }
-
-        .btn-line { 
-            background: rgba(170, 204, 177, 0.35);
-        }
-
-        .btn-copy {
-            background: rgba(244, 242, 226, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-color: rgba(255, 255, 255, 0.4);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.6rem;
-            box-shadow: 
-                0 2px 8px rgba(176, 16, 19, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .btn-copy:active {
-            transform: scale(0.93);
-            background: rgba(176, 16, 19, 0.1);
-        }
-
-        .btn-copy:hover {
-            background: rgba(244, 242, 226, 0.7);
-        }
-
-        .btn-done {
-            background: rgba(244, 242, 226, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-color: rgba(170, 204, 177, 0.3);
-            font-size: 0.6rem;
-            cursor: pointer;
-            padding: 6px 12px;
-            box-shadow: 
-                0 2px 8px rgba(170, 204, 177, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        .btn-done:hover {
-            background: rgba(170, 204, 177, 0.25);
-        }
-
-        .btn-done.active {
-            background: rgba(176, 16, 19, 0.15);
-            color: #B01013;
-            border-color: rgba(176, 16, 19, 0.2);
-        }
-
-        .btn span {
-            font-size: 0.8rem;
-            line-height: 1;
-        }
-
-        .btn-ig .handle {
-            font-weight: 400;
-            font-size: 0.55rem;
-            opacity: 0.85;
-            max-width: 80px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .footer-stats {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 14px;
-            border-top: 2px solid rgba(162, 185, 213, 0.2);
-            gap: 6px 10px;
-            font-size: 0.65rem;
+        .list-item .username {
             font-weight: 500;
-            position: relative;
-            z-index: 1;
+            color: #141c2b;
+            flex: 1;
+            font-size: 0.95rem;
         }
-
-        .footer-stats .pill {
-            background: rgba(170, 204, 177, 0.25);
-            backdrop-filter: blur(4px);
+        .list-item .badge {
+            background: #eaf0f9;
+            border-radius: 40px;
+            font-size: 0.7rem;
             padding: 2px 12px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            white-space: nowrap;
+            color: #2a3450;
+            border: 1px solid rgba(0,0,0,0.02);
         }
-
-        .footer-stats .highlight {
-            background: rgba(176, 16, 19, 0.12);
-            backdrop-filter: blur(4px);
-            color: #B01013;
-            padding: 0 12px;
-            border-radius: 40px;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            white-space: nowrap;
-        }
-
-        .bottom-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 14px;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .bottom-row .schedule {
-            background: rgba(162, 185, 213, 0.2);
-            backdrop-filter: blur(8px);
-            padding: 4px 18px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-weight: 600;
-            font-size: 0.8rem;
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .bottom-row .ron {
-            background: rgba(170, 204, 177, 0.25);
-            backdrop-filter: blur(8px);
-            padding: 0 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.3rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            line-height: 1.4;
-        }
-
-        .attribution {
-            margin-top: 16px;
-            font-size: 0.6rem;
-            background: rgba(162, 185, 213, 0.15);
-            backdrop-filter: blur(4px);
-            padding: 4px 16px;
-            border-radius: 60px;
-            display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #1e2a33;
-            position: relative;
-            z-index: 1;
-        }
-
-        .attribution span {
-            color: #B01013;
-            font-weight: 700;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(30, 42, 51, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            color: #F4F2E2;
-            padding: 10px 24px;
-            border-radius: 60px;
-            font-weight: 500;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-            opacity: 0;
-            transition: opacity 0.25s ease;
-            pointer-events: none;
-            z-index: 999;
-            max-width: 90%;
+        .empty-state {
             text-align: center;
+            padding: 2.8rem 1rem;
+            color: #58607a;
+            font-weight: 400;
         }
-
-        .toast.show {
-            opacity: 1;
+        .empty-state span {
+            font-size: 2.6rem;
+            display: block;
+            margin-bottom: 8px;
         }
-
-        @media (max-width: 480px) {
-            .container { padding: 14px 12px; }
-            .business-item { padding: 14px 12px; }
-            .personal-note { font-size: 0.74rem; padding: 6px 14px; }
-            .btn { font-size: 0.55rem; padding: 5px 10px; }
-            .btn-ig { font-size: 0.55rem; }
-            .btn-ig .handle { font-size: 0.5rem; max-width: 60px; }
-            .time { font-size: 1.4rem; }
-            .bottom-row .schedule { font-size: 0.7rem; padding: 3px 14px; gap: 10px; }
-            .bottom-row .ron { font-size: 1.1rem; padding: 0 18px; }
-            .section-header h2 { font-size: 0.95rem; }
-            .drop { display: none; }
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 0.7rem;
+            text-align: center;
+            color: #727c98;
+            border-top: 1px solid #e2e8f2;
+            padding-top: 1.5rem;
+            letter-spacing: 0.3px;
         }
-
-        @media (max-width: 380px) {
-            .badge-group span { font-size: 0.65rem; padding: 3px 12px; }
-            .business-actions { gap: 4px; }
-            .btn { font-size: 0.5rem; padding: 4px 8px; }
-            .btn-ig .handle { max-width: 50px; }
+        .footer-note i {
+            font-style: normal;
+            background: #eef2f9;
+            padding: 0.1rem 0.7rem;
+            border-radius: 40px;
+        }
+        @media (max-width: 500px) {
+            .card { padding: 1.8rem 1.2rem; }
+            .input-group { padding: 6px 6px 6px 14px; }
+            .input-group button { padding: 10px 18px; font-size: 0.9rem; }
+            h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating water drops -->
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
+<div class="card">
+    <h1>
+        <span>🔄</span> Unfollowers
+        <small>check</small>
+    </h1>
+    <div class="sub">
+        ⚡ Enter your Instagram ID · see who doesn't follow back
+    </div>
 
-<div class="container">
-    <div class="top-bar">
-        <div class="time">11:30</div>
-        <div class="badge-group">
-            <span>Strikes</span>
-            <span>Statistics</span>
+    <div class="input-group">
+        <label for="instaId">
+            @<span>ID</span>
+        </label>
+        <input type="text" id="instaId" placeholder="e.g. john_doe" value="example_user">
+        <button id="checkBtn">🔍 Check</button>
+    </div>
+
+    <div class="status-area">
+        <span id="statusMessage">✨ Ready</span>
+        <span class="counter-badge" id="counterDisplay">0 non‑followers</span>
+    </div>
+
+    <!-- result list container -->
+    <div id="resultContainer">
+        <div class="empty-state">
+            <span>👥</span>
+            <p style="margin-top: 8px;">No data yet<br><small style="color:#7a84a0;">enter an ID and click check</small></p>
         </div>
     </div>
-
-    <div class="section-header">
-        <h2>✨ All Businesses</h2>
-        <span class="count-badge" id="totalCount">0</span>
-        <div class="section-divider"></div>
-    </div>
-
-    <div class="business-list" id="businessList"></div>
-
-    <div class="footer-stats">
-        <span class="pill">Tee 242yds</span>
-        <span class="pill">Played 182yds</span>
-        <span class="pill">Left Miss 28%</span>
-        <span class="highlight">Fairway 45%</span>
-        <span class="highlight">Rough 33%</span>
-    </div>
-
-    <div class="footer-stats" style="border-top: 1px solid rgba(162, 185, 213, 0.15); margin-top: 4px; padding-top: 10px;">
-        <span class="pill">Short 100yds</span>
-        <span class="pill">Medium 200yds</span>
-        <span class="pill">Long 300yds</span>
-        <span class="pill">Avg.Putts/GIR</span>
-    </div>
-
-    <div class="bottom-row">
-        <div class="schedule">
-            <span>Schedule</span>
-            <span>Communications</span>
-        </div>
-        <div class="ron">RON</div>
-    </div>
-
-    <div class="attribution">
-        <span>✦</span> Crimson · BabyBlue · Vanilla · Mint <span>✦</span>
+    <div class="footer-note">
+        <i>⚡ demo · mock data for illustration</i>
     </div>
 </div>
 
-<div id="toast" class="toast">✓ Copied!</div>
-
 <script>
     (function() {
-        // ── ALL BUSINESSES ──
-        const allBusinesses = [
-            // NEW ONES (15)
-            { name: "KJ Salon Kenya", ig: "", tag: "Hair Salon", city: "Eldoret, Kenya", contact: "wa", wa: "254710472946", note: "Active ads for hydra-facials and hair services. Located at Zion Mall. No website — a simple booking page would help you manage appointments and showcase your services professionally." },
-            { name: "PK ASKA Hair Salon", ig: "", tag: "Hair Salon", city: "Bangkok, Thailand", contact: "line", line: "cpKaDlv", note: "Premium Japanese style salon in Hotel Nikko. Uses Line for all bookings. A proper website would give you a professional edge and attract more international clients." },
-            { name: "Better Batter Café & Bakery", ig: "betterbatter.cafe", tag: "Bakery/Cafe", city: "Hanoi, Vietnam", contact: "ig", note: "Specializes in custom cakes. Active ads driving traffic to Instagram. A website with your full menu and order form would convert more customers." },
-            { name: "Fuji Bakery", ig: "", tag: "Bakery Supplier", city: "Kuala Lumpur", contact: "wa", wa: "60177011760", note: "Reliable supplier for donuts and white sandwich loaves to cafes. No website — a B2B site would streamline orders and attract more cafe partners." },
-            { name: "Jagoan SEWA", ig: "", tag: "Equipment Rental", city: "Jakarta", contact: "wa", wa: "6282320835251", note: "Rents freezers and business equipment. Active ads on TikTok/Instagram. A website with inventory and booking would make you look more professional." },
-            { name: "Shotlin Official", ig: "", tag: "Fashion/Boutique", city: "Lucknow, India", contact: "wa", wa: "917007722441", note: "Small independent brand running ads for ethnic wear. A website with your collection and size guide would boost sales significantly." },
-            { name: "The Coco Company", ig: "thecococompany", tag: "Bakery", city: "Gurgaon, India", contact: "ig", note: "Focuses on premium desserts, orders taken via DM. A proper website with menu and order form would save you time and look more established." },
-            { name: "Fudict Fruit Crush", ig: "", tag: "Food Supplier", city: "Hyderabad", contact: "wa", wa: "919246175508", note: "Manufacturer of fruit crushes and syrups for local cafes. A website would help you showcase your products and attract more B2B clients." },
-            { name: "Maraba Abuja Baker", ig: "", tag: "Bakery", city: "Abuja, Nigeria", contact: "wa", wa: "2349030165108", note: "Independent local baker running targeted ads. A simple website with menu and order form would help you scale your business." },
-            { name: "Araluxe Hair", ig: "", tag: "Hair Salon", city: "Lagos, Nigeria", contact: "wa", wa: "2349058559656", note: "Specializes in high-end hair extensions. A website with your catalog and booking system would elevate your brand significantly." },
-            { name: "Luma Nails", ig: "", tag: "Beauty Salon", city: "Aurora, CO", contact: "wa", wa: "17202457514", note: "Home-based professional nail studio. A simple booking page with your portfolio and pricing would make you look more professional." },
-            { name: "Semion Barbershop", ig: "semion_barbershop", tag: "Barber Shop", city: "Salt Lake City", contact: "ig", note: "Uses social media exclusively for bookings. A website with online booking and service menu would save you time and attract more clients." },
-            { name: "Rooom Mobile Salon", ig: "rooommobilesalon", tag: "Hair Salon", city: "Johannesburg", contact: "ig", note: "Mobile hair services provider. A website with your services, availability, and booking system would help you scale your mobile business." },
-            { name: "Strivenii Hair & Beauty Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "919820834610", note: "Established local salon in Goregaon West. A website with your services and online booking would help you reach more customers." },
-            { name: "Color Me Crazy Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "918652683847", note: "Family-run salon with a strong local presence. A website would help you showcase your work and attract new clients." },
+        // ----- MOCK DATASET (simulates Instagram following/followers) -----
+        // For demonstration: we build a fake network around the entered ID.
+        // The function returns { followers: [...], following: [...] }
+        function generateMockNetwork(centralId) {
+            // Base lists of pretend users (50 unique names)
+            const namePool = [
+                "luna_art", "mike_travels", "sarah_design", "jordan_fit", "alex_code",
+                "emma_wander", "chris_photo", "zara_music", "liam_food", "olivia_books",
+                "noah_gaming", "mia_style", "ethan_nature", "amelia_pets", "ben_tech",
+                "charlotte_diy", "leo_fitness", "ella_crafts", "daniel_memes", "scarlett_art",
+                "james_auto", "lily_wellness", "logan_home", "grace_travel", "lucas_crypto",
+                "zoe_fashion", "mason_foodie", "harper_health", "elijah_golf", "abigail_study",
+                "oliver_vinyl", "sofia_poetry", "jack_cycling", "victoria_beauty", "thomas_brew",
+                "natalie_yoga", "william_piano", "ava_kids", "henry_watch", "chloe_cats",
+                "sebastian_film", "penelope_dance", "david_wood", "eleanor_chess", "joseph_sky",
+                "claire_plants", "samuel_guitar", "madison_makeup", "dylan_writing", "layla_podcast"
+            ];
 
-            // PREVIOUS DONE ONES (20)
-            { name: "Araluxehair", ig: "araluxehair", tag: "Wigs", city: "Lagos", note: "Your lace & bundles are top-tier! A clean website would organize your catalog and make ordering easier." },
-            { name: "rooommobilesalon", ig: "rooommobilesalon", tag: "Mobile", city: "Johannesburg", note: "Your mobile salon is brilliant! A proper booking page would save you time." },
-            { name: "Cocoal Cafetería", ig: "quieromicocol", tag: "Cafe", city: "Mexico", note: "Your desserts are amazing! A simple website would let people see your menu and order ahead." },
-            { name: "Cafetería Cordillera", ig: "cafeteriacordillera", tag: "Petfriendly", city: "Chile", note: "Love the pet-friendly vibe! A website would show your full menu and let people reserve tables." },
-            { name: "Navaja Concept", ig: "navajaconcept", tag: "Cocina", city: "Mexico", note: "Wine, coffee, live music — a website would tie it all together beautifully." },
-            { name: "Jacinta M. Pastelería", ig: "jacintam.pasteleria", tag: "Pastry", city: "Mexico", note: "Your cakes are art! A proper website with a catalog and order form would make it easier." },
-            { name: "Nota de Sabor", ig: "notadesabor", tag: "Delivery", city: "Argentina", note: "Your night delivery is perfect! A simple site would boost your orders." },
-            { name: "Café Asamblea", ig: "cafeasamblea", tag: "Montevideo", city: "Uruguay", note: "Your location is iconic! A website would bring your café to life online." },
-            { name: "Cafe Atelier", ig: "cafeatelier.sv", tag: "Specialty", city: "El Salvador", note: "Your coffee & food look incredible! A proper website would showcase your specialty coffee." },
-            { name: "King Coffee Chiclayo", ig: "king_coffeeLab", tag: "King", city: "Peru", note: "Your vibe is infectious! A website with your menu and workshops would take you to the next level." },
-            { name: "Piromano Coffee", ig: "piromanocoffee", tag: "Roasters", city: "Guatemala", note: "Professional roasting & barismo — a central site would be a game changer." },
-            { name: "Nails Bowtique", ig: "nailsbowtique", tag: "Handmade", city: "Worldwide", note: "Worldwide delivery is amazing! A website with your portfolio and order form would make you look super professional." },
-            { name: "pand.oraanails", ig: "pand.oraanails", tag: "Gel X", city: "USA", note: "Your pricing & detail are amazing! A simple booking page would save you time." },
-            { name: "Kairos Café", ig: "kairoscafemx", tag: "Coffee", city: "Mexico", note: "Your café is the perfect moment! A website would make you more discoverable." },
-            { name: "Alfonsina Café", ig: "alfonsinacafe.qro", tag: "Brunch", city: "Mexico", note: "Coffee & good vibes — a clean site would match your aesthetic perfectly." },
-            { name: "AlmaVerde Juice Bar", ig: "almaverde.mex", tag: "Juice", city: "Mexico", note: "Smoothies, açai & breakfast — a simple page would grow your business." },
-            { name: "Noah Signature Bar", ig: "noahsignaturebar", tag: "Bar", city: "Mexico", note: "Your 'before.during.after' concept is great! A site would complete your brand." },
-            { name: "Central B.A Celaya", ig: "centralbacelaya", tag: "Grill", city: "Mexico", note: "Restaurant, grill & fun — a website would amplify your brand." },
-            { name: "Homenaje", ig: "homenaje.celaya", tag: "Cocina", city: "Mexico", note: "A simple site with your menu and contact info would make you look established." },
-            { name: "KoFi & Tonics", ig: "kofitonics", tag: "Music", city: "Mexico", note: "Music, coffee, fashion — a site would bring your community together." },
+            // pick 20–35 random followers & 20–35 random following
+            const shuffle = (arr) => {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            };
 
-            // NEW FROM IMAGES (Hair Salons)
-            { name: "Hair by Jess", ig: "jessicaoesmyhair_", tag: "Hair Salon", city: "Marion, NC", note: "Hairstylist & lover of beauty, style, and slow moments. A website would help you share your work and book clients more easily." },
-            { name: "Lawt Hair Salon", ig: "lawt_hair_salon_", tag: "Hair Salon", city: "St. Albert, AB", note: "Special 20% discounts for PwD, Seniors (65+), Veterans. A website would make your services and discounts more visible." },
-            { name: "Vogue Hair Salon", ig: "Vogue Hair Salon", tag: "Hair Salon", city: "Choppington, UK", note: "23 years of making you feel amazing! A website would showcase your experience and attract new clients." },
-            { name: "Inspire Hair Salon", ig: "", tag: "Hair Salon", city: "Quezon City, PH", note: "Men and women Haircut & Hair Color Specialist. A website would help you showcase your work and book appointments." },
-            { name: "Headquarters Hair Salon", ig: "Headquarters Hair Salon", tag: "Beauty Store", city: "Boston, MA", note: "Our page will let people know about our specials. A website would make it easier to share your offers and services." },
-            { name: "Rebellious Artistry", ig: "", tag: "Beauty Salon", city: "Hayward, CA", note: "Making the world a brighter place one strand at a time. A website would help you showcase your artistry." },
-            { name: "TK Hair Salon", ig: "TK Hair Salon", tag: "Beauty Salon", city: "Zamboanga City, PH", note: "New hair, new energy, new confidence. A website would help you reach more clients in your area." },
-            { name: "Taylor Mendoza", ig: "", tag: "Hair Stylist", city: "Glendora, CA", note: "Full salon days have me acting like I ran a marathon! A website would help you book clients and share your work." },
-            { name: "loannis Kostakis Hair Salon", ig: "ioannis_kostakis.hairsalon", tag: "Hair Salon", city: "Melíssia, Greece", note: "A website with online booking would make it easier for clients to schedule appointments." },
-            { name: "Morgan Delaney Taylor", ig: "", tag: "Hairstylist", city: "Statesboro, GA", note: "The perfect lived-in blonde! A website would help you showcase your work and book appointments." },
-            { name: "Kellie Hanson- Hair Stylist", ig: "", tag: "Hair Salon", city: "Garfield, VIC", note: "By Appointment Only. A website would make booking easier for your clients." },
-            { name: "Posh Hair Lounge", ig: "", tag: "Hair Salon", city: "USA", note: "Styling · Coloring · Luxury Salon. Your Premier Destination for Luxury Hair Services. A website would help you showcase your services and book appointments." },
+            // pick unique subset
+            const getRandomSubset = (size) => {
+                const shuffled = shuffle([...namePool]);
+                return shuffled.slice(0, size);
+            };
 
-            // Bakeries
-            { name: "Ferry Good Treats", ig: "", tag: "Cake Shop", city: "Philadelphia, PA", note: "Just a girl baking herself happy. A website with your menu and order form would help you scale." },
-            { name: "Olde Village Bakery", ig: "oldevillagebakery", tag: "Dessert Shop", city: "North Rustico, PEI", note: "A small but mighty bakery by the sea. A website would help you share your hours and menu." },
-            { name: "Noraya Bakery", ig: "", tag: "Bakery", city: "Sudbury, ON", note: "Freshly baked happiness. DM to order — a website with order form would save you time." },
-            { name: "Bleu Bear Bakery", ig: "", tag: "Bakery", city: "Oaklyn, NJ", note: "100% GLUTEN FREE BAKERY. A website would help you reach more celiac customers." },
-            { name: "Woops", ig: "", tag: "Bakery", city: "Coeur d'Alene, ID", note: "Largest French macaron company in the U.S. A website would help you showcase your locations." },
-            { name: "Saray Bakery", ig: "", tag: "Bakery", city: "Myrtle Beach, SC", note: "Myrtle Beach's favorite spot for daily fresh pastries. A website would help you reach more customers." },
-            { name: "The Bakery-Waterford", ig: "", tag: "Bakery", city: "Waterford Township, MI", note: "Custom cakes and the best cheesecakes. A website with your menu and ordering would help you scale." },
-            { name: "Rollhouse Bakery", ig: "rollhouse_bakery", tag: "Bakery", city: "Billings, MT", note: "OPEN 7 days a week 7AM–2PM. A website would help you share your daily menu and take orders." },
-            { name: "Butter & Bloom Bakery", ig: "butterandbloombakery25", tag: "Bakery", city: "Grafton, OH", note: "A website would help you showcase your baked goods and reach more customers in Ohio." },
+            // ensure centralId is not in lists (just in case)
+            const filterId = (list) => list.filter(name => name !== centralId);
 
-            // Others
-            { name: "Liberty Social", ig: "", tag: "Business", city: "Ontario", note: "Created for connection. A website would help you share your content and connect with your audience." },
-            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." }
-        ];
+            const followersCount = Math.floor(Math.random() * 18) + 18;  // 18..35
+            const followingCount = Math.floor(Math.random() * 18) + 18; 
 
-        const container = document.getElementById('businessList');
-        let html = '';
+            let followers = getRandomSubset(followersCount);
+            let following = getRandomSubset(followingCount);
 
-        allBusinesses.forEach((biz, index) => {
-            let contactHtml = '';
-            const igHandle = biz.ig || '';
+            // force some overlap (mutual) and some non-mutual for realistic demo
+            // 1) remove centralId if present
+            followers = filterId(followers);
+            following = filterId(following);
 
-            if (biz.contact === 'wa' && biz.wa) {
-                contactHtml = `<a href="https://wa.me/${biz.wa}" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
-            } else if (biz.contact === 'ig' && biz.ig) {
-                contactHtml = `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
-            } else if (biz.contact === 'line' && biz.line) {
-                contactHtml = `<a href="https://lin.ee/${biz.line}" target="_blank" rel="noopener noreferrer" class="btn btn-line"><span>💬</span> Line</a>`;
-            } else if (biz.ig) {
-                contactHtml = `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
+            // 2) make sure at least 30% of following are NOT in followers (non-follow-back)
+            //    and some followers are not in following (they follow you, you don't follow back)
+            // but we only care about "following but not followers" (non-follow-back)
+            // so we manipulate: 
+            const mutual = followers.filter(f => following.includes(f));
+            // we want at least 4-8 non-mutual in following
+            const nonMutualCount = Math.max(4, Math.floor(following.length * 0.3));
+            // pick some from following that are not in followers, if they exist, else add new
+            let nonMutualCandidates = following.filter(f => !followers.includes(f));
+            while (nonMutualCandidates.length < nonMutualCount) {
+                // add random name from pool not already in followers or following
+                const candidates = namePool.filter(n => !followers.includes(n) && !following.includes(n) && n !== centralId);
+                if (candidates.length === 0) break;
+                const randomNew = candidates[Math.floor(Math.random() * candidates.length)];
+                following.push(randomNew);
+                nonMutualCandidates.push(randomNew);
+            }
+            // if too many non-mutual, trim
+            if (nonMutualCandidates.length > nonMutualCount + 4) {
+                const extra = nonMutualCandidates.slice(nonMutualCount);
+                following = following.filter(f => !extra.includes(f));
+            }
+
+            // final clean
+            followers = filterId(followers);
+            following = filterId(following);
+
+            // sort for predictability (optional)
+            followers.sort();
+            following.sort();
+
+            return { followers, following };
+        }
+
+        // DOM elements
+        const inputField = document.getElementById('instaId');
+        const checkBtn = document.getElementById('checkBtn');
+        const resultContainer = document.getElementById('resultContainer');
+        const statusMessage = document.getElementById('statusMessage');
+        const counterDisplay = document.getElementById('counterDisplay');
+
+        // Helper to render the list of non-followers
+        function renderNonFollowers(nonFollowersList, totalFollowing) {
+            // clear container
+            resultContainer.innerHTML = '';
+
+            if (!nonFollowersList || nonFollowersList.length === 0) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'empty-state';
+                emptyDiv.innerHTML = `
+                    <span>✅</span>
+                    <p style="margin-top: 8px;">Everyone follows you back!<br><small style="color:#7a84a0;">all ${totalFollowing} accounts are mutual</small></p>
+                `;
+                resultContainer.appendChild(emptyDiv);
+                counterDisplay.textContent = `0 non‑followers`;
+                return;
+            }
+
+            // sort alphabetically
+            const sorted = [...nonFollowersList].sort((a, b) => a.localeCompare(b));
+            counterDisplay.textContent = `${sorted.length} non‑followers`;
+
+            // create list items
+            sorted.forEach(username => {
+                const item = document.createElement('div');
+                item.className = 'list-item';
+                // avatar placeholder (first letter)
+                const avatar = document.createElement('div');
+                avatar.className = 'avatar-placeholder';
+                avatar.textContent = username.charAt(0).toUpperCase();
+
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'username';
+                nameSpan.textContent = `@${username}`;
+
+                const badge = document.createElement('span');
+                badge.className = 'badge';
+                badge.textContent = 'not following back';
+
+                item.appendChild(avatar);
+                item.appendChild(nameSpan);
+                item.appendChild(badge);
+                resultContainer.appendChild(item);
+            });
+        }
+
+        // main function: process ID
+        function processId(instagramId) {
+            const trimmedId = instagramId.trim();
+            if (trimmedId === '') {
+                statusMessage.textContent = '⚠️ Please enter an Instagram ID';
+                resultContainer.innerHTML = `
+                    <div class="empty-state">
+                        <span>📝</span>
+                        <p>Enter an ID to check</p>
+                    </div>
+                `;
+                counterDisplay.textContent = '0 non‑followers';
+                return;
+            }
+
+            statusMessage.textContent = `⏳ checking @${trimmedId} ...`;
+
+            // simulate network delay (like API call)
+            setTimeout(() => {
+                try {
+                    // generate mock data based on the ID (deterministic-ish)
+                    const { followers, following } = generateMockNetwork(trimmedId);
+                    
+                    // find users that the ID follows but who do NOT follow back
+                    const nonFollowers = following.filter(user => !followers.includes(user));
+
+                    statusMessage.textContent = `✅ @${trimmedId} · ${following.length} following, ${followers.length} followers`;
+                    renderNonFollowers(nonFollowers, following.length);
+
+                } catch (err) {
+                    statusMessage.textContent = '❌ Oops, something went wrong.';
+                    resultContainer.innerHTML = `
+                        <div class="empty-state">
+                            <span>⚠️</span>
+                            <p>Error processing data</p>
+                        </div>
+                    `;
+                    counterDisplay.textContent = 'error';
+                }
+            }, 320); // slight delay for realism
+        }
+
+        // event listeners
+        checkBtn.addEventListener('click', function() {
+            const id = inputField.value;
+            processId(id);
+        });
+
+        // Enter key support
+        inputField.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkBtn.click();
+            }
+        });
+
+        // initial load with default example
+        window.addEventListener('load', function() {
+            // if input has default value, process on load
+            if (inputField.value.trim() !== '') {
+                processId(inputField.value);
             } else {
-                contactHtml = `<span class="btn" style="opacity:0.4;cursor:default;pointer-events:none;">No contact</span>`;
-            }
-
-            const fbLink = biz.ig ? `https://facebook.com/${biz.ig}` : '#';
-            const waLink = biz.ig ? `https://wa.me/?text=Hey! I saw your business on Instagram` : '#';
-
-            let actionsHtml = `
-                ${contactHtml}
-                <a href="${fbLink}" target="_blank" rel="noopener noreferrer" class="btn btn-fb" ${!biz.ig ? 'style="opacity:0.4;cursor:default;pointer-events:none;"' : ''}><span>📘</span> FB</a>
-                <button class="btn btn-copy copy-btn" data-msg="${biz.note.replace(/"/g, '&quot;')}"><span>📋</span> Copy</button>
-                <button class="btn btn-done done-toggle" data-index="${index}"><span>☐</span> Done</button>
-            `;
-
-            html += `
-                <div class="business-item" data-index="${index}">
-                    <div class="business-name">
-                        ${biz.name} 
-                        <span class="tag">${biz.tag}</span> 
-                        <span class="city-tag">${biz.city}</span>
-                        <span class="done-check">✔️</span>
+                // show empty
+                resultContainer.innerHTML = `
+                    <div class="empty-state">
+                        <span>👥</span>
+                        <p style="margin-top: 8px;">No data yet<br><small style="color:#7a84a0;">enter an ID and click check</small></p>
                     </div>
-                    <div class="personal-note">${biz.note}</div>
-                    <div class="business-actions">
-                        ${actionsHtml}
-                    </div>
-                </div>
-            `;
-        });
-
-        container.innerHTML = html;
-        document.getElementById('totalCount').textContent = allBusinesses.length;
-
-        // ── Done toggle ──
-        document.querySelectorAll('.done-toggle').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const index = this.getAttribute('data-index');
-                const item = document.querySelector(`.business-item[data-index="${index}"]`);
-                const check = item.querySelector('.done-check');
-                const isDone = item.classList.toggle('done');
-
-                if (isDone) {
-                    this.innerHTML = '<span>☑</span> Done';
-                    this.classList.add('active');
-                    check.style.display = 'inline-block';
-                    showToast('✓ Marked as done!');
-                } else {
-                    this.innerHTML = '<span>☐</span> Done';
-                    this.classList.remove('active');
-                    check.style.display = 'none';
-                    showToast('↻ Unmarked');
-                }
-            });
-        });
-
-        // ── Copy ──
-        const toast = document.getElementById('toast');
-        let toastTimeout = null;
-
-        function showToast(msg = '✓ Copied!') {
-            toast.textContent = msg;
-            toast.classList.add('show');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2000);
-        }
-
-        document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const msg = this.getAttribute('data-msg') || 'Hello! I designed a clean website for your business. Mind if I send it?';
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(msg).then(() => {
-                        showToast('✓ Copied!');
-                    }).catch(() => fallbackCopy(msg));
-                } else {
-                    fallbackCopy(msg);
-                }
-            });
-        });
-
-        function fallbackCopy(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.left = '-9999px';
-            textarea.style.top = '-9999px';
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                showToast('✓ Copied!');
-            } catch (e) {
-                showToast('✗ Could not copy');
+                `;
+                counterDisplay.textContent = '0 non‑followers';
+                statusMessage.textContent = '✨ Ready';
             }
-            document.body.removeChild(textarea);
-        }
+        });
+
     })();
 </script>
 </body>
