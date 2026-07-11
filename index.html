@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Andjela Nikolic · Botanical booking</title>
-    <!-- Font & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -17,66 +16,58 @@
         }
 
         body {
-            background: #f7f5f0;  /* soft botanical base */
+            background: #f5f3ee;
             font-family: 'Inter', sans-serif;
             color: #1e2b2b;
-            padding: 2rem 1.5rem;
+            padding: 1rem;
             display: flex;
             justify-content: center;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 680px;
+            max-width: 480px;
             width: 100%;
             background: #ffffff;
-            border-radius: 40px 40px 32px 32px;
-            box-shadow: 0 20px 40px -12px rgba(30, 43, 43, 0.12), 0 8px 24px -6px rgba(0,0,0,0.02);
-            padding: 2rem 1.8rem 2.8rem;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(160, 140, 120, 0.15);
-        }
-
-        /* botanical accent */
-        .accent-leaf {
-            color: #56784a;
+            border-radius: 32px;
+            box-shadow: 0 12px 32px -8px rgba(30, 43, 43, 0.08);
+            padding: 1.5rem 1.25rem 2rem;
+            border: 1px solid rgba(160, 140, 120, 0.12);
         }
 
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1.8rem;
-            flex-wrap: wrap;
-            gap: 0.5rem 1rem;
-            border-bottom: 1px solid #eae5dd;
-            padding-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e8e3db;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
 
         .brand-icon {
-            background: #e3efe0;
-            width: 40px;
-            height: 40px;
-            border-radius: 30px;
+            background: #e8efe4;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #3f5e34;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
 
         .brand h1 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            font-size: 1.6rem;
-            letter-spacing: -0.01em;
+            font-size: 1.4rem;
             color: #1e2b2b;
+            letter-spacing: -0.3px;
         }
 
         .brand h1 span {
@@ -86,146 +77,164 @@
         }
 
         .tag {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             background: #eef3eb;
-            padding: 0.3rem 1rem;
+            padding: 0.25rem 0.9rem;
             border-radius: 40px;
             font-weight: 500;
-            letter-spacing: 0.3px;
             color: #2f422a;
             border: 1px solid #d7dfd0;
+            letter-spacing: 0.2px;
         }
 
         .artist-card {
+            background: #f9f8f5;
+            padding: 1rem 1.2rem;
+            border-radius: 24px;
+            margin-bottom: 1.8rem;
+            border: 1px solid #eae5dd;
+        }
+
+        .artist-row {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
-            background: #faf9f6;
-            padding: 1rem 1.4rem;
-            border-radius: 80px;
-            margin-bottom: 2.2rem;
-            border: 1px solid #ece7df;
-            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .artist-avatar {
-            width: 58px;
-            height: 58px;
+            width: 52px;
+            height: 52px;
             background: #d8e3d2;
-            border-radius: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #2b4224;
             font-family: 'Playfair Display', serif;
+            flex-shrink: 0;
         }
 
         .artist-info {
             flex: 1;
+            min-width: 0;
         }
 
         .artist-info h2 {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: #1d2a2a;
             letter-spacing: -0.2px;
         }
 
         .artist-info .sub {
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             color: #5e6e62;
             display: flex;
-            align-items: center;
-            gap: 0.6rem;
             flex-wrap: wrap;
+            gap: 0.4rem 0.8rem;
+            margin-top: 0.1rem;
         }
 
         .artist-info .sub i {
             color: #56784a;
-            width: 1.2rem;
+            width: 1rem;
+            font-size: 0.7rem;
         }
 
         .stats {
             display: flex;
-            gap: 1.6rem;
-            margin: 0.2rem 0 0.1rem;
+            gap: 0.8rem;
+            margin-top: 0.3rem;
+            flex-wrap: wrap;
         }
 
         .stats span {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 500;
             color: #3c4d3e;
             background: #edf0e9;
-            padding: 0.15rem 0.8rem;
+            padding: 0.1rem 0.7rem;
             border-radius: 40px;
         }
 
         .booking-headline {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: #1e2b2b;
-            margin: 1.6rem 0 1rem;
-            letter-spacing: -0.3px;
+            margin: 1.2rem 0 1rem;
+            letter-spacing: -0.2px;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
 
         .booking-headline i {
             color: #56784a;
-            font-size: 1.6rem;
+            font-size: 1.2rem;
         }
 
         .form-group {
-            margin-bottom: 1.4rem;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
             display: block;
             font-weight: 500;
-            font-size: 0.85rem;
-            letter-spacing: 0.2px;
+            font-size: 0.78rem;
             color: #2a3d2e;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.1px;
         }
 
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group label i {
+            color: #56784a;
+            width: 1.1rem;
+            font-size: 0.75rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 0.7rem 1rem;
+            padding: 0.6rem 0.9rem;
             border: 1px solid #dad5cb;
-            border-radius: 50px;
+            border-radius: 40px;
             background: #fcfbf9;
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: 0.15s;
             outline: none;
             color: #1c2727;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             border-color: #7a9b6b;
-            box-shadow: 0 0 0 4px rgba(90, 130, 80, 0.08);
+            box-shadow: 0 0 0 3px rgba(90, 130, 80, 0.08);
             background: white;
         }
 
         .form-group textarea {
-            border-radius: 24px;
+            border-radius: 20px;
             resize: vertical;
-            min-height: 70px;
+            min-height: 60px;
         }
 
         .row2 {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
         }
 
         .row2 .form-group {
             flex: 1;
-            min-width: 130px;
+            min-width: 120px;
         }
 
         .btn-primary {
@@ -233,37 +242,40 @@
             border: none;
             color: white;
             font-weight: 600;
-            padding: 0.9rem 1.8rem;
+            padding: 0.8rem 1.2rem;
             border-radius: 60px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             width: 100%;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 6px 14px rgba(50, 75, 45, 0.15);
-            letter-spacing: 0.3px;
+            box-shadow: 0 4px 12px rgba(50, 75, 45, 0.12);
+            letter-spacing: 0.2px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            margin: 0.8rem 0 0.2rem;
+            gap: 0.5rem;
             border: 1px solid #3a5533;
+            margin-top: 0.2rem;
         }
 
         .btn-primary:hover {
             background: #1f3320;
-            transform: scale(0.99);
-            box-shadow: 0 8px 18px rgba(40, 65, 35, 0.2);
+            transform: scale(0.98);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
         }
 
         .btn-primary i {
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .booking-summary {
             background: #f4f7f1;
-            border-radius: 28px;
-            padding: 1.6rem 1.6rem 1.4rem;
-            margin: 2rem 0 1.2rem;
+            border-radius: 24px;
+            padding: 1.2rem 1.2rem 1rem;
+            margin: 1.6rem 0 0.8rem;
             border: 1px solid #dce4d4;
             transition: 0.2s;
         }
@@ -273,58 +285,58 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #2d402b;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.6rem;
+        }
+
+        .summary-title i {
+            color: #56784a;
         }
 
         .summary-content {
             background: white;
-            padding: 1rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 0.9rem 1rem;
+            border-radius: 16px;
+            font-size: 0.82rem;
             line-height: 1.7;
             color: #1d2a27;
             border: 1px solid #e2eade;
             white-space: pre-line;
             word-break: break-word;
-        }
-
-        .summary-content i {
-            color: #56784a;
-            margin-right: 0.3rem;
+            font-family: 'Inter', monospace;
+            letter-spacing: 0.1px;
         }
 
         .action-row {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
             flex-wrap: wrap;
-            margin-top: 1.2rem;
-            align-items: center;
+            margin-top: 1rem;
         }
 
         .btn-outline {
-            background: transparent;
+            background: white;
             border: 1.5px solid #7a8f6e;
             color: #2b4028;
             font-weight: 500;
-            padding: 0.7rem 1.2rem;
+            padding: 0.6rem 1rem;
             border-radius: 60px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: 0.2s;
             flex: 1;
-            min-width: 130px;
+            min-width: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            background: white;
+            gap: 0.4rem;
         }
 
         .btn-outline i {
             color: #3f5e34;
+            font-size: 0.85rem;
         }
 
         .btn-outline:hover {
@@ -332,12 +344,16 @@
             border-color: #4b6a3d;
         }
 
+        .btn-outline:active {
+            transform: scale(0.97);
+        }
+
         .btn-instagram {
             background: #1e2b2b;
-            border: 1px solid #1e2b2b;
+            border: 1.5px solid #1e2b2b;
             color: white;
-            flex: 1.5;
-            min-width: 160px;
+            flex: 1.4;
+            min-width: 130px;
         }
 
         .btn-instagram i {
@@ -349,289 +365,289 @@
             border-color: #0e1a1a;
         }
 
-        .footnote {
-            margin-top: 2rem;
+        .copy-feedback {
             font-size: 0.7rem;
-            color: #7d8d77;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            border-top: 1px solid #e6e7df;
-            padding-top: 1.6rem;
-            letter-spacing: 0.2px;
-        }
-
-        .footnote i {
-            color: #56784a;
+            color: #3f6b39;
+            background: #e2f0db;
+            padding: 0.15rem 0.9rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.4rem;
         }
 
         .hidden {
             display: none !important;
         }
 
-        .copy-feedback {
-            font-size: 0.75rem;
-            color: #3f6b39;
-            background: #e2f0db;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            display: inline-block;
-            margin-left: 0.4rem;
+        .footnote {
+            margin-top: 1.8rem;
+            font-size: 0.6rem;
+            color: #7d8d77;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            border-top: 1px solid #e6e7df;
+            padding-top: 1.2rem;
+            letter-spacing: 0.2px;
         }
 
-        /* mobile */
-        @media (max-width: 480px) {
-            .container { padding: 1.5rem 1rem; }
-            .brand h1 { font-size: 1.3rem; }
-            .artist-card { border-radius: 40px; padding: 0.8rem 1rem; }
+        .footnote i {
+            color: #56784a;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 1rem 0.9rem;
+            }
+            .artist-row {
+                flex-wrap: wrap;
+            }
+            .row2 .form-group {
+                min-width: 100%;
+            }
+            .action-row {
+                flex-direction: column;
+            }
+            .btn-outline,
+            .btn-instagram {
+                width: 100%;
+                flex: none;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- header: botanical + floral vibe -->
-    <div class="header">
-        <div class="brand">
-            <div class="brand-icon"><i class="fas fa-seedling"></i></div>
-            <h1>Botanical<span>.</span></h1>
-        </div>
-        <div class="tag"><i class="fas fa-leaf" style="margin-right: 6px;"></i> fresh · style · love</div>
-    </div>
-
-    <!-- artist card from first image -->
-    <div class="artist-card">
-        <div class="artist-avatar">AN</div>
-        <div class="artist-info">
-            <h2>Andjela Nikolic <span style="font-weight:400; font-size:0.8rem; color:#4b5f47;"><i class="fas fa-check-circle" style="color:#56784a;"></i> self-taught</span></h2>
-            <div class="sub">
-                <span><i class="fas fa-map-pin"></i> Arandjelvac</span>
-                <span><i class="fas fa-paint-brush"></i> Professional makeup</span>
-                <span><i class="fas fa-calendar-check"></i> DM booking</span>
+    <div class="container">
+        <!-- header -->
+        <div class="header">
+            <div class="brand">
+                <div class="brand-icon"><i class="fas fa-seedling"></i></div>
+                <h1>Botanical<span>.</span></h1>
             </div>
-            <div class="stats">
-                <span><i class="far fa-heart"></i> 150 posts</span>
-                <span><i class="fas fa-users"></i> 288 followers</span>
-                <span><i class="fas fa-user-plus"></i> 332 following</span>
+            <div class="tag">fresh · style · love</div>
+        </div>
+
+        <!-- artist card -->
+        <div class="artist-card">
+            <div class="artist-row">
+                <div class="artist-avatar">AN</div>
+                <div class="artist-info">
+                    <h2>Andjela Nikolic</h2>
+                    <div class="sub">
+                        <span><i class="fas fa-map-pin"></i> Arandjelvac</span>
+                        <span><i class="fas fa-paint-brush"></i> Professional makeup</span>
+                        <span><i class="fas fa-calendar-check"></i> DM booking</span>
+                    </div>
+                    <div class="stats">
+                        <span>150 posts</span>
+                        <span>288 followers</span>
+                        <span>332 following</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- booking headline -->
-    <div class="booking-heading">
-        <i class="fas fa-calendar-alt"></i> Book your makeup <span style="font-weight:300; font-size:1rem; margin-left:0.4rem; color:#5f6f58;">· instant reservation</span>
-    </div>
-
-    <!-- form -->
-    <form id="bookingForm">
-        <div class="form-group">
-            <label><i class="far fa-user"></i> Full name</label>
-            <input type="text" id="fullName" placeholder="e.g. Milica Jovanović" required>
+        <!-- headline -->
+        <div class="booking-heading">
+            <i class="fas fa-calendar-alt"></i> Book your makeup
+            <span style="font-weight:300; font-size:0.8rem; margin-left:0.3rem; color:#5f6f58;">instant reservation</span>
         </div>
 
-        <div class="row2">
+        <!-- form -->
+        <form id="bookingForm">
             <div class="form-group">
-                <label><i class="fas fa-envelope"></i> Email</label>
-                <input type="email" id="email" placeholder="mica@example.com" required>
+                <label><i class="far fa-user"></i> Full name</label>
+                <input type="text" id="fullName" placeholder="Milica Jovanovic" required>
             </div>
+
+            <div class="row2">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" placeholder="mica@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-phone-alt"></i> Phone</label>
+                    <input type="tel" id="phone" placeholder="+381 64 123 4567">
+                </div>
+            </div>
+
+            <div class="row2">
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-day"></i> Date</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-clock"></i> Time</label>
+                    <input type="time" id="bookingTime" value="10:00">
+                </div>
+            </div>
+
             <div class="form-group">
-                <label><i class="fas fa-phone-alt"></i> Phone</label>
-                <input type="tel" id="phone" placeholder="+381 64 123 4567">
+                <label><i class="fas fa-pen-fancy"></i> Service</label>
+                <select id="service">
+                    <option value="Bridal makeup">Bridal makeup</option>
+                    <option value="Evening glam">Evening glam</option>
+                    <option value="Editorial photo">Editorial photo</option>
+                    <option value="Natural everyday">Natural everyday</option>
+                    <option value="Masterclass group">Masterclass group</option>
+                </select>
             </div>
-        </div>
 
-        <div class="row2">
             <div class="form-group">
-                <label><i class="fas fa-calendar-day"></i> Date</label>
-                <input type="date" id="bookingDate" required>
+                <label><i class="fas fa-comment"></i> Special requests</label>
+                <textarea id="specialRequests" placeholder="Skin type, allergies, preferred style"></textarea>
             </div>
-            <div class="form-group">
-                <label><i class="fas fa-clock"></i> Time</label>
-                <input type="time" id="bookingTime" value="10:00">
+
+            <button type="submit" class="btn-primary" id="generateBtn">
+                <i class="fas fa-magic"></i> Generate summary
+            </button>
+        </form>
+
+        <!-- summary -->
+        <div id="summaryContainer" class="booking-summary hidden">
+            <div class="summary-title">
+                <span><i class="fas fa-clipboard-list"></i> Booking details</span>
+                <span style="font-weight:400; font-size:0.65rem; background:#e4eee0; padding:0.1rem 0.8rem; border-radius:40px;">ready to DM</span>
+            </div>
+            <div id="summaryText" class="summary-content"></div>
+
+            <div class="action-row">
+                <button class="btn-outline" id="copyBtn"><i class="fas fa-copy"></i> Copy</button>
+                <button class="btn-outline btn-instagram" id="sendDMBtn"><i class="fab fa-instagram"></i> Send DM</button>
+            </div>
+            <div id="copyFeedback" class="hidden" style="text-align:right;">
+                <span class="copy-feedback"><i class="fas fa-check-circle"></i> copied</span>
             </div>
         </div>
 
-        <div class="form-group">
-            <label><i class="fas fa-pen-fancy"></i> Service</label>
-            <select id="service">
-                <option value="Bridal makeup">Bridal makeup</option>
-                <option value="Evening glam">Evening glam</option>
-                <option value="Editorial / photo">Editorial / photo</option>
-                <option value="Natural everyday">Natural everyday</option>
-                <option value="Masterclass (group)">Masterclass (group)</option>
-            </select>
+        <div class="footnote">
+            <i class="fas fa-leaf"></i>
+            <span>Botanical · 2026 · design for Andjela Nikolic</span>
+            <i class="fas fa-seedling"></i>
         </div>
-
-        <div class="form-group">
-            <label><i class="fas fa-comment"></i> Special requests</label>
-            <textarea id="specialRequests" placeholder="Skin type, allergies, preferred style ..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-primary" id="generateBtn"><i class="fas fa-magic"></i> Generate booking summary</button>
-    </form>
-
-    <!-- booking summary (hidden initially) -->
-    <div id="summaryContainer" class="booking-summary hidden">
-        <div class="summary-title">
-            <span><i class="fas fa-clipboard-list"></i> your booking details</span>
-            <span style="font-weight:400; font-size:0.7rem; background:#e4eee0; padding:0.15rem 0.9rem; border-radius:40px;">ready to DM</span>
-        </div>
-        <div id="summaryText" class="summary-content">
-            <!-- dynamic -->
-        </div>
-
-        <div class="action-row">
-            <button class="btn-outline" id="copyBtn"><i class="fas fa-copy"></i> Copy details</button>
-            <button class="btn-outline btn-instagram" id="sendDMBtn"><i class="fab fa-instagram"></i> Send booking details</button>
-        </div>
-        <div id="copyFeedback" class="hidden" style="margin-top:0.6rem; text-align:right;"><span class="copy-feedback"><i class="fas fa-check-circle"></i> copied!</span></div>
     </div>
 
-    <!-- botanical footer -->
-    <div class="footnote">
-        <i class="fas fa-leaf"></i>  <span>Botanical · 2026  •  design for Andjela Nikolic</span>  <i class="fas fa-seedling"></i>
-    </div>
-</div>
+    <script>
+        (function() {
+            const form = document.getElementById('bookingForm');
+            const summaryContainer = document.getElementById('summaryContainer');
+            const summaryText = document.getElementById('summaryText');
+            const copyBtn = document.getElementById('copyBtn');
+            const sendDMBtn = document.getElementById('sendDMBtn');
+            const copyFeedback = document.getElementById('copyFeedback');
 
-<script>
-    (function() {
-        const form = document.getElementById('bookingForm');
-        const summaryContainer = document.getElementById('summaryContainer');
-        const summaryText = document.getElementById('summaryText');
-        const copyBtn = document.getElementById('copyBtn');
-        const sendDMBtn = document.getElementById('sendDMBtn');
-        const copyFeedback = document.getElementById('copyFeedback');
+            function buildSummary() {
+                const name = document.getElementById('fullName').value.trim() || '—';
+                const email = document.getElementById('email').value.trim() || '—';
+                const phone = document.getElementById('phone').value.trim() || '—';
+                const date = document.getElementById('bookingDate').value || '—';
+                const time = document.getElementById('bookingTime').value || '—';
+                const service = document.getElementById('service').value;
+                const requests = document.getElementById('specialRequests').value.trim() || '—';
 
-        // helper: build summary string
-        function buildSummary() {
-            const name = document.getElementById('fullName').value.trim() || '—';
-            const email = document.getElementById('email').value.trim() || '—';
-            const phone = document.getElementById('phone').value.trim() || '—';
-            const date = document.getElementById('bookingDate').value || '—';
-            const time = document.getElementById('bookingTime').value || '—';
-            const service = document.getElementById('service').value;
-            const requests = document.getElementById('specialRequests').value.trim() || '—';
-
-            // format date nicely
-            let displayDate = date;
-            if (date !== '—' && date !== '') {
-                const d = new Date(date + 'T00:00:00');
-                if (!isNaN(d)) {
-                    displayDate = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+                let displayDate = date;
+                if (date !== '—' && date !== '') {
+                    const d = new Date(date + 'T00:00:00');
+                    if (!isNaN(d)) {
+                        displayDate = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+                    }
                 }
+
+                return 'BOOKING REQUEST · Andjela Nikolic\n\n' +
+                       'Name: ' + name + '\n' +
+                       'Email: ' + email + '\n' +
+                       'Phone: ' + phone + '\n' +
+                       'Date: ' + displayDate + '\n' +
+                       'Time: ' + time + '\n' +
+                       'Service: ' + service + '\n' +
+                       'Requests: ' + requests + '\n\n' +
+                       'Please confirm availability. Thank you!';
             }
 
-            return `📋 BOOKING REQUEST · Andjela Nikolic\n\n` +
-                   `👤 Name: ${name}\n` +
-                   `📧 Email: ${email}\n` +
-                   `📞 Phone: ${phone}\n` +
-                   `📅 Date: ${displayDate}\n` +
-                   `⏰ Time: ${time}\n` +
-                   `💄 Service: ${service}\n` +
-                   `✏️ Special requests: ${requests}\n\n` +
-                   `✨ Please confirm availability. Thank you! ✨`;
-        }
-
-        // update summary container
-        function updateSummary() {
-            const text = buildSummary();
-            summaryText.textContent = text;
-            summaryContainer.classList.remove('hidden');
-            copyFeedback.classList.add('hidden');
-        }
-
-        // form submit 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // basic validation (simple)
-            const name = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            if (!name || !email) {
-                alert('Please fill in your name and email.');
-                return;
+            function updateSummary() {
+                summaryText.textContent = buildSummary();
+                summaryContainer.classList.remove('hidden');
+                copyFeedback.classList.add('hidden');
             }
-            updateSummary();
-            // scroll to summary
-            summaryContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
 
-        // copy button
-        copyBtn.addEventListener('click', function() {
-            const text = summaryText.textContent;
-            if (!text) return;
-            // use modern clipboard API
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(() => {
-                    copyFeedback.classList.remove('hidden');
-                    setTimeout(() => { copyFeedback.classList.add('hidden'); }, 2500);
-                }).catch(() => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                if (!name || !email) {
+                    alert('Please fill in your name and email.');
+                    return;
+                }
+                updateSummary();
+                summaryContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+
+            copyBtn.addEventListener('click', function() {
+                const text = summaryText.textContent;
+                if (!text) return;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        copyFeedback.classList.remove('hidden');
+                        setTimeout(() => { copyFeedback.classList.add('hidden'); }, 2000);
+                    }).catch(() => {
+                        fallbackCopy(text);
+                    });
+                } else {
                     fallbackCopy(text);
-                });
-            } else {
-                fallbackCopy(text);
-            }
-        });
+                }
+            });
 
-        function fallbackCopy(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                copyFeedback.classList.remove('hidden');
-                setTimeout(() => { copyFeedback.classList.add('hidden'); }, 2500);
-            } catch (e) {
-                alert('Unable to copy. Please select the text manually.');
-            }
-            document.body.removeChild(textarea);
-        }
-
-        // send DM → Instagram profile (Andjela)
-        sendDMBtn.addEventListener('click', function() {
-            // Open instagram DM (mobile app or web) – using the profile from the brief: @andjela.maakeupp
-            // best effort: open instagram profile, user can copy/paste from there.
-            // we also open with a prefilled message? Instagram doesn't support deep link with text easily.
-            // Instead, we copy the text first, then open instagram.
-            const text = summaryText.textContent;
-            if (!text) {
-                alert('Please generate booking summary first.');
-                return;
-            }
-            // copy text to clipboard before opening instagram
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(() => {
-                    // open instagram
-                    window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
-                    // show feedback
+            function fallbackCopy(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
                     copyFeedback.classList.remove('hidden');
-                    setTimeout(() => { copyFeedback.classList.add('hidden'); }, 3000);
-                }).catch(() => {
-                    // fallback: just open instagram
+                    setTimeout(() => { copyFeedback.classList.add('hidden'); }, 2000);
+                } catch (e) {
+                    alert('Unable to copy. Please select the text manually.');
+                }
+                document.body.removeChild(textarea);
+            }
+
+            sendDMBtn.addEventListener('click', function() {
+                const text = summaryText.textContent;
+                if (!text) {
+                    alert('Please generate booking summary first.');
+                    return;
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
+                        copyFeedback.classList.remove('hidden');
+                        setTimeout(() => { copyFeedback.classList.add('hidden'); }, 3000);
+                    }).catch(() => {
+                        window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
+                    });
+                } else {
                     window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
-                });
-            } else {
-                // fallback
-                window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
-            }
-        });
+                }
+            });
 
-        // optional: if there is any prefill, set default date to tomorrow
-        (function setDefaultDate() {
-            const dateInput = document.getElementById('bookingDate');
-            if (dateInput) {
-                const tomorrow = new Date();
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                const year = tomorrow.getFullYear();
-                const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
-                const day = String(tomorrow.getDate()).padStart(2, '0');
-                dateInput.value = `${year}-${month}-${day}`;
-            }
+            // Set default date to tomorrow
+            (function setDefaultDate() {
+                const dateInput = document.getElementById('bookingDate');
+                if (dateInput) {
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    const year = tomorrow.getFullYear();
+                    const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+                    const day = String(tomorrow.getDate()).padStart(2, '0');
+                    dateInput.value = year + '-' + month + '-' + day;
+                }
+            })();
+
+            summaryContainer.classList.add('hidden');
         })();
-
-        // if summary already visible? hide initially
-        summaryContainer.classList.add('hidden');
-    })();
-</script>
+    </script>
 </body>
 </html>
