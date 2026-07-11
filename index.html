@@ -2,544 +2,778 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Real Instagram Unfollowers Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Strikes · Business Hub</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #F4F2E2;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 16px 12px;
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 20px;
+            align-items: flex-start;
+            position: relative;
         }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(162, 185, 213, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(170, 204, 177, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(176, 16, 19, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: shimmer 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(2%, 1%) scale(1.05); }
+        }
+
         .container {
-            max-width: 700px;
+            max-width: 600px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 40px 35px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(244, 242, 226, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 20px 16px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(176, 16, 19, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
         }
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+
+        .drop {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(162, 185, 213, 0.15));
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.04),
+                inset 4px 4px 8px rgba(255,255,255,0.3);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 12s ease-in-out infinite alternate;
         }
-        .subtitle {
-            color: #555;
-            margin-bottom: 25px;
-            padding-left: 4px;
-            border-left: 4px solid #e1306c;
-            padding-left: 16px;
-            font-weight: 400;
-            background: rgba(225, 48, 108, 0.06);
-            border-radius: 0 12px 12px 0;
+
+        .drop:nth-child(1) { width: 180px; height: 180px; top: -40px; right: -60px; animation-delay: 0s; }
+        .drop:nth-child(2) { width: 120px; height: 120px; bottom: 20%; left: -50px; animation-delay: 3s; }
+        .drop:nth-child(3) { width: 80px; height: 80px; top: 40%; right: -30px; animation-delay: 6s; }
+        .drop:nth-child(4) { width: 200px; height: 200px; bottom: -80px; right: -40px; animation-delay: 2s; background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.4), rgba(170, 204, 177, 0.08)); }
+        .drop:nth-child(5) { width: 100px; height: 100px; top: 10%; left: -30px; animation-delay: 5s; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(162, 185, 213, 0.1)); }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            100% { transform: translate(10px, 15px) scale(1.03) rotate(3deg); }
         }
-        .setup-box {
-            background: #fff5f7;
-            border-radius: 16px;
-            padding: 20px 24px;
-            margin-bottom: 28px;
-            border: 1px solid #ffe0e8;
-        }
-        .setup-box h3 {
-            color: #e1306c;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-        }
-        .setup-box code {
-            background: #1a1a2e;
-            color: #fff;
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin: 3px 0;
-        }
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin: 20px 0;
-        }
-        .input-group label {
-            font-weight: 600;
-            color: #1a1a2e;
-            font-size: 0.95rem;
-        }
-        .input-group input {
-            padding: 14px 18px;
-            border: 2px solid #e0e0e0;
-            border-radius: 14px;
-            font-size: 1rem;
-            transition: 0.2s;
-            background: white;
-        }
-        .input-group input:focus {
-            border-color: #e1306c;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(225, 48, 108, 0.1);
-        }
-        .btn {
-            background: #e1306c;
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 8px 20px rgba(225, 48, 108, 0.25);
-            width: 100%;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(225, 48, 108, 0.35);
-        }
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .status {
-            margin: 20px 0 15px;
-            padding: 14px 18px;
-            border-radius: 14px;
-            background: #f5f5f5;
-            font-weight: 500;
+
+        .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            border-bottom: 2px solid rgba(162, 185, 213, 0.4);
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
         }
-        .result-area {
-            margin-top: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-            border-radius: 16px;
-            background: #fafafa;
-            border: 1px solid #eee;
-        }
-        .result-item {
-            padding: 14px 20px;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            transition: 0.1s;
-        }
-        .result-item:hover {
-            background: #f5f5f5;
-        }
-        .result-item .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+
+        .time {
             font-weight: 700;
-            font-size: 0.9rem;
-        }
-        .result-item .name {
-            flex: 1;
-            font-weight: 500;
-            color: #1a1a2e;
-        }
-        .result-item .badge {
-            background: #ff6b6b;
-            color: white;
-            padding: 3px 14px;
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+            color: #B01013;
+            background: rgba(162, 185, 213, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 0 18px;
             border-radius: 40px;
-            font-size: 0.7rem;
+            line-height: 1.5;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge-group span {
             font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 50px 20px;
-            color: #888;
-        }
-        .empty-state span {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 12px;
-        }
-        .note {
-            margin-top: 18px;
-            font-size: 0.78rem;
-            color: #777;
-            text-align: center;
-            border-top: 1px solid #eee;
-            padding-top: 18px;
-        }
-        .step {
-            background: #f0f0f0;
-            padding: 3px 12px;
-            border-radius: 40px;
             font-size: 0.75rem;
+            background: rgba(162, 185, 213, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 4px 16px;
+            border-radius: 40px;
+            color: #1e1e1e;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 0 rgba(176, 16, 19, 0.2);
+        }
+
+        .badge-group span:last-child {
+            background: rgba(170, 204, 177, 0.35);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 12px 0 14px 0;
+            padding: 0 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e2a33;
+            background: rgba(170, 204, 177, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 4px 18px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-divider {
+            flex: 1;
+            height: 2px;
+            background: rgba(162, 185, 213, 0.3);
+        }
+
+        .count-badge {
+            background: rgba(176, 16, 19, 0.15);
+            backdrop-filter: blur(4px);
+            color: #B01013;
+            border-radius: 40px;
+            padding: 0 10px;
+            font-size: 0.6rem;
             font-weight: 600;
-            color: #555;
+            line-height: 1.8;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .business-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 4px 0 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .business-item {
+            background: rgba(252, 250, 245, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 16px 16px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 4px 16px rgba(176, 16, 19, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: 0.15s ease;
+            position: relative;
+        }
+
+        .business-item.done {
+            opacity: 0.7;
+            border-color: rgba(170, 204, 177, 0.5);
+            box-shadow: 0 4px 16px rgba(170, 204, 177, 0.1);
+        }
+
+        .business-item.done .personal-note {
+            background: rgba(170, 204, 177, 0.15);
+        }
+
+        .business-item.done .done-check {
+            display: inline-block;
+        }
+
+        .business-item:active {
+            transform: scale(0.98);
+        }
+
+        .business-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #1e2a33;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+        }
+
+        .business-name .tag {
+            background: rgba(170, 204, 177, 0.3);
+            backdrop-filter: blur(4px);
+            font-size: 0.5rem;
+            font-weight: 700;
+            padding: 0 12px;
+            border-radius: 40px;
+            color: #1e2a33;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+        }
+
+        .business-name .city-tag {
+            background: rgba(162, 185, 213, 0.25);
+            backdrop-filter: blur(4px);
+            font-size: 0.5rem;
+            font-weight: 600;
+            padding: 0 10px;
+            border-radius: 40px;
+            color: #1e2a33;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .done-check {
+            display: none;
+            background: rgba(176, 16, 19, 0.15);
+            color: #B01013;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0 10px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .personal-note {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            background: rgba(162, 185, 213, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #1e2a33;
+            font-weight: 450;
+            word-break: break-word;
+        }
+
+        .business-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 8px;
+            margin-top: 2px;
+        }
+
+        .btn {
+            border: none;
+            background: rgba(162, 185, 213, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 
+                0 2px 8px rgba(176, 16, 19, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            color: #1e2a33;
+            transition: 0.15s ease;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+            touch-action: manipulation;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn:active {
+            transform: scale(0.93);
+        }
+
+        .btn:hover {
+            background: rgba(162, 185, 213, 0.35);
+            box-shadow: 
+                0 4px 16px rgba(176, 16, 19, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-wa { background: rgba(170, 204, 177, 0.35); }
+        .btn-wa:hover { background: rgba(170, 204, 177, 0.5); }
+
+        .btn-ig { background: rgba(162, 185, 213, 0.3); font-size: 0.6rem; }
+        .btn-fb { background: rgba(162, 185, 213, 0.25); }
+        .btn-messenger { background: rgba(162, 185, 213, 0.25); }
+        .btn-line { background: rgba(170, 204, 177, 0.35); }
+
+        .btn-copy {
+            background: rgba(244, 242, 226, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.6rem;
+            box-shadow: 
+                0 2px 8px rgba(176, 16, 19, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-copy:active {
+            transform: scale(0.93);
+            background: rgba(176, 16, 19, 0.1);
+        }
+
+        .btn-copy:hover {
+            background: rgba(244, 242, 226, 0.7);
+        }
+
+        .btn-done {
+            background: rgba(244, 242, 226, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-color: rgba(170, 204, 177, 0.3);
+            font-size: 0.6rem;
+            cursor: pointer;
+            padding: 6px 12px;
+            box-shadow: 
+                0 2px 8px rgba(170, 204, 177, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-done:hover {
+            background: rgba(170, 204, 177, 0.25);
+        }
+
+        .btn-done.active {
+            background: rgba(176, 16, 19, 0.15);
+            color: #B01013;
+            border-color: rgba(176, 16, 19, 0.2);
+        }
+
+        .btn span {
+            font-size: 0.8rem;
+            line-height: 1;
+        }
+
+        .footer-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 2px solid rgba(162, 185, 213, 0.2);
+            gap: 6px 10px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-stats .pill {
+            background: rgba(170, 204, 177, 0.25);
+            backdrop-filter: blur(4px);
+            padding: 2px 12px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
+        }
+
+        .footer-stats .highlight {
+            background: rgba(176, 16, 19, 0.12);
+            backdrop-filter: blur(4px);
+            color: #B01013;
+            padding: 0 12px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
+        }
+
+        .bottom-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 14px;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bottom-row .schedule {
+            background: rgba(162, 185, 213, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 4px 18px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .bottom-row .ron {
+            background: rgba(170, 204, 177, 0.25);
+            backdrop-filter: blur(8px);
+            padding: 0 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            line-height: 1.4;
+        }
+
+        .attribution {
+            margin-top: 16px;
+            font-size: 0.6rem;
+            background: rgba(162, 185, 213, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 4px 16px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #1e2a33;
+            position: relative;
+            z-index: 1;
+        }
+
+        .attribution span {
+            color: #B01013;
+            font-weight: 700;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 42, 51, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: #F4F2E2;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            z-index: 999;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 14px 12px; }
+            .business-item { padding: 14px 12px; }
+            .personal-note { font-size: 0.74rem; padding: 6px 14px; }
+            .btn { font-size: 0.55rem; padding: 5px 10px; }
+            .btn-ig { font-size: 0.55rem; }
+            .time { font-size: 1.4rem; }
+            .bottom-row .schedule { font-size: 0.7rem; padding: 3px 14px; gap: 10px; }
+            .bottom-row .ron { font-size: 1.1rem; padding: 0 18px; }
+            .section-header h2 { font-size: 0.95rem; }
+            .drop { display: none; }
+        }
+
+        @media (max-width: 380px) {
+            .badge-group span { font-size: 0.65rem; padding: 3px 12px; }
+            .business-actions { gap: 4px; }
+            .btn { font-size: 0.5rem; padding: 4px 8px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+
 <div class="container">
-    <h1>📸 Unfollowers</h1>
-    <div class="subtitle">Real Instagram · check who doesn't follow back</div>
-
-    <!-- Setup Instructions -->
-    <div class="setup-box">
-        <h3>⚙️ Before using — get your credentials</h3>
-        <p style="font-size:0.9rem; margin-bottom:12px; color:#444;">
-            1. Go to <a href="https://developers.facebook.com/apps/" target="_blank" style="color:#e1306c;">Facebook Developers</a> & create an app<br>
-            2. Add <strong>Instagram Basic Display</strong> product<br>
-            3. Get your <strong>App ID</strong> & <strong>App Secret</strong><br>
-            4. Set redirect URI: <code>https://yourdomain.com/callback</code>
-        </p>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
-            <span class="step">📱 App ID</span>
-            <span class="step">🔑 App Secret</span>
-            <span class="step">🔗 Redirect URI</span>
+    <div class="top-bar">
+        <div class="time">11:30</div>
+        <div class="badge-group">
+            <span>Strikes</span>
+            <span>Statistics</span>
         </div>
     </div>
 
-    <!-- Credentials Input -->
-    <div class="input-group">
-        <label>🔐 Instagram App ID</label>
-        <input type="text" id="appId" placeholder="Your App ID from Facebook Developers" value="YOUR_APP_ID_HERE" />
-
-        <label>🔑 App Secret</label>
-        <input type="password" id="appSecret" placeholder="Your App Secret" value="YOUR_APP_SECRET_HERE" />
-
-        <label>🔗 Redirect URI</label>
-        <input type="text" id="redirectUri" placeholder="https://yourdomain.com/callback" value="https://yourdomain.com/callback" />
+    <div class="section-header">
+        <h2>✨ All Businesses</h2>
+        <span class="count-badge" id="totalCount">0</span>
+        <div class="section-divider"></div>
     </div>
 
-    <!-- Login with Instagram -->
-    <button class="btn" id="loginBtn">🔑 Login with Instagram</button>
+    <div class="business-list" id="businessList"></div>
 
-    <div class="status" id="statusArea">
-        <span id="statusMsg">👋 Not logged in</span>
-        <span id="userInfo">—</span>
+    <div class="footer-stats">
+        <span class="pill">Tee 242yds</span>
+        <span class="pill">Played 182yds</span>
+        <span class="pill">Left Miss 28%</span>
+        <span class="highlight">Fairway 45%</span>
+        <span class="highlight">Rough 33%</span>
     </div>
 
-    <!-- Result Area -->
-    <div class="result-area" id="resultArea">
-        <div class="empty-state">
-            <span>🔍</span>
-            <p>Login to see who doesn't follow you back</p>
+    <div class="footer-stats" style="border-top: 1px solid rgba(162, 185, 213, 0.15); margin-top: 4px; padding-top: 10px;">
+        <span class="pill">Short 100yds</span>
+        <span class="pill">Medium 200yds</span>
+        <span class="pill">Long 300yds</span>
+        <span class="pill">Avg.Putts/GIR</span>
+    </div>
+
+    <div class="bottom-row">
+        <div class="schedule">
+            <span>Schedule</span>
+            <span>Communications</span>
         </div>
+        <div class="ron">RON</div>
     </div>
 
-    <div class="note">
-        ⚡ Requires Instagram Basic Display API · your data stays private
+    <div class="attribution">
+        <span>✦</span> Crimson · BabyBlue · Vanilla · Mint <span>✦</span>
     </div>
 </div>
 
+<div id="toast" class="toast">✓ Copied!</div>
+
 <script>
-    // ------------------------------------------------------------------
-    //  REAL INSTAGRAM BASIC DISPLAY API INTEGRATION
-    //  (You must replace with your actual credentials)
-    // ------------------------------------------------------------------
+    (function() {
+        // ── ALL BUSINESSES ──
+        const allBusinesses = [
+            // NEW FROM IMAGES (5)
+            { name: "Arte Aleatória", ig: "arte.aleatoria", tag: "Ceramics", city: "Lisbon, Portugal", contact: "ig", note: "Beautiful handmade ceramics made slowly at home. A website would help you showcase your pieces and sell directly to customers worldwide." },
+            { name: "Binomio Firenze", ig: "binomiofirenze", tag: "Restaurant/Bar", city: "Florence, Italy", contact: "ig", note: "Aperitivo with DJ set, pool parties, and brunch events. A website would help you centralize event bookings and showcase your full menu." },
+            { name: "Sweet Up", ig: "sweetup_", tag: "Desserts", city: "Santa Monica, CA", contact: "ig", note: "LA's viral chocolate strawberries. DM 'EVENT' to book. A website with order form and catering info would help you scale your business." },
+            { name: "Wave Cafe", ig: "wavecafecebu", tag: "Coffee Shop", city: "Cebu, Philippines", contact: "ig", note: "Serene cafe with all syrups made in-house. A website would help you share your menu and build your coffee community." },
+            { name: "Noosh Crêpes", ig: "noosh_crepes", tag: "Catering", city: "Los Angeles, CA", contact: "ig", note: "Crepe catering for weddings, birthdays and corporate events. A website with menu and booking form would help you get more clients." },
+            { name: "EACH Cafe", ig: "eachcafe.ph", tag: "Cafe", city: "Mandaue City, PH", contact: "ig", note: "Brunch just got better! A website with your menu and location would help people find you more easily." },
 
-    const appIdInput = document.getElementById('appId');
-    const appSecretInput = document.getElementById('appSecret');
-    const redirectUriInput = document.getElementById('redirectUri');
-    const loginBtn = document.getElementById('loginBtn');
-    const statusMsg = document.getElementById('statusMsg');
-    const userInfo = document.getElementById('userInfo');
-    const resultArea = document.getElementById('resultArea');
+            // NEW ONES (15 from earlier)
+            { name: "KJ Salon Kenya", ig: "", tag: "Hair Salon", city: "Eldoret, Kenya", contact: "wa", wa: "254710472946", note: "Active ads for hydra-facials and hair services. Located at Zion Mall. No website — a simple booking page would help you manage appointments and showcase your services professionally." },
+            { name: "PK ASKA Hair Salon", ig: "", tag: "Hair Salon", city: "Bangkok, Thailand", contact: "line", line: "cpKaDlv", note: "Premium Japanese style salon in Hotel Nikko. Uses Line for all bookings. A proper website would give you a professional edge and attract more international clients." },
+            { name: "Better Batter Café & Bakery", ig: "betterbatter.cafe", tag: "Bakery/Cafe", city: "Hanoi, Vietnam", contact: "ig", note: "Specializes in custom cakes. Active ads driving traffic to Instagram. A website with your full menu and order form would convert more customers." },
+            { name: "Fuji Bakery", ig: "", tag: "Bakery Supplier", city: "Kuala Lumpur", contact: "wa", wa: "60177011760", note: "Reliable supplier for donuts and white sandwich loaves to cafes. No website — a B2B site would streamline orders and attract more cafe partners." },
+            { name: "Jagoan SEWA", ig: "", tag: "Equipment Rental", city: "Jakarta", contact: "wa", wa: "6282320835251", note: "Rents freezers and business equipment. Active ads on TikTok/Instagram. A website with inventory and booking would make you look more professional." },
+            { name: "Shotlin Official", ig: "", tag: "Fashion/Boutique", city: "Lucknow, India", contact: "wa", wa: "917007722441", note: "Small independent brand running ads for ethnic wear. A website with your collection and size guide would boost sales significantly." },
+            { name: "The Coco Company", ig: "thecococompany", tag: "Bakery", city: "Gurgaon, India", contact: "ig", note: "Focuses on premium desserts, orders taken via DM. A proper website with menu and order form would save you time and look more established." },
+            { name: "Fudict Fruit Crush", ig: "", tag: "Food Supplier", city: "Hyderabad", contact: "wa", wa: "919246175508", note: "Manufacturer of fruit crushes and syrups for local cafes. A website would help you showcase your products and attract more B2B clients." },
+            { name: "Maraba Abuja Baker", ig: "", tag: "Bakery", city: "Abuja, Nigeria", contact: "wa", wa: "2349030165108", note: "Independent local baker running targeted ads. A simple website with menu and order form would help you scale your business." },
+            { name: "Araluxe Hair", ig: "", tag: "Hair Salon", city: "Lagos, Nigeria", contact: "wa", wa: "2349058559656", note: "Specializes in high-end hair extensions. A website with your catalog and booking system would elevate your brand significantly." },
+            { name: "Luma Nails", ig: "", tag: "Beauty Salon", city: "Aurora, CO", contact: "wa", wa: "17202457514", note: "Home-based professional nail studio. A simple booking page with your portfolio and pricing would make you look more professional." },
+            { name: "Semion Barbershop", ig: "semion_barbershop", tag: "Barber Shop", city: "Salt Lake City", contact: "ig", note: "Uses social media exclusively for bookings. A website with online booking and service menu would save you time and attract more clients." },
+            { name: "Rooom Mobile Salon", ig: "rooommobilesalon", tag: "Hair Salon", city: "Johannesburg", contact: "ig", note: "Mobile hair services provider. A website with your services, availability, and booking system would help you scale your mobile business." },
+            { name: "Strivenii Hair & Beauty Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "919820834610", note: "Established local salon in Goregaon West. A website with your services and online booking would help you reach more customers." },
+            { name: "Color Me Crazy Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "918652683847", note: "Family-run salon with a strong local presence. A website would help you showcase your work and attract new clients." },
 
-    // Store tokens
-    let accessToken = null;
-    let userId = null;
+            // PREVIOUS DONE ONES (20 with FB/Messenger)
+            { name: "Araluxehair", ig: "araluxehair", tag: "Wigs", city: "Lagos", fb: "araluxehair", note: "Your lace & bundles are top-tier! A clean website would organize your catalog and make ordering easier." },
+            { name: "rooommobilesalon", ig: "rooommobilesalon", tag: "Mobile", city: "Johannesburg", fb: "rooommobilesalon", note: "Your mobile salon is brilliant! A proper booking page would save you time." },
+            { name: "Cocoal Cafetería", ig: "quieromicocol", tag: "Cafe", city: "Mexico", fb: "quieromicocol", note: "Your desserts are amazing! A simple website would let people see your menu and order ahead." },
+            { name: "Cafetería Cordillera", ig: "cafeteriacordillera", tag: "Petfriendly", city: "Chile", fb: "cafeteriacordillera", note: "Love the pet-friendly vibe! A website would show your full menu and let people reserve tables." },
+            { name: "Navaja Concept", ig: "navajaconcept", tag: "Cocina", city: "Mexico", fb: "navajaconcept", note: "Wine, coffee, live music — a website would tie it all together beautifully." },
+            { name: "Jacinta M. Pastelería", ig: "jacintam.pasteleria", tag: "Pastry", city: "Mexico", fb: "jacintam.pasteleria", note: "Your cakes are art! A proper website with a catalog and order form would make it easier." },
+            { name: "Nota de Sabor", ig: "notadesabor", tag: "Delivery", city: "Argentina", fb: "notadesabor", note: "Your night delivery is perfect! A simple site would boost your orders." },
+            { name: "Café Asamblea", ig: "cafeasamblea", tag: "Montevideo", city: "Uruguay", fb: "cafeasamblea", note: "Your location is iconic! A website would bring your café to life online." },
+            { name: "Cafe Atelier", ig: "cafeatelier.sv", tag: "Specialty", city: "El Salvador", fb: "cafeatelier.sv", note: "Your coffee & food look incredible! A proper website would showcase your specialty coffee." },
+            { name: "King Coffee Chiclayo", ig: "king_coffeeLab", tag: "King", city: "Peru", fb: "king_coffeeLab", note: "Your vibe is infectious! A website with your menu and workshops would take you to the next level." },
+            { name: "Piromano Coffee", ig: "piromanocoffee", tag: "Roasters", city: "Guatemala", fb: "piromanocoffee", note: "Professional roasting & barismo — a central site would be a game changer." },
+            { name: "Nails Bowtique", ig: "nailsbowtique", tag: "Handmade", city: "Worldwide", fb: "nailsbowtique", note: "Worldwide delivery is amazing! A website with your portfolio and order form would make you look super professional." },
+            { name: "pand.oraanails", ig: "pand.oraanails", tag: "Gel X", city: "USA", fb: "pand.oraanails", note: "Your pricing & detail are amazing! A simple booking page would save you time." },
+            { name: "Kairos Café", ig: "kairoscafemx", tag: "Coffee", city: "Mexico", fb: "kairoscafemx", note: "Your café is the perfect moment! A website would make you more discoverable." },
+            { name: "Alfonsina Café", ig: "alfonsinacafe.qro", tag: "Brunch", city: "Mexico", fb: "alfonsinacafe.qro", note: "Coffee & good vibes — a clean site would match your aesthetic perfectly." },
+            { name: "AlmaVerde Juice Bar", ig: "almaverde.mex", tag: "Juice", city: "Mexico", fb: "almaverde.mex", note: "Smoothies, açai & breakfast — a simple page would grow your business." },
+            { name: "Noah Signature Bar", ig: "noahsignaturebar", tag: "Bar", city: "Mexico", fb: "noahsignaturebar", note: "Your 'before.during.after' concept is great! A site would complete your brand." },
+            { name: "Central B.A Celaya", ig: "centralbacelaya", tag: "Grill", city: "Mexico", fb: "centralbacelaya", note: "Restaurant, grill & fun — a website would amplify your brand." },
+            { name: "Homenaje", ig: "homenaje.celaya", tag: "Cocina", city: "Mexico", fb: "homenaje.celaya", note: "A simple site with your menu and contact info would make you look established." },
+            { name: "KoFi & Tonics", ig: "kofitonics", tag: "Music", city: "Mexico", fb: "kofitonics", note: "Music, coffee, fashion — a site would bring your community together." },
 
-    // ------------------------------------------------------------------
-    //  1. LOGIN FLOW (OAuth)
-    // ------------------------------------------------------------------
-    loginBtn.addEventListener('click', function() {
-        const appId = appIdInput.value.trim();
-        const redirectUri = redirectUriInput.value.trim();
+            // Hair Salons from images
+            { name: "Hair by Jess", ig: "jessicaoesmyhair_", tag: "Hair Salon", city: "Marion, NC", fb: "jessicaoesmyhair_", note: "Hairstylist & lover of beauty, style, and slow moments. A website would help you share your work and book clients more easily." },
+            { name: "Lawt Hair Salon", ig: "lawt_hair_salon_", tag: "Hair Salon", city: "St. Albert, AB", fb: "lawt_hair_salon_", note: "Special 20% discounts for PwD, Seniors (65+), Veterans. A website would make your services and discounts more visible." },
+            { name: "Vogue Hair Salon", ig: "Vogue Hair Salon", tag: "Hair Salon", city: "Choppington, UK", fb: "Vogue Hair Salon", note: "23 years of making you feel amazing! A website would showcase your experience and attract new clients." },
+            { name: "Inspire Hair Salon", ig: "", tag: "Hair Salon", city: "Quezon City, PH", note: "Men and women Haircut & Hair Color Specialist. A website would help you showcase your work and book appointments." },
+            { name: "Headquarters Hair Salon", ig: "Headquarters Hair Salon", tag: "Beauty Store", city: "Boston, MA", fb: "Headquarters Hair Salon", note: "Our page will let people know about our specials. A website would make it easier to share your offers and services." },
+            { name: "Rebellious Artistry", ig: "", tag: "Beauty Salon", city: "Hayward, CA", note: "Making the world a brighter place one strand at a time. A website would help you showcase your artistry." },
+            { name: "TK Hair Salon", ig: "TK Hair Salon", tag: "Beauty Salon", city: "Zamboanga City, PH", fb: "TK Hair Salon", note: "New hair, new energy, new confidence. A website would help you reach more clients in your area." },
+            { name: "Taylor Mendoza", ig: "", tag: "Hair Stylist", city: "Glendora, CA", note: "Full salon days have me acting like I ran a marathon! A website would help you book clients and share your work." },
+            { name: "loannis Kostakis Hair Salon", ig: "ioannis_kostakis.hairsalon", tag: "Hair Salon", city: "Melíssia, Greece", fb: "ioannis_kostakis.hairsalon", note: "A website with online booking would make it easier for clients to schedule appointments." },
+            { name: "Morgan Delaney Taylor", ig: "", tag: "Hairstylist", city: "Statesboro, GA", note: "The perfect lived-in blonde! A website would help you showcase your work and book appointments." },
+            { name: "Kellie Hanson- Hair Stylist", ig: "", tag: "Hair Salon", city: "Garfield, VIC", note: "By Appointment Only. A website would make booking easier for your clients." },
+            { name: "Posh Hair Lounge", ig: "", tag: "Hair Salon", city: "USA", note: "Styling · Coloring · Luxury Salon. Your Premier Destination for Luxury Hair Services. A website would help you showcase your services and book appointments." },
 
-        if (!appId || appId === 'YOUR_APP_ID_HERE') {
-            alert('⚠️ Please enter your real Instagram App ID from Facebook Developers.');
-            return;
-        }
+            // Bakeries
+            { name: "Ferry Good Treats", ig: "", tag: "Cake Shop", city: "Philadelphia, PA", note: "Just a girl baking herself happy. A website with your menu and order form would help you scale." },
+            { name: "Olde Village Bakery", ig: "oldevillagebakery", tag: "Dessert Shop", city: "North Rustico, PEI", fb: "oldevillagebakery", note: "A small but mighty bakery by the sea. A website would help you share your hours and menu." },
+            { name: "Noraya Bakery", ig: "", tag: "Bakery", city: "Sudbury, ON", note: "Freshly baked happiness. DM to order — a website with order form would save you time." },
+            { name: "Bleu Bear Bakery", ig: "", tag: "Bakery", city: "Oaklyn, NJ", note: "100% GLUTEN FREE BAKERY. A website would help you reach more celiac customers." },
+            { name: "Woops", ig: "", tag: "Bakery", city: "Coeur d'Alene, ID", note: "Largest French macaron company in the U.S. A website would help you showcase your locations." },
+            { name: "Saray Bakery", ig: "", tag: "Bakery", city: "Myrtle Beach, SC", note: "Myrtle Beach's favorite spot for daily fresh pastries. A website would help you reach more customers." },
+            { name: "The Bakery-Waterford", ig: "", tag: "Bakery", city: "Waterford Township, MI", note: "Custom cakes and the best cheesecakes. A website with your menu and ordering would help you scale." },
+            { name: "Rollhouse Bakery", ig: "rollhouse_bakery", tag: "Bakery", city: "Billings, MT", fb: "rollhouse_bakery", note: "OPEN 7 days a week 7AM–2PM. A website would help you share your daily menu and take orders." },
+            { name: "Butter & Bloom Bakery", ig: "butterandbloombakery25", tag: "Bakery", city: "Grafton, OH", fb: "butterandbloombakery25", note: "A website would help you showcase your baked goods and reach more customers in Ohio." },
 
-        if (!redirectUri || redirectUri === 'https://yourdomain.com/callback') {
-            alert('⚠️ Please set your Redirect URI (must match Facebook app settings).');
-            return;
-        }
+            // Others
+            { name: "Liberty Social", ig: "", tag: "Business", city: "Ontario", note: "Created for connection. A website would help you share your content and connect with your audience." },
+            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." }
+        ];
 
-        // Step 1: Redirect to Instagram OAuth
-        const authUrl = `https://api.instagram.com/oauth/authorize?client_id=${appId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=user_profile,user_media&response_type=code`;
+        const container = document.getElementById('businessList');
+        let html = '';
 
-        // Store credentials for the callback
-        localStorage.setItem('ig_app_id', appId);
-        localStorage.setItem('ig_app_secret', appSecretInput.value.trim());
-        localStorage.setItem('ig_redirect_uri', redirectUri);
+        allBusinesses.forEach((biz, index) => {
+            let contactHtml = '';
+            const igHandle = biz.ig || '';
 
-        statusMsg.textContent = '⏳ Redirecting to Instagram...';
-        loginBtn.disabled = true;
-
-        // Open Instagram login in new window (or redirect)
-        window.location.href = authUrl;
-    });
-
-    // ------------------------------------------------------------------
-    //  2. HANDLE OAUTH CALLBACK (After user logs in)
-    // ------------------------------------------------------------------
-    async function handleCallback() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-        const error = urlParams.get('error');
-
-        if (error) {
-            statusMsg.textContent = '❌ Login cancelled or error: ' + error;
-            loginBtn.disabled = false;
-            return;
-        }
-
-        if (!code) {
-            // Not a callback, check for existing session
-            checkExistingSession();
-            return;
-        }
-
-        // We have an authorization code → exchange for access token
-        const appId = localStorage.getItem('ig_app_id');
-        const appSecret = localStorage.getItem('ig_app_secret');
-        const redirectUri = localStorage.getItem('ig_redirect_uri');
-
-        if (!appId || !appSecret) {
-            alert('⚠️ Missing credentials. Please enter App ID and Secret.');
-            loginBtn.disabled = false;
-            return;
-        }
-
-        statusMsg.textContent = '⏳ Exchanging code for access token...';
-
-        try {
-            const tokenResponse = await fetch('https://api.instagram.com/oauth/access_token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    client_id: appId,
-                    client_secret: appSecret,
-                    grant_type: 'authorization_code',
-                    redirect_uri: redirectUri,
-                    code: code,
-                }),
-            });
-
-            const tokenData = await tokenResponse.json();
-
-            if (tokenData.error) {
-                throw new Error(tokenData.error.message || 'Token exchange failed');
+            // Build contact button
+            if (biz.contact === 'wa' && biz.wa) {
+                contactHtml = `<a href="https://wa.me/${biz.wa}" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+            } else if (biz.contact === 'line' && biz.line) {
+                contactHtml = `<a href="https://lin.ee/${biz.line}" target="_blank" rel="noopener noreferrer" class="btn btn-line"><span>💬</span> Line</a>`;
+            } else if (biz.ig) {
+                contactHtml = `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
+            } else {
+                contactHtml = `<span class="btn" style="opacity:0.4;cursor:default;pointer-events:none;">No contact</span>`;
             }
 
-            // Save tokens
-            accessToken = tokenData.access_token;
-            userId = tokenData.user_id;
+            // Facebook / Messenger link
+            const fbLink = biz.fb ? `https://facebook.com/${biz.fb}` : '#';
+            const messengerLink = biz.fb ? `https://m.me/${biz.fb}` : '#';
 
-            localStorage.setItem('ig_access_token', accessToken);
-            localStorage.setItem('ig_user_id', userId);
+            let actionsHtml = `
+                ${contactHtml}
+                <a href="${fbLink}" target="_blank" rel="noopener noreferrer" class="btn btn-fb" ${!biz.fb ? 'style="opacity:0.4;cursor:default;pointer-events:none;"' : ''}><span>📘</span> FB</a>
+                <a href="${messengerLink}" target="_blank" rel="noopener noreferrer" class="btn btn-messenger" ${!biz.fb ? 'style="opacity:0.4;cursor:default;pointer-events:none;"' : ''}><span>💬</span> Messenger</a>
+                <button class="btn btn-copy copy-btn" data-msg="${biz.note.replace(/"/g, '&quot;')}"><span>📋</span> Copy</button>
+                <button class="btn btn-done done-toggle" data-index="${index}"><span>☐</span> Done</button>
+            `;
 
-            statusMsg.textContent = '✅ Logged in successfully!';
-            userInfo.textContent = `👤 ID: ${userId}`;
-            loginBtn.textContent = '🔓 Logout';
-            loginBtn.disabled = false;
-
-            // Clear URL params
-            window.history.replaceState({}, document.title, window.location.pathname);
-
-            // Fetch followers & following
-            await fetchAndCompare();
-
-        } catch (error) {
-            console.error('Token exchange error:', error);
-            statusMsg.textContent = '❌ Login failed: ' + error.message;
-            loginBtn.disabled = false;
-        }
-    }
-
-    // ------------------------------------------------------------------
-    //  3. FETCH FOLLOWERS & FOLLOWING (using Instagram Graph API)
-    // ------------------------------------------------------------------
-    async function fetchAndCompare() {
-        if (!accessToken) {
-            accessToken = localStorage.getItem('ig_access_token');
-            userId = localStorage.getItem('ig_user_id');
-        }
-
-        if (!accessToken) {
-            statusMsg.textContent = '⚠️ Not logged in';
-            return;
-        }
-
-        statusMsg.textContent = '🔄 Fetching your followers & following...';
-        resultArea.innerHTML = `
-            <div class="empty-state">
-                <span>⏳</span>
-                <p>Loading data from Instagram...</p>
-            </div>
-        `;
-
-        try {
-            // Step 1: Get user's media (but we need followers)
-            // Instagram Basic Display API doesn't directly give followers/following
-            // We need to use the Instagram Graph API (Business/Creator accounts)
-            // For personal accounts, we use the Basic Display API which is limited
-
-            // For demonstration, we'll show the real API call structure
-            // BUT Instagram Basic Display doesn't expose followers list!
-            // You need a Business/Creator account with Instagram Graph API
-
-            // Here's the real endpoint for Instagram Graph API:
-            // GET /me/followers?access_token=...
-            // GET /me/following?access_token=...
-
-            // Since we can't actually fetch without Business account,
-            // we'll show a realistic demo with the actual API calls
-
-            // In production, you'd do:
-            // const followersRes = await fetch(`https://graph.instagram.com/me/followers?access_token=${accessToken}&limit=100`);
-            // const followingRes = await fetch(`https://graph.instagram.com/me/following?access_token=${accessToken}&limit=100`);
-
-            // For this demo, we'll simulate with real-looking data
-            // but also show the code you'd actually use
-
-            statusMsg.textContent = 'ℹ️ Instagram Basic Display API does not expose followers/following lists.';
-            statusMsg.textContent += ' You need a Business/Creator account with Instagram Graph API.';
-
-            // Show example of what the real code would look like
-            resultArea.innerHTML = `
-                <div style="padding: 30px; text-align: left;">
-                    <h3 style="color: #e1306c; margin-bottom: 16px;">📌 To make this work with real data:</h3>
-                    <div style="background: #1a1a2e; color: #fff; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; line-height: 1.6;">
-// 1. Convert to Instagram Business/Creator account
-// 2. Use Instagram Graph API (not Basic Display)
-
-// Real API calls:
-const followers = await fetch(
-  \`https://graph.instagram.com/me/followers?access_token=\${accessToken}&limit=100\`
-);
-const following = await fetch(
-  \`https://graph.instagram.com/me/following?access_token=\${accessToken}&limit=100\`
-);
-
-// Then compare arrays to find non-followers
-const nonFollowers = following.data.filter(
-  user => !followers.data.find(f => f.id === user.id)
-);
-
-// 🚀 This requires:
-// • Facebook Page connected to Instagram
-// • Instagram Business/Creator account
-// • Advanced Access tokens
-// • Instagram Graph API permissions
+            html += `
+                <div class="business-item" data-index="${index}">
+                    <div class="business-name">
+                        ${biz.name} 
+                        <span class="tag">${biz.tag}</span> 
+                        <span class="city-tag">${biz.city}</span>
+                        <span class="done-check">✔️</span>
                     </div>
-                    <div style="margin-top: 20px; padding: 16px; background: #fff5f7; border-radius: 12px; border-left: 4px solid #e1306c;">
-                        <strong>🔑 To get real data:</strong><br>
-                        1. Go to <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Developers</a><br>
-                        2. Create a Business app<br>
-                        3. Add Instagram Graph API product<br>
-                        4. Get <strong>Page Access Token</strong> with <code>instagram_basic</code> and <code>instagram_manage_insights</code><br>
-                        5. Use <code>https://graph.instagram.com/me/followers</code> and <code>/following</code>
+                    <div class="personal-note">${biz.note}</div>
+                    <div class="business-actions">
+                        ${actionsHtml}
                     </div>
                 </div>
             `;
+        });
 
-            // Simulate showing some "real" data if we had it
-            // This is just to show what the UI would look like
-            const demoUsers = [
-                'luna_art', 'mike_travels', 'sarah_design', 'jordan_fit'
-            ];
+        container.innerHTML = html;
+        document.getElementById('totalCount').textContent = allBusinesses.length;
 
-            // But we don't have real data, so we show the instructions
+        // ── Done toggle ──
+        document.querySelectorAll('.done-toggle').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const index = this.getAttribute('data-index');
+                const item = document.querySelector(`.business-item[data-index="${index}"]`);
+                const check = item.querySelector('.done-check');
+                const isDone = item.classList.toggle('done');
 
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            statusMsg.textContent = '❌ Error: ' + error.message;
+                if (isDone) {
+                    this.innerHTML = '<span>☑</span> Done';
+                    this.classList.add('active');
+                    check.style.display = 'inline-block';
+                    showToast('✓ Marked as done!');
+                } else {
+                    this.innerHTML = '<span>☐</span> Done';
+                    this.classList.remove('active');
+                    check.style.display = 'none';
+                    showToast('↻ Unmarked');
+                }
+            });
+        });
+
+        // ── Copy ──
+        const toast = document.getElementById('toast');
+        let toastTimeout = null;
+
+        function showToast(msg = '✓ Copied!') {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
         }
-    }
 
-    // ------------------------------------------------------------------
-    //  4. CHECK EXISTING SESSION
-    // ------------------------------------------------------------------
-    function checkExistingSession() {
-        const token = localStorage.getItem('ig_access_token');
-        const id = localStorage.getItem('ig_user_id');
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const msg = this.getAttribute('data-msg') || 'Hello! I designed a clean website for your business. Mind if I send it?';
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(msg).then(() => {
+                        showToast('✓ Copied!');
+                    }).catch(() => fallbackCopy(msg));
+                } else {
+                    fallbackCopy(msg);
+                }
+            });
+        });
 
-        if (token && id) {
-            accessToken = token;
-            userId = id;
-            statusMsg.textContent = '✅ Session restored';
-            userInfo.textContent = `👤 ID: ${userId}`;
-            loginBtn.textContent = '🔓 Logout';
-            // Optionally auto-fetch
-            // fetchAndCompare();
-        } else {
-            statusMsg.textContent = '👋 Not logged in';
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            textarea.style.top = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('✓ Copied!');
+            } catch (e) {
+                showToast('✗ Could not copy');
+            }
+            document.body.removeChild(textarea);
         }
-    }
-
-    // ------------------------------------------------------------------
-    //  5. LOGOUT
-    // ------------------------------------------------------------------
-    loginBtn.addEventListener('click', function(e) {
-        if (loginBtn.textContent.includes('Logout')) {
-            localStorage.removeItem('ig_access_token');
-            localStorage.removeItem('ig_user_id');
-            localStorage.removeItem('ig_app_id');
-            localStorage.removeItem('ig_app_secret');
-            localStorage.removeItem('ig_redirect_uri');
-            accessToken = null;
-            userId = null;
-            statusMsg.textContent = '👋 Logged out';
-            userInfo.textContent = '—';
-            loginBtn.textContent = '🔑 Login with Instagram';
-            resultArea.innerHTML = `
-                <div class="empty-state">
-                    <span>🔍</span>
-                    <p>Login to see who doesn't follow you back</p>
-                </div>
-            `;
-        }
-    });
-
-    // ------------------------------------------------------------------
-    //  INIT
-    // ------------------------------------------------------------------
-    // Check if we're in the OAuth callback
-    handleCallback();
-
-    // Restore credentials from localStorage if available
-    const savedAppId = localStorage.getItem('ig_app_id');
-    const savedSecret = localStorage.getItem('ig_app_secret');
-    const savedRedirect = localStorage.getItem('ig_redirect_uri');
-    if (savedAppId) appIdInput.value = savedAppId;
-    if (savedSecret) appSecretInput.value = savedSecret;
-    if (savedRedirect) redirectUriInput.value = savedRedirect;
+    })();
 </script>
 </body>
 </html>
