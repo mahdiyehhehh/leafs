@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Andjela Nikolic · Botanical booking</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Strikes · Business Hub</title>
     <style>
         * {
             margin: 0;
@@ -16,637 +12,694 @@
         }
 
         body {
-            background: #f5f3ee;
-            font-family: 'Inter', sans-serif;
-            color: #1e2b2b;
-            padding: 1rem;
+            background: #F4F2E2;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 16px 12px;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            min-height: 100vh;
+            align-items: flex-start;
         }
 
         .container {
-            max-width: 480px;
+            max-width: 600px;
             width: 100%;
-            background: #ffffff;
+            background: #F4F2E2;
             border-radius: 32px;
-            box-shadow: 0 12px 32px -8px rgba(30, 43, 43, 0.08);
-            padding: 1.5rem 1.25rem 2rem;
-            border: 1px solid rgba(160, 140, 120, 0.12);
+            padding: 20px 16px 28px;
+            border: 1px solid rgba(176, 16, 19, 0.08);
+            box-shadow: 0 8px 24px rgba(176, 16, 19, 0.06);
         }
 
-        .header {
+        .top-bar {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            margin-bottom: 1.8rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e8e3db;
-        }
-
-        .brand {
-            display: flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .brand-icon {
-            background: #e8efe4;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #3f5e34;
-            font-size: 1.1rem;
-        }
-
-        .brand h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            font-size: 1.4rem;
-            color: #1e2b2b;
-            letter-spacing: -0.3px;
-        }
-
-        .brand h1 span {
-            font-weight: 400;
-            font-style: italic;
-            color: #56784a;
-        }
-
-        .tag {
-            font-size: 0.65rem;
-            background: #eef3eb;
-            padding: 0.25rem 0.9rem;
-            border-radius: 40px;
-            font-weight: 500;
-            color: #2f422a;
-            border: 1px solid #d7dfd0;
-            letter-spacing: 0.2px;
-        }
-
-        .artist-card {
-            background: #f9f8f5;
-            padding: 1rem 1.2rem;
-            border-radius: 24px;
-            margin-bottom: 2rem;
-            border: 1px solid #eae5dd;
-        }
-
-        .artist-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .artist-avatar {
-            width: 52px;
-            height: 52px;
-            background: #d8e3d2;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: #2b4224;
-            font-family: 'Playfair Display', serif;
-            flex-shrink: 0;
-        }
-
-        .artist-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .artist-info h2 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #1d2a2a;
-            letter-spacing: -0.2px;
-        }
-
-        .artist-info .sub {
-            font-size: 0.72rem;
-            color: #5e6e62;
-            display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem 0.8rem;
-            margin-top: 0.1rem;
+            gap: 8px 12px;
+            border-bottom: 2px solid #A2B9D5;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
         }
 
-        .artist-info .sub i {
-            color: #56784a;
-            width: 1rem;
-            font-size: 0.7rem;
+        .time {
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+            color: #B01013;
+            background: #A2B9D5;
+            padding: 0 18px;
+            border-radius: 40px;
+            line-height: 1.5;
+            border: 1.5px solid #B01013;
         }
 
-        .stats {
+        .badge-group {
             display: flex;
-            gap: 0.8rem;
-            margin-top: 0.3rem;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        .stats span {
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: #3c4d3e;
-            background: #edf0e9;
-            padding: 0.1rem 0.7rem;
-            border-radius: 40px;
-        }
-
-        .booking-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #1e2b2b;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.2px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .booking-headline i {
-            color: #56784a;
-            font-size: 1.2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            font-size: 0.78rem;
-            color: #2a3d2e;
-            margin-bottom: 0.3rem;
-            letter-spacing: 0.1px;
-        }
-
-        .form-group label i {
-            color: #56784a;
-            width: 1.1rem;
+        .badge-group span {
+            font-weight: 600;
             font-size: 0.75rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.7rem 0.9rem;
-            border: 1px solid #dad5cb;
+            background: #A2B9D5;
+            padding: 4px 16px;
             border-radius: 40px;
-            background: #fcfbf9;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            transition: 0.15s;
-            outline: none;
-            color: #1c2727;
-            -webkit-appearance: none;
-            appearance: none;
+            color: #1e1e1e;
+            border: 1px solid #B01013;
+            box-shadow: 0 2px 0 #B01013;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: #7a9b6b;
-            box-shadow: 0 0 0 3px rgba(90, 130, 80, 0.08);
-            background: white;
+        .badge-group span:last-child {
+            background: #AACCB1;
         }
 
-        .form-group textarea {
-            border-radius: 20px;
-            resize: vertical;
-            min-height: 60px;
-        }
-
-        .row2 {
+        .stat-row {
             display: flex;
-            gap: 0.8rem;
             flex-wrap: wrap;
-        }
-
-        .row2 .form-group {
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .btn-primary {
-            background: #2f422a;
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 0.8rem 1.2rem;
-            border-radius: 60px;
-            font-size: 0.95rem;
-            width: 100%;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(50, 75, 45, 0.12);
-            letter-spacing: 0.2px;
-            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            border: 1px solid #3a5533;
-            margin-top: 0.5rem;
+            gap: 4px 12px;
+            background: rgba(162, 185, 213, 0.2);
+            padding: 8px 14px;
+            border-radius: 60px;
+            margin-bottom: 22px;
+            border: 1px solid #A2B9D5;
         }
 
-        .btn-primary:hover {
-            background: #1f3320;
-            transform: scale(0.98);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.97);
-        }
-
-        .btn-primary i {
-            font-size: 0.9rem;
-        }
-
-        .booking-summary {
-            background: #f4f7f1;
-            border-radius: 24px;
-            padding: 1.2rem 1.2rem 1rem;
-            margin: 1.8rem 0 0.8rem;
-            border: 1px solid #dce4d4;
-            transition: 0.2s;
-        }
-
-        .summary-title {
+        .stat-item {
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: #1e2a33;
             display: flex;
+            align-items: baseline;
+            gap: 2px;
+        }
+
+        .stat-item strong {
+            color: #B01013;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .stat-item .num {
+            background: #F4F2E2;
+            padding: 0 8px;
+            border-radius: 30px;
+            color: #B01013;
+            font-weight: 600;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0 14px 0;
+            padding: 0 4px;
+        }
+
+        .section-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e2a33;
+            background: #AACCB1;
+            padding: 4px 18px;
+            border-radius: 40px;
+            border: 1.5px solid #B01013;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-divider {
+            flex: 1;
+            height: 2px;
+            background: #A2B9D5;
+            opacity: 0.4;
+        }
+
+        .count-badge {
+            background: #B01013;
+            color: #F4F2E2;
+            border-radius: 40px;
+            padding: 0 10px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+
+        .business-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 4px 0 8px;
+        }
+
+        .business-item {
+            background: #fcfaf5;
+            border-radius: 24px;
+            padding: 16px 16px 14px;
+            border: 1.5px solid #A2B9D5;
+            box-shadow: 0 3px 0 #B01013;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: 0.15s ease;
+            position: relative;
+        }
+
+        .business-item.done {
+            opacity: 0.75;
+            border-color: #AACCB1;
+            box-shadow: 0 3px 0 #AACCB1;
+        }
+
+        .business-item.done .personal-note {
+            background: #e8f0e8;
+        }
+
+        .business-item.done .done-check {
+            display: inline-block;
+        }
+
+        .business-item:active {
+            transform: scale(0.99);
+        }
+
+        .business-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #1e2a33;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+        }
+
+        .business-name .tag {
+            background: #AACCB1;
+            font-size: 0.5rem;
+            font-weight: 700;
+            padding: 0 12px;
+            border-radius: 40px;
+            color: #1e2a33;
+            border: 1px solid #B01013;
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+        }
+
+        .business-name .city-tag {
+            background: #A2B9D5;
+            font-size: 0.5rem;
+            font-weight: 600;
+            padding: 0 10px;
+            border-radius: 40px;
+            color: #1e2a33;
+            border: 1px solid #B01013;
+        }
+
+        .done-check {
+            display: none;
+            background: #B01013;
+            color: #F4F2E2;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0 10px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+        }
+
+        .personal-note {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            background: #A2B9D5;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #B01013;
+            color: #1e2a33;
+            font-weight: 450;
+            backdrop-filter: blur(2px);
+            word-break: break-word;
+        }
+
+        .business-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 8px;
+            margin-top: 2px;
+        }
+
+        .btn {
+            border: none;
+            background: #A2B9D5;
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1.5px solid #B01013;
+            box-shadow: 0 2px 0 #B01013;
+            color: #1e2a33;
+            transition: 0.1s ease;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+            touch-action: manipulation;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn:active {
+            transform: scale(0.94);
+        }
+
+        .btn-wa { background: #AACCB1; }
+        .btn-ig { background: #A2B9D5; font-size: 0.6rem; }
+        .btn-fb { background: #A2B9D5; }
+        .btn-line { background: #AACCB1; }
+        .btn-copy {
+            background: #F4F2E2;
+            border-color: #B01013;
+            box-shadow: 0 2px 0 #B01013;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.6rem;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.94);
+            background: #B01013;
+            color: #F4F2E2;
+        }
+
+        .btn-done {
+            background: #F4F2E2;
+            border-color: #AACCB1;
+            box-shadow: 0 2px 0 #AACCB1;
+            font-size: 0.6rem;
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+
+        .btn-done:hover {
+            background: #AACCB1;
+        }
+
+        .btn-done.active {
+            background: #B01013;
+            color: #F4F2E2;
+            border-color: #B01013;
+            box-shadow: 0 2px 0 #B01013;
+        }
+
+        .btn span {
+            font-size: 0.8rem;
+            line-height: 1;
+        }
+
+        .btn-ig .handle {
+            font-weight: 400;
+            font-size: 0.55rem;
+            opacity: 0.85;
+            max-width: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .footer-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 2px solid #A2B9D5;
+            gap: 6px 10px;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .footer-stats .pill {
+            background: #AACCB1;
+            padding: 2px 12px;
+            border-radius: 40px;
+            border: 1px solid #B01013;
+            white-space: nowrap;
+        }
+
+        .footer-stats .highlight {
+            background: #B01013;
+            color: #F4F2E2;
+            padding: 0 12px;
+            border-radius: 40px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .bottom-row {
+            display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            margin-top: 14px;
+            gap: 10px;
+        }
+
+        .bottom-row .schedule {
+            background: #A2B9D5;
+            padding: 4px 18px;
+            border-radius: 60px;
+            border: 1px solid #B01013;
             font-weight: 600;
             font-size: 0.8rem;
-            color: #2d402b;
-            letter-spacing: 0.3px;
-            margin-bottom: 0.6rem;
-        }
-
-        .summary-title i {
-            color: #56784a;
-        }
-
-        .summary-content {
-            background: white;
-            padding: 0.9rem 1rem;
-            border-radius: 16px;
-            font-size: 0.82rem;
-            line-height: 1.8;
-            color: #1d2a27;
-            border: 1px solid #e2eade;
-            white-space: pre-line;
-            word-break: break-word;
-            font-family: 'Inter', monospace;
-            letter-spacing: 0.1px;
-        }
-
-        .action-row {
             display: flex;
-            gap: 0.6rem;
+            gap: 14px;
             flex-wrap: wrap;
-            margin-top: 1rem;
         }
 
-        .btn-outline {
-            background: white;
-            border: 1.5px solid #7a8f6e;
-            color: #2b4028;
-            font-weight: 500;
-            padding: 0.6rem 1rem;
+        .bottom-row .ron {
+            background: #AACCB1;
+            padding: 0 24px;
             border-radius: 60px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-            flex: 1;
-            min-width: 110px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            border: 2px solid #B01013;
+            line-height: 1.4;
         }
 
-        .btn-outline i {
-            color: #3f5e34;
-            font-size: 0.85rem;
-        }
-
-        .btn-outline:hover {
-            background: #e4ede0;
-            border-color: #4b6a3d;
-        }
-
-        .btn-outline:active {
-            transform: scale(0.97);
-        }
-
-        .btn-instagram {
-            background: #1e2b2b;
-            border: 1.5px solid #1e2b2b;
-            color: white;
-            flex: 1.4;
-            min-width: 130px;
-        }
-
-        .btn-instagram i {
-            color: white;
-        }
-
-        .btn-instagram:hover {
-            background: #0e1a1a;
-            border-color: #0e1a1a;
-        }
-
-        .copy-feedback {
-            font-size: 0.7rem;
-            color: #3f6b39;
-            background: #e2f0db;
-            padding: 0.15rem 0.9rem;
-            border-radius: 40px;
-            display: inline-block;
-            margin-top: 0.4rem;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .footnote {
-            margin-top: 2rem;
+        .attribution {
+            margin-top: 16px;
             font-size: 0.6rem;
-            color: #7d8d77;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            border-top: 1px solid #e6e7df;
-            padding-top: 1.2rem;
-            letter-spacing: 0.2px;
+            background: #A2B9D5;
+            padding: 4px 16px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #B01013;
+            color: #1e2a33;
         }
 
-        .footnote i {
-            color: #56784a;
-            font-size: 0.7rem;
+        .attribution span {
+            color: #B01013;
+            font-weight: 700;
         }
 
-        @media (max-width: 400px) {
-            .container {
-                padding: 1rem 0.9rem;
-            }
-            .artist-row {
-                flex-wrap: wrap;
-            }
-            .row2 .form-group {
-                min-width: 100%;
-            }
-            .action-row {
-                flex-direction: column;
-            }
-            .btn-outline,
-            .btn-instagram {
-                width: 100%;
-                flex: none;
-            }
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e2a33;
+            color: #F4F2E2;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid #AACCB1;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            z-index: 999;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 14px 12px; }
+            .business-item { padding: 14px 12px; }
+            .personal-note { font-size: 0.74rem; padding: 6px 14px; }
+            .stat-item { font-size: 0.7rem; }
+            .btn { font-size: 0.55rem; padding: 5px 10px; }
+            .btn-ig { font-size: 0.55rem; }
+            .btn-ig .handle { font-size: 0.5rem; max-width: 60px; }
+            .time { font-size: 1.4rem; }
+            .bottom-row .schedule { font-size: 0.7rem; padding: 3px 14px; gap: 10px; }
+            .bottom-row .ron { font-size: 1.1rem; padding: 0 18px; }
+            .section-header h2 { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 380px) {
+            .badge-group span { font-size: 0.65rem; padding: 3px 12px; }
+            .business-actions { gap: 4px; }
+            .btn { font-size: 0.5rem; padding: 4px 8px; }
+            .btn-ig .handle { max-width: 50px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- header -->
-        <div class="header">
-            <div class="brand">
-                <div class="brand-icon"><i class="fas fa-seedling"></i></div>
-                <h1>Botanical<span>.</span></h1>
-            </div>
-            <div class="tag">fresh · style · love</div>
-        </div>
 
-        <!-- artist card -->
-        <div class="artist-card">
-            <div class="artist-row">
-                <div class="artist-avatar">AN</div>
-                <div class="artist-info">
-                    <h2>Andjela Nikolic</h2>
-                    <div class="sub">
-                        <span><i class="fas fa-map-pin"></i> Arandjelvac</span>
-                        <span><i class="fas fa-paint-brush"></i> Professional makeup</span>
-                        <span><i class="fas fa-calendar-check"></i> DM booking</span>
-                    </div>
-                    <div class="stats">
-                        <span>150 posts</span>
-                        <span>288 followers</span>
-                        <span>332 following</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- headline -->
-        <div class="booking-headline">
-            <i class="fas fa-calendar-alt"></i> Book your makeup
-        </div>
-
-        <!-- form -->
-        <form id="bookingForm">
-            <div class="form-group">
-                <label><i class="far fa-user"></i> Full name</label>
-                <input type="text" id="fullName" placeholder="Milica Jovanovic" required>
-            </div>
-
-            <div class="row2">
-                <div class="form-group">
-                    <label><i class="fas fa-envelope"></i> Email</label>
-                    <input type="email" id="email" placeholder="mica@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-phone-alt"></i> Phone</label>
-                    <input type="tel" id="phone" placeholder="+381 64 123 4567">
-                </div>
-            </div>
-
-            <div class="row2">
-                <div class="form-group">
-                    <label><i class="fas fa-calendar-day"></i> Date</label>
-                    <input type="date" id="bookingDate" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-clock"></i> Time</label>
-                    <input type="time" id="bookingTime" value="10:00">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fas fa-pen-fancy"></i> Service</label>
-                <select id="service">
-                    <option value="Bridal makeup">Bridal makeup</option>
-                    <option value="Evening glam">Evening glam</option>
-                    <option value="Editorial photo">Editorial photo</option>
-                    <option value="Natural everyday">Natural everyday</option>
-                    <option value="Masterclass group">Masterclass group</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fas fa-comment"></i> Special requests</label>
-                <textarea id="specialRequests" placeholder="Skin type, allergies, preferred style"></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary" id="generateBtn">
-                <i class="fas fa-magic"></i> Generate summary
-            </button>
-        </form>
-
-        <!-- summary -->
-        <div id="summaryContainer" class="booking-summary hidden">
-            <div class="summary-title">
-                <span><i class="fas fa-clipboard-list"></i> Booking details</span>
-                <span style="font-weight:400; font-size:0.65rem; background:#e4eee0; padding:0.1rem 0.8rem; border-radius:40px;">ready to DM</span>
-            </div>
-            <div id="summaryText" class="summary-content"></div>
-
-            <div class="action-row">
-                <button class="btn-outline" id="copyBtn"><i class="fas fa-copy"></i> Copy</button>
-                <button class="btn-outline btn-instagram" id="sendDMBtn"><i class="fab fa-instagram"></i> Send DM</button>
-            </div>
-            <div id="copyFeedback" class="hidden" style="text-align:right;">
-                <span class="copy-feedback"><i class="fas fa-check-circle"></i> copied</span>
-            </div>
-        </div>
-
-        <div class="footnote">
-            <i class="fas fa-leaf"></i>
-            <span>Botanical · 2026 · design for Andjela Nikolic</span>
-            <i class="fas fa-seedling"></i>
+<div class="container">
+    <div class="top-bar">
+        <div class="time">11:30</div>
+        <div class="badge-group">
+            <span>Strikes</span>
+            <span>Statistics</span>
         </div>
     </div>
 
-    <script>
-        (function() {
-            const form = document.getElementById('bookingForm');
-            const summaryContainer = document.getElementById('summaryContainer');
-            const summaryText = document.getElementById('summaryText');
-            const copyBtn = document.getElementById('copyBtn');
-            const sendDMBtn = document.getElementById('sendDMBtn');
-            const copyFeedback = document.getElementById('copyFeedback');
+    <div class="stat-row">
+        <div class="stat-item"><strong>4.9</strong> Avg</div>
+        <div class="stat-item"><span class="num">45</span> Shot</div>
+        <div class="stat-item"><span class="num">26</span> Dash</div>
+        <div class="stat-item"><span class="num">36%</span> Up</div>
+        <div class="stat-item"><span class="num">46%</span> 10</div>
+        <div class="stat-item"><span class="num">42</span> Res</div>
+    </div>
 
-            function buildSummary() {
-                const name = document.getElementById('fullName').value.trim() || '—';
-                const email = document.getElementById('email').value.trim() || '—';
-                const phone = document.getElementById('phone').value.trim() || '—';
-                const date = document.getElementById('bookingDate').value || '—';
-                const time = document.getElementById('bookingTime').value || '—';
-                const service = document.getElementById('service').value;
-                const requests = document.getElementById('specialRequests').value.trim() || '—';
+    <!-- ===== ALL BUSINESSES ===== -->
+    <div class="section-header">
+        <h2>✨ All Businesses</h2>
+        <span class="count-badge" id="totalCount">0</span>
+        <div class="section-divider"></div>
+    </div>
 
-                let displayDate = date;
-                if (date !== '—' && date !== '') {
-                    const d = new Date(date + 'T00:00:00');
-                    if (!isNaN(d)) {
-                        displayDate = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-                    }
-                }
+    <div class="business-list" id="businessList"></div>
 
-                return 'BOOKING REQUEST · Andjela Nikolic\n\n' +
-                       'Name: ' + name + '\n' +
-                       'Email: ' + email + '\n' +
-                       'Phone: ' + phone + '\n' +
-                       'Date: ' + displayDate + '\n' +
-                       'Time: ' + time + '\n' +
-                       'Service: ' + service + '\n' +
-                       'Requests: ' + requests + '\n\n' +
-                       'Please confirm availability. Thank you!';
+    <div class="footer-stats">
+        <span class="pill">Tee 242yds</span>
+        <span class="pill">Played 182yds</span>
+        <span class="pill">Left Miss 28%</span>
+        <span class="highlight">Fairway 45%</span>
+        <span class="highlight">Rough 33%</span>
+    </div>
+
+    <div class="footer-stats" style="border-top: 1px solid #A2B9D5; margin-top: 4px; padding-top: 10px;">
+        <span class="pill">Short 100yds</span>
+        <span class="pill">Medium 200yds</span>
+        <span class="pill">Long 300yds</span>
+        <span class="pill">Avg.Putts/GIR</span>
+    </div>
+
+    <div class="bottom-row">
+        <div class="schedule">
+            <span>Schedule</span>
+            <span>Communications</span>
+        </div>
+        <div class="ron">RON</div>
+    </div>
+
+    <div class="attribution">
+        <span>✦</span> Crimson · BabyBlue · Vanilla · Mint <span>✦</span>
+    </div>
+</div>
+
+<div id="toast" class="toast">✓ Copied!</div>
+
+<script>
+    (function() {
+        // ── ALL BUSINESSES (combined) ──
+        const allBusinesses = [
+            // NEW ONES (15)
+            { name: "KJ Salon Kenya", ig: "", tag: "Hair Salon", city: "Eldoret, Kenya", contact: "wa", wa: "254710472946", note: "Active ads for hydra-facials and hair services. Located at Zion Mall. No website — a simple booking page would help you manage appointments and showcase your services professionally." },
+            { name: "PK ASKA Hair Salon", ig: "", tag: "Hair Salon", city: "Bangkok, Thailand", contact: "line", line: "cpKaDlv", note: "Premium Japanese style salon in Hotel Nikko. Uses Line for all bookings. A proper website would give you a professional edge and attract more international clients." },
+            { name: "Better Batter Café & Bakery", ig: "betterbatter.cafe", tag: "Bakery/Cafe", city: "Hanoi, Vietnam", contact: "ig", note: "Specializes in custom cakes. Active ads driving traffic to Instagram. A website with your full menu and order form would convert more customers." },
+            { name: "Fuji Bakery", ig: "", tag: "Bakery Supplier", city: "Kuala Lumpur", contact: "wa", wa: "60177011760", note: "Reliable supplier for donuts and white sandwich loaves to cafes. No website — a B2B site would streamline orders and attract more cafe partners." },
+            { name: "Jagoan SEWA", ig: "", tag: "Equipment Rental", city: "Jakarta", contact: "wa", wa: "6282320835251", note: "Rents freezers and business equipment. Active ads on TikTok/Instagram. A website with inventory and booking would make you look more professional." },
+            { name: "Shotlin Official", ig: "", tag: "Fashion/Boutique", city: "Lucknow, India", contact: "wa", wa: "917007722441", note: "Small independent brand running ads for ethnic wear. A website with your collection and size guide would boost sales significantly." },
+            { name: "The Coco Company", ig: "thecococompany", tag: "Bakery", city: "Gurgaon, India", contact: "ig", note: "Focuses on premium desserts, orders taken via DM. A proper website with menu and order form would save you time and look more established." },
+            { name: "Fudict Fruit Crush", ig: "", tag: "Food Supplier", city: "Hyderabad", contact: "wa", wa: "919246175508", note: "Manufacturer of fruit crushes and syrups for local cafes. A website would help you showcase your products and attract more B2B clients." },
+            { name: "Maraba Abuja Baker", ig: "", tag: "Bakery", city: "Abuja, Nigeria", contact: "wa", wa: "2349030165108", note: "Independent local baker running targeted ads. A simple website with menu and order form would help you scale your business." },
+            { name: "Araluxe Hair", ig: "", tag: "Hair Salon", city: "Lagos, Nigeria", contact: "wa", wa: "2349058559656", note: "Specializes in high-end hair extensions. A website with your catalog and booking system would elevate your brand significantly." },
+            { name: "Luma Nails", ig: "", tag: "Beauty Salon", city: "Aurora, CO", contact: "wa", wa: "17202457514", note: "Home-based professional nail studio. A simple booking page with your portfolio and pricing would make you look more professional." },
+            { name: "Semion Barbershop", ig: "semion_barbershop", tag: "Barber Shop", city: "Salt Lake City", contact: "ig", note: "Uses social media exclusively for bookings. A website with online booking and service menu would save you time and attract more clients." },
+            { name: "Rooom Mobile Salon", ig: "rooommobilesalon", tag: "Hair Salon", city: "Johannesburg", contact: "ig", note: "Mobile hair services provider. A website with your services, availability, and booking system would help you scale your mobile business." },
+            { name: "Strivenii Hair & Beauty Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "919820834610", note: "Established local salon in Goregaon West. A website with your services and online booking would help you reach more customers." },
+            { name: "Color Me Crazy Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "918652683847", note: "Family-run salon with a strong local presence. A website would help you showcase your work and attract new clients." },
+
+            // PREVIOUS DONE ONES (20)
+            { name: "Araluxehair", ig: "araluxehair", tag: "Wigs", city: "Lagos", note: "Your lace & bundles are top-tier! A clean website would organize your catalog and make ordering easier." },
+            { name: "rooommobilesalon", ig: "rooommobilesalon", tag: "Mobile", city: "Johannesburg", note: "Your mobile salon is brilliant! A proper booking page would save you time." },
+            { name: "Cocoal Cafetería", ig: "quieromicocol", tag: "Cafe", city: "Mexico", note: "Your desserts are amazing! A simple website would let people see your menu and order ahead." },
+            { name: "Cafetería Cordillera", ig: "cafeteriacordillera", tag: "Petfriendly", city: "Chile", note: "Love the pet-friendly vibe! A website would show your full menu and let people reserve tables." },
+            { name: "Navaja Concept", ig: "navajaconcept", tag: "Cocina", city: "Mexico", note: "Wine, coffee, live music — a website would tie it all together beautifully." },
+            { name: "Jacinta M. Pastelería", ig: "jacintam.pasteleria", tag: "Pastry", city: "Mexico", note: "Your cakes are art! A proper website with a catalog and order form would make it easier." },
+            { name: "Nota de Sabor", ig: "notadesabor", tag: "Delivery", city: "Argentina", note: "Your night delivery is perfect! A simple site would boost your orders." },
+            { name: "Café Asamblea", ig: "cafeasamblea", tag: "Montevideo", city: "Uruguay", note: "Your location is iconic! A website would bring your café to life online." },
+            { name: "Cafe Atelier", ig: "cafeatelier.sv", tag: "Specialty", city: "El Salvador", note: "Your coffee & food look incredible! A proper website would showcase your specialty coffee." },
+            { name: "King Coffee Chiclayo", ig: "king_coffeeLab", tag: "King", city: "Peru", note: "Your vibe is infectious! A website with your menu and workshops would take you to the next level." },
+            { name: "Piromano Coffee", ig: "piromanocoffee", tag: "Roasters", city: "Guatemala", note: "Professional roasting & barismo — a central site would be a game changer." },
+            { name: "Nails Bowtique", ig: "nailsbowtique", tag: "Handmade", city: "Worldwide", note: "Worldwide delivery is amazing! A website with your portfolio and order form would make you look super professional." },
+            { name: "pand.oraanails", ig: "pand.oraanails", tag: "Gel X", city: "USA", note: "Your pricing & detail are amazing! A simple booking page would save you time." },
+            { name: "Kairos Café", ig: "kairoscafemx", tag: "Coffee", city: "Mexico", note: "Your café is the perfect moment! A website would make you more discoverable." },
+            { name: "Alfonsina Café", ig: "alfonsinacafe.qro", tag: "Brunch", city: "Mexico", note: "Coffee & good vibes — a clean site would match your aesthetic perfectly." },
+            { name: "AlmaVerde Juice Bar", ig: "almaverde.mex", tag: "Juice", city: "Mexico", note: "Smoothies, açai & breakfast — a simple page would grow your business." },
+            { name: "Noah Signature Bar", ig: "noahsignaturebar", tag: "Bar", city: "Mexico", note: "Your 'before.during.after' concept is great! A site would complete your brand." },
+            { name: "Central B.A Celaya", ig: "centralbacelaya", tag: "Grill", city: "Mexico", note: "Restaurant, grill & fun — a website would amplify your brand." },
+            { name: "Homenaje", ig: "homenaje.celaya", tag: "Cocina", city: "Mexico", note: "A simple site with your menu and contact info would make you look established." },
+            { name: "KoFi & Tonics", ig: "kofitonics", tag: "Music", city: "Mexico", note: "Music, coffee, fashion — a site would bring your community together." },
+
+            // NEW FROM IMAGES (Hair Salons & Bakeries)
+            { name: "Hair by Jess", ig: "jessicaoesmyhair_", tag: "Hair Salon", city: "Marion, NC", note: "Hairstylist & lover of beauty, style, and slow moments. A website would help you share your work and book clients more easily." },
+            { name: "Lawt Hair Salon", ig: "lawt_hair_salon_", tag: "Hair Salon", city: "St. Albert, AB", note: "Special 20% discounts for PwD, Seniors (65+), Veterans. A website would make your services and discounts more visible." },
+            { name: "Vogue Hair Salon", ig: "Vogue Hair Salon", tag: "Hair Salon", city: "Choppington, UK", note: "23 years of making you feel amazing! A website would showcase your experience and attract new clients." },
+            { name: "Inspire Hair Salon", ig: "", tag: "Hair Salon", city: "Quezon City, PH", note: "Men and women Haircut & Hair Color Specialist. A website would help you showcase your work and book appointments." },
+            { name: "Headquarters Hair Salon", ig: "Headquarters Hair Salon", tag: "Beauty Store", city: "Boston, MA", note: "Our page will let people know about our specials. A website would make it easier to share your offers and services." },
+            { name: "Rebellious Artistry", ig: "", tag: "Beauty Salon", city: "Hayward, CA", note: "Making the world a brighter place one strand at a time. A website would help you showcase your artistry." },
+            { name: "TK Hair Salon", ig: "TK Hair Salon", tag: "Beauty Salon", city: "Zamboanga City, PH", note: "New hair, new energy, new confidence. A website would help you reach more clients in your area." },
+            { name: "Taylor Mendoza", ig: "", tag: "Hair Stylist", city: "Glendora, CA", note: "Full salon days have me acting like I ran a marathon! A website would help you book clients and share your work." },
+            { name: "loannis Kostakis Hair Salon", ig: "ioannis_kostakis.hairsalon", tag: "Hair Salon", city: "Melíssia, Greece", note: "A website with online booking would make it easier for clients to schedule appointments." },
+            { name: "Morgan Delaney Taylor", ig: "", tag: "Hairstylist", city: "Statesboro, GA", note: "The perfect lived-in blonde! A website would help you showcase your work and book appointments at wildflowerandhoneysalon.com" },
+            { name: "Kellie Hanson- Hair Stylist", ig: "", tag: "Hair Salon", city: "Garfield, VIC", note: "By Appointment Only. A website would make booking easier for your clients." },
+            { name: "Ferry Good Treats", ig: "", tag: "Cake Shop", city: "Philadelphia, PA", note: "Just a girl baking herself happy. A website with your menu and order form would help you scale." },
+            { name: "Olde Village Bakery", ig: "oldevillagebakery", tag: "Dessert Shop", city: "North Rustico, PEI", note: "A small but mighty bakery by the sea. A website would help you share your hours and menu." },
+            { name: "Noraya Bakery", ig: "", tag: "Bakery", city: "Sudbury, ON", note: "Freshly baked happiness. DM to order — a website with order form would save you time." },
+            { name: "Bleu Bear Bakery", ig: "", tag: "Bakery", city: "Oaklyn, NJ", note: "100% GLUTEN FREE BAKERY. A website would help you reach more celiac customers." },
+            { name: "Woops", ig: "", tag: "Bakery", city: "Coeur d'Alene, ID", note: "Largest French macaron company in the U.S. A website would help you showcase your locations." },
+            { name: "Saray Bakery", ig: "", tag: "Bakery", city: "Myrtle Beach, SC", note: "Myrtle Beach's favorite spot for daily fresh pastries. A website would help you reach more customers." },
+            { name: "Liberty Social", ig: "", tag: "Business", city: "Ontario", note: "Created for connection. A website would help you share your content and connect with your audience." },
+            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." }
+        ];
+
+        const container = document.getElementById('businessList');
+        let html = '';
+
+        allBusinesses.forEach((biz, index) => {
+            // Build contact button
+            let contactHtml = '';
+            const igHandle = biz.ig || '';
+
+            if (biz.contact === 'wa' && biz.wa) {
+                contactHtml = `<a href="https://wa.me/${biz.wa}" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+            } else if (biz.contact === 'ig' && biz.ig) {
+                contactHtml = `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
+            } else if (biz.contact === 'line' && biz.line) {
+                contactHtml = `<a href="https://lin.ee/${biz.line}" target="_blank" rel="noopener noreferrer" class="btn btn-line"><span>💬</span> Line</a>`;
+            } else if (biz.ig) {
+                contactHtml = `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
+            } else {
+                contactHtml = `<span class="btn" style="opacity:0.5; cursor:default;">No contact</span>`;
             }
 
-            function updateSummary() {
-                summaryText.textContent = buildSummary();
-                summaryContainer.classList.remove('hidden');
-                copyFeedback.classList.add('hidden');
-            }
+            // Facebook link (if IG exists)
+            const fbLink = biz.ig ? `https://facebook.com/${biz.ig}` : '#';
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('fullName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                if (!name || !email) {
-                    alert('Please fill in your name and email.');
-                    return;
-                }
-                updateSummary();
-                summaryContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
+            // WhatsApp fallback
+            const waLink = biz.ig ? `https://wa.me/?text=Hey! I saw your business on Instagram` : '#';
 
-            copyBtn.addEventListener('click', function() {
-                const text = summaryText.textContent;
-                if (!text) return;
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(text).then(() => {
-                        copyFeedback.classList.remove('hidden');
-                        setTimeout(() => { copyFeedback.classList.add('hidden'); }, 2000);
-                    }).catch(() => {
-                        fallbackCopy(text);
-                    });
+            // Build actions
+            let actionsHtml = `
+                ${contactHtml}
+                <a href="${fbLink}" target="_blank" rel="noopener noreferrer" class="btn btn-fb" ${!biz.ig ? 'style="opacity:0.4;cursor:default;pointer-events:none;"' : ''}><span>📘</span> FB</a>
+                <button class="btn btn-copy copy-btn" data-msg="${biz.note.replace(/"/g, '&quot;')}"><span>📋</span> Copy</button>
+                <button class="btn btn-done done-toggle" data-index="${index}"><span>☐</span> Done</button>
+            `;
+
+            html += `
+                <div class="business-item" data-index="${index}">
+                    <div class="business-name">
+                        ${biz.name} 
+                        <span class="tag">${biz.tag}</span> 
+                        <span class="city-tag">${biz.city}</span>
+                        <span class="done-check">✔️</span>
+                    </div>
+                    <div class="personal-note">${biz.note}</div>
+                    <div class="business-actions">
+                        ${actionsHtml}
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+
+        // Update total count
+        document.getElementById('totalCount').textContent = allBusinesses.length;
+
+        // ── Done toggle functionality ──
+        document.querySelectorAll('.done-toggle').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const index = this.getAttribute('data-index');
+                const item = document.querySelector(`.business-item[data-index="${index}"]`);
+                const check = item.querySelector('.done-check');
+                const isDone = item.classList.toggle('done');
+
+                if (isDone) {
+                    this.innerHTML = '<span>☑</span> Done';
+                    this.classList.add('active');
+                    check.style.display = 'inline-block';
+                    showToast('✓ Marked as done!');
                 } else {
-                    fallbackCopy(text);
+                    this.innerHTML = '<span>☐</span> Done';
+                    this.classList.remove('active');
+                    check.style.display = 'none';
+                    showToast('↻ Unmarked');
                 }
             });
+        });
 
-            function fallbackCopy(text) {
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                document.body.appendChild(textarea);
-                textarea.select();
-                try {
-                    document.execCommand('copy');
-                    copyFeedback.classList.remove('hidden');
-                    setTimeout(() => { copyFeedback.classList.add('hidden'); }, 2000);
-                } catch (e) {
-                    alert('Unable to copy. Please select the text manually.');
-                }
-                document.body.removeChild(textarea);
-            }
+        // ── Copy functionality ──
+        const toast = document.getElementById('toast');
+        let toastTimeout = null;
 
-            sendDMBtn.addEventListener('click', function() {
-                const text = summaryText.textContent;
-                if (!text) {
-                    alert('Please generate booking summary first.');
-                    return;
-                }
+        function showToast(msg = '✓ Copied!') {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const msg = this.getAttribute('data-msg') || 'Hello! I designed a clean website for your business. Mind if I send it?';
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(text).then(() => {
-                        window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
-                        copyFeedback.classList.remove('hidden');
-                        setTimeout(() => { copyFeedback.classList.add('hidden'); }, 3000);
-                    }).catch(() => {
-                        window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
-                    });
+                    navigator.clipboard.writeText(msg).then(() => {
+                        showToast('✓ Copied!');
+                    }).catch(() => fallbackCopy(msg));
                 } else {
-                    window.open('https://www.instagram.com/andjela.maakeupp/', '_blank');
+                    fallbackCopy(msg);
                 }
             });
+        });
 
-            // Set default date to tomorrow
-            (function setDefaultDate() {
-                const dateInput = document.getElementById('bookingDate');
-                if (dateInput) {
-                    const tomorrow = new Date();
-                    tomorrow.setDate(tomorrow.getDate() + 1);
-                    const year = tomorrow.getFullYear();
-                    const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
-                    const day = String(tomorrow.getDate()).padStart(2, '0');
-                    dateInput.value = year + '-' + month + '-' + day;
-                }
-            })();
-
-            summaryContainer.classList.add('hidden');
-        })();
-    </script>
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            textarea.style.top = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('✓ Copied!');
+            } catch (e) {
+                showToast('✗ Could not copy');
+            }
+            document.body.removeChild(textarea);
+        }
+    })();
+</script>
 </body>
 </html>
