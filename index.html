@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Strikes · Business Hub</title>
+    <title>Business Hub · Outreach List</title>
     <style>
         * {
             margin: 0;
@@ -30,9 +30,8 @@
             width: 200%;
             height: 200%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(162, 185, 213, 0.15) 0%, transparent 60%),
-                radial-gradient(circle at 80% 70%, rgba(170, 204, 177, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(176, 16, 19, 0.04) 0%, transparent 70%);
+                radial-gradient(circle at 20% 30%, rgba(162, 185, 213, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(170, 204, 177, 0.10) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
             animation: shimmer 20s ease-in-out infinite alternate;
@@ -46,15 +45,13 @@
         .container {
             max-width: 600px;
             width: 100%;
-            background: rgba(244, 242, 226, 0.75);
+            background: rgba(244, 242, 226, 0.80);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 40px;
+            border-radius: 32px;
             padding: 20px 16px 28px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 8px 32px rgba(176, 16, 19, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(176, 16, 19, 0.06);
             position: relative;
             z-index: 1;
         }
@@ -62,27 +59,21 @@
         .drop {
             position: fixed;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(162, 185, 213, 0.15));
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(162, 185, 213, 0.10));
             backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                inset -4px -4px 8px rgba(0,0,0,0.04),
-                inset 4px 4px 8px rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             pointer-events: none;
             z-index: 0;
             animation: float 12s ease-in-out infinite alternate;
         }
 
-        .drop:nth-child(1) { width: 180px; height: 180px; top: -40px; right: -60px; animation-delay: 0s; }
-        .drop:nth-child(2) { width: 120px; height: 120px; bottom: 20%; left: -50px; animation-delay: 3s; }
-        .drop:nth-child(3) { width: 80px; height: 80px; top: 40%; right: -30px; animation-delay: 6s; }
-        .drop:nth-child(4) { width: 200px; height: 200px; bottom: -80px; right: -40px; animation-delay: 2s; background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.4), rgba(170, 204, 177, 0.08)); }
-        .drop:nth-child(5) { width: 100px; height: 100px; top: 10%; left: -30px; animation-delay: 5s; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(162, 185, 213, 0.1)); }
+        .drop:nth-child(1) { width: 150px; height: 150px; top: -30px; right: -40px; animation-delay: 0s; }
+        .drop:nth-child(2) { width: 100px; height: 100px; bottom: 20%; left: -40px; animation-delay: 3s; }
+        .drop:nth-child(3) { width: 70px; height: 70px; top: 40%; right: -20px; animation-delay: 6s; }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            100% { transform: translate(10px, 15px) scale(1.03) rotate(3deg); }
+            100% { transform: translate(8px, 12px) scale(1.02) rotate(2deg); }
         }
 
         .top-bar {
@@ -91,7 +82,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 8px 12px;
-            border-bottom: 2px solid rgba(162, 185, 213, 0.4);
+            border-bottom: 2px solid rgba(162, 185, 213, 0.3);
             padding-bottom: 14px;
             margin-bottom: 18px;
             position: relative;
@@ -100,17 +91,14 @@
 
         .time {
             font-weight: 700;
-            font-size: 1.6rem;
-            letter-spacing: 0.5px;
+            font-size: 1.5rem;
             color: #B01013;
-            background: rgba(162, 185, 213, 0.3);
+            background: rgba(162, 185, 213, 0.25);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             padding: 0 18px;
             border-radius: 40px;
             line-height: 1.5;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .badge-group {
@@ -122,25 +110,82 @@
         .badge-group span {
             font-weight: 600;
             font-size: 0.75rem;
-            background: rgba(162, 185, 213, 0.3);
+            background: rgba(162, 185, 213, 0.25);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             padding: 4px 16px;
             border-radius: 40px;
             color: #1e1e1e;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 0 rgba(176, 16, 19, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .badge-group span:last-child {
-            background: rgba(170, 204, 177, 0.35);
+            background: rgba(170, 204, 177, 0.30);
+        }
+
+        /* Outreach Template Box */
+        .outreach-box {
+            background: rgba(170, 204, 177, 0.20);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            position: relative;
+            z-index: 1;
+        }
+
+        .outreach-box .label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #B01013;
+            margin-bottom: 6px;
+        }
+
+        .outreach-box .template {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #1e2a33;
+            font-weight: 450;
+            background: rgba(244, 242, 226, 0.5);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .outreach-box .template .highlight {
+            color: #B01013;
+            font-weight: 600;
+        }
+
+        .outreach-box .copy-btn {
+            margin-top: 8px;
+            background: rgba(176, 16, 19, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #B01013;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: 0.15s ease;
+        }
+
+        .outreach-box .copy-btn:hover {
+            background: rgba(176, 16, 19, 0.20);
+        }
+
+        .outreach-box .copy-btn:active {
+            transform: scale(0.95);
         }
 
         .section-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin: 12px 0 14px 0;
+            margin: 8px 0 14px 0;
             padding: 0 4px;
             position: relative;
             z-index: 1;
@@ -150,26 +195,21 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: #1e2a33;
-            background: rgba(170, 204, 177, 0.35);
+            background: rgba(170, 204, 177, 0.30);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             padding: 4px 18px;
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .section-divider {
             flex: 1;
             height: 2px;
-            background: rgba(162, 185, 213, 0.3);
+            background: rgba(162, 185, 213, 0.2);
         }
 
         .count-badge {
-            background: rgba(176, 16, 19, 0.15);
-            backdrop-filter: blur(4px);
+            background: rgba(176, 16, 19, 0.12);
             color: #B01013;
             border-radius: 40px;
             padding: 0 10px;
@@ -189,34 +229,16 @@
         }
 
         .business-item {
-            background: rgba(252, 250, 245, 0.7);
+            background: rgba(252, 250, 245, 0.70);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 16px 16px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 4px 16px rgba(176, 16, 19, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 4px 16px rgba(176, 16, 19, 0.04);
             display: flex;
             flex-direction: column;
             gap: 10px;
             transition: 0.15s ease;
-            position: relative;
-        }
-
-        .business-item.done {
-            opacity: 0.7;
-            border-color: rgba(170, 204, 177, 0.5);
-            box-shadow: 0 4px 16px rgba(170, 204, 177, 0.1);
-        }
-
-        .business-item.done .personal-note {
-            background: rgba(170, 204, 177, 0.15);
-        }
-
-        .business-item.done .done-check {
-            display: inline-block;
         }
 
         .business-item:active {
@@ -234,21 +256,18 @@
         }
 
         .business-name .tag {
-            background: rgba(170, 204, 177, 0.3);
-            backdrop-filter: blur(4px);
+            background: rgba(170, 204, 177, 0.30);
             font-size: 0.5rem;
             font-weight: 700;
             padding: 0 12px;
             border-radius: 40px;
             color: #1e2a33;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            letter-spacing: 0.2px;
             text-transform: uppercase;
         }
 
         .business-name .city-tag {
             background: rgba(162, 185, 213, 0.25);
-            backdrop-filter: blur(4px);
             font-size: 0.5rem;
             font-weight: 600;
             padding: 0 10px;
@@ -257,28 +276,14 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .done-check {
-            display: none;
-            background: rgba(176, 16, 19, 0.15);
-            color: #B01013;
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 0 10px;
-            border-radius: 40px;
-            letter-spacing: 0.3px;
-            line-height: 1.6;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
         .personal-note {
             font-size: 0.78rem;
             line-height: 1.5;
-            background: rgba(162, 185, 213, 0.2);
+            background: rgba(162, 185, 213, 0.15);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #1e2a33;
             font-weight: 450;
             word-break: break-word;
@@ -294,9 +299,8 @@
 
         .btn {
             border: none;
-            background: rgba(162, 185, 213, 0.25);
+            background: rgba(162, 185, 213, 0.20);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             padding: 6px 14px;
             border-radius: 60px;
             font-weight: 600;
@@ -304,15 +308,11 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 2px 8px rgba(176, 16, 19, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
             color: #1e2a33;
             transition: 0.15s ease;
             cursor: pointer;
-            letter-spacing: 0.2px;
-            touch-action: manipulation;
             text-decoration: none;
             white-space: nowrap;
         }
@@ -323,63 +323,17 @@
 
         .btn:hover {
             background: rgba(162, 185, 213, 0.35);
-            box-shadow: 
-                0 4px 16px rgba(176, 16, 19, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
-        .btn-wa { background: rgba(170, 204, 177, 0.35); }
-        .btn-wa:hover { background: rgba(170, 204, 177, 0.5); }
+        .btn-wa { background: rgba(170, 204, 177, 0.30); }
+        .btn-wa:hover { background: rgba(170, 204, 177, 0.50); }
 
-        .btn-ig { background: rgba(162, 185, 213, 0.3); font-size: 0.6rem; }
-        .btn-fb { background: rgba(162, 185, 213, 0.25); }
-        .btn-messenger { background: rgba(162, 185, 213, 0.25); }
-        .btn-line { background: rgba(170, 204, 177, 0.35); }
-
-        .btn-copy {
-            background: rgba(244, 242, 226, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-color: rgba(255, 255, 255, 0.4);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.6rem;
-            box-shadow: 
-                0 2px 8px rgba(176, 16, 19, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .btn-copy:active {
-            transform: scale(0.93);
-            background: rgba(176, 16, 19, 0.1);
-        }
-
-        .btn-copy:hover {
-            background: rgba(244, 242, 226, 0.7);
-        }
-
-        .btn-done {
-            background: rgba(244, 242, 226, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-color: rgba(170, 204, 177, 0.3);
-            font-size: 0.6rem;
-            cursor: pointer;
-            padding: 6px 12px;
-            box-shadow: 
-                0 2px 8px rgba(170, 204, 177, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        .btn-done:hover {
-            background: rgba(170, 204, 177, 0.25);
-        }
-
-        .btn-done.active {
-            background: rgba(176, 16, 19, 0.15);
-            color: #B01013;
-            border-color: rgba(176, 16, 19, 0.2);
-        }
+        .btn-ig { background: rgba(162, 185, 213, 0.25); font-size: 0.6rem; }
+        .btn-fb { background: rgba(162, 185, 213, 0.20); }
+        .btn-messenger { background: rgba(162, 185, 213, 0.20); }
+        .btn-line { background: rgba(170, 204, 177, 0.30); }
+        .btn-booksy { background: rgba(162, 185, 213, 0.25); }
+        .btn-link { background: rgba(162, 185, 213, 0.20); }
 
         .btn span {
             font-size: 0.8rem;
@@ -482,7 +436,6 @@
             transform: translateX(-50%);
             background: rgba(30, 42, 51, 0.85);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             color: #F4F2E2;
             padding: 10px 24px;
             border-radius: 60px;
@@ -508,11 +461,12 @@
             .personal-note { font-size: 0.74rem; padding: 6px 14px; }
             .btn { font-size: 0.55rem; padding: 5px 10px; }
             .btn-ig { font-size: 0.55rem; }
-            .time { font-size: 1.4rem; }
+            .time { font-size: 1.3rem; }
             .bottom-row .schedule { font-size: 0.7rem; padding: 3px 14px; gap: 10px; }
             .bottom-row .ron { font-size: 1.1rem; padding: 0 18px; }
             .section-header h2 { font-size: 0.95rem; }
             .drop { display: none; }
+            .outreach-box .template { font-size: 0.78rem; padding: 8px 12px; }
         }
 
         @media (max-width: 380px) {
@@ -527,8 +481,6 @@
     <div class="drop"></div>
     <div class="drop"></div>
     <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
 
 <div class="container">
     <div class="top-bar">
@@ -539,8 +491,17 @@
         </div>
     </div>
 
+    <!-- Outreach Template -->
+    <div class="outreach-box">
+        <div class="label">📩 Outreach Message Template</div>
+        <div class="template" id="outreachTemplate">
+            <span class="highlight">Hi [Name]</span>, Mahi here! Love your [signature dish/spot]. I made a tiny live demo website for <span class="highlight">[Business]</span> because I couldn't find one. Want a quick recording to see how customer-friendly it is?
+        </div>
+        <button class="copy-btn" onclick="copyOutreach()">📋 Copy Template</button>
+    </div>
+
     <div class="section-header">
-        <h2>✨ All Businesses</h2>
+        <h2>✨ New Businesses</h2>
         <span class="count-badge" id="totalCount">0</span>
         <div class="section-divider"></div>
     </div>
@@ -579,126 +540,191 @@
 
 <script>
     (function() {
-        // ── ALL BUSINESSES ──
+        // ── ALL BUSINESSES (only the ones from the new images) ──
         const allBusinesses = [
-            // NEW FROM IMAGES (5)
-            { name: "Arte Aleatória", ig: "arte.aleatoria", tag: "Ceramics", city: "Lisbon, Portugal", contact: "ig", note: "Beautiful handmade ceramics made slowly at home. A website would help you showcase your pieces and sell directly to customers worldwide." },
-            { name: "Binomio Firenze", ig: "binomiofirenze", tag: "Restaurant/Bar", city: "Florence, Italy", contact: "ig", note: "Aperitivo with DJ set, pool parties, and brunch events. A website would help you centralize event bookings and showcase your full menu." },
-            { name: "Sweet Up", ig: "sweetup_", tag: "Desserts", city: "Santa Monica, CA", contact: "ig", note: "LA's viral chocolate strawberries. DM 'EVENT' to book. A website with order form and catering info would help you scale your business." },
-            { name: "Wave Cafe", ig: "wavecafecebu", tag: "Coffee Shop", city: "Cebu, Philippines", contact: "ig", note: "Serene cafe with all syrups made in-house. A website would help you share your menu and build your coffee community." },
-            { name: "Noosh Crêpes", ig: "noosh_crepes", tag: "Catering", city: "Los Angeles, CA", contact: "ig", note: "Crepe catering for weddings, birthdays and corporate events. A website with menu and booking form would help you get more clients." },
-            { name: "EACH Cafe", ig: "eachcafe.ph", tag: "Cafe", city: "Mandaue City, PH", contact: "ig", note: "Brunch just got better! A website with your menu and location would help people find you more easily." },
-
-            // NEW ONES (15 from earlier)
-            { name: "KJ Salon Kenya", ig: "", tag: "Hair Salon", city: "Eldoret, Kenya", contact: "wa", wa: "254710472946", note: "Active ads for hydra-facials and hair services. Located at Zion Mall. No website — a simple booking page would help you manage appointments and showcase your services professionally." },
-            { name: "PK ASKA Hair Salon", ig: "", tag: "Hair Salon", city: "Bangkok, Thailand", contact: "line", line: "cpKaDlv", note: "Premium Japanese style salon in Hotel Nikko. Uses Line for all bookings. A proper website would give you a professional edge and attract more international clients." },
-            { name: "Better Batter Café & Bakery", ig: "betterbatter.cafe", tag: "Bakery/Cafe", city: "Hanoi, Vietnam", contact: "ig", note: "Specializes in custom cakes. Active ads driving traffic to Instagram. A website with your full menu and order form would convert more customers." },
-            { name: "Fuji Bakery", ig: "", tag: "Bakery Supplier", city: "Kuala Lumpur", contact: "wa", wa: "60177011760", note: "Reliable supplier for donuts and white sandwich loaves to cafes. No website — a B2B site would streamline orders and attract more cafe partners." },
-            { name: "Jagoan SEWA", ig: "", tag: "Equipment Rental", city: "Jakarta", contact: "wa", wa: "6282320835251", note: "Rents freezers and business equipment. Active ads on TikTok/Instagram. A website with inventory and booking would make you look more professional." },
-            { name: "Shotlin Official", ig: "", tag: "Fashion/Boutique", city: "Lucknow, India", contact: "wa", wa: "917007722441", note: "Small independent brand running ads for ethnic wear. A website with your collection and size guide would boost sales significantly." },
-            { name: "The Coco Company", ig: "thecococompany", tag: "Bakery", city: "Gurgaon, India", contact: "ig", note: "Focuses on premium desserts, orders taken via DM. A proper website with menu and order form would save you time and look more established." },
-            { name: "Fudict Fruit Crush", ig: "", tag: "Food Supplier", city: "Hyderabad", contact: "wa", wa: "919246175508", note: "Manufacturer of fruit crushes and syrups for local cafes. A website would help you showcase your products and attract more B2B clients." },
-            { name: "Maraba Abuja Baker", ig: "", tag: "Bakery", city: "Abuja, Nigeria", contact: "wa", wa: "2349030165108", note: "Independent local baker running targeted ads. A simple website with menu and order form would help you scale your business." },
-            { name: "Araluxe Hair", ig: "", tag: "Hair Salon", city: "Lagos, Nigeria", contact: "wa", wa: "2349058559656", note: "Specializes in high-end hair extensions. A website with your catalog and booking system would elevate your brand significantly." },
-            { name: "Luma Nails", ig: "", tag: "Beauty Salon", city: "Aurora, CO", contact: "wa", wa: "17202457514", note: "Home-based professional nail studio. A simple booking page with your portfolio and pricing would make you look more professional." },
-            { name: "Semion Barbershop", ig: "semion_barbershop", tag: "Barber Shop", city: "Salt Lake City", contact: "ig", note: "Uses social media exclusively for bookings. A website with online booking and service menu would save you time and attract more clients." },
-            { name: "Rooom Mobile Salon", ig: "rooommobilesalon", tag: "Hair Salon", city: "Johannesburg", contact: "ig", note: "Mobile hair services provider. A website with your services, availability, and booking system would help you scale your mobile business." },
-            { name: "Strivenii Hair & Beauty Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "919820834610", note: "Established local salon in Goregaon West. A website with your services and online booking would help you reach more customers." },
-            { name: "Color Me Crazy Salon", ig: "", tag: "Hair Salon", city: "Mumbai", contact: "wa", wa: "918652683847", note: "Family-run salon with a strong local presence. A website would help you showcase your work and attract new clients." },
-
-            // PREVIOUS DONE ONES (20 with FB/Messenger)
-            { name: "Araluxehair", ig: "araluxehair", tag: "Wigs", city: "Lagos", fb: "araluxehair", note: "Your lace & bundles are top-tier! A clean website would organize your catalog and make ordering easier." },
-            { name: "rooommobilesalon", ig: "rooommobilesalon", tag: "Mobile", city: "Johannesburg", fb: "rooommobilesalon", note: "Your mobile salon is brilliant! A proper booking page would save you time." },
-            { name: "Cocoal Cafetería", ig: "quieromicocol", tag: "Cafe", city: "Mexico", fb: "quieromicocol", note: "Your desserts are amazing! A simple website would let people see your menu and order ahead." },
-            { name: "Cafetería Cordillera", ig: "cafeteriacordillera", tag: "Petfriendly", city: "Chile", fb: "cafeteriacordillera", note: "Love the pet-friendly vibe! A website would show your full menu and let people reserve tables." },
-            { name: "Navaja Concept", ig: "navajaconcept", tag: "Cocina", city: "Mexico", fb: "navajaconcept", note: "Wine, coffee, live music — a website would tie it all together beautifully." },
-            { name: "Jacinta M. Pastelería", ig: "jacintam.pasteleria", tag: "Pastry", city: "Mexico", fb: "jacintam.pasteleria", note: "Your cakes are art! A proper website with a catalog and order form would make it easier." },
-            { name: "Nota de Sabor", ig: "notadesabor", tag: "Delivery", city: "Argentina", fb: "notadesabor", note: "Your night delivery is perfect! A simple site would boost your orders." },
-            { name: "Café Asamblea", ig: "cafeasamblea", tag: "Montevideo", city: "Uruguay", fb: "cafeasamblea", note: "Your location is iconic! A website would bring your café to life online." },
-            { name: "Cafe Atelier", ig: "cafeatelier.sv", tag: "Specialty", city: "El Salvador", fb: "cafeatelier.sv", note: "Your coffee & food look incredible! A proper website would showcase your specialty coffee." },
-            { name: "King Coffee Chiclayo", ig: "king_coffeeLab", tag: "King", city: "Peru", fb: "king_coffeeLab", note: "Your vibe is infectious! A website with your menu and workshops would take you to the next level." },
-            { name: "Piromano Coffee", ig: "piromanocoffee", tag: "Roasters", city: "Guatemala", fb: "piromanocoffee", note: "Professional roasting & barismo — a central site would be a game changer." },
-            { name: "Nails Bowtique", ig: "nailsbowtique", tag: "Handmade", city: "Worldwide", fb: "nailsbowtique", note: "Worldwide delivery is amazing! A website with your portfolio and order form would make you look super professional." },
-            { name: "pand.oraanails", ig: "pand.oraanails", tag: "Gel X", city: "USA", fb: "pand.oraanails", note: "Your pricing & detail are amazing! A simple booking page would save you time." },
-            { name: "Kairos Café", ig: "kairoscafemx", tag: "Coffee", city: "Mexico", fb: "kairoscafemx", note: "Your café is the perfect moment! A website would make you more discoverable." },
-            { name: "Alfonsina Café", ig: "alfonsinacafe.qro", tag: "Brunch", city: "Mexico", fb: "alfonsinacafe.qro", note: "Coffee & good vibes — a clean site would match your aesthetic perfectly." },
-            { name: "AlmaVerde Juice Bar", ig: "almaverde.mex", tag: "Juice", city: "Mexico", fb: "almaverde.mex", note: "Smoothies, açai & breakfast — a simple page would grow your business." },
-            { name: "Noah Signature Bar", ig: "noahsignaturebar", tag: "Bar", city: "Mexico", fb: "noahsignaturebar", note: "Your 'before.during.after' concept is great! A site would complete your brand." },
-            { name: "Central B.A Celaya", ig: "centralbacelaya", tag: "Grill", city: "Mexico", fb: "centralbacelaya", note: "Restaurant, grill & fun — a website would amplify your brand." },
-            { name: "Homenaje", ig: "homenaje.celaya", tag: "Cocina", city: "Mexico", fb: "homenaje.celaya", note: "A simple site with your menu and contact info would make you look established." },
-            { name: "KoFi & Tonics", ig: "kofitonics", tag: "Music", city: "Mexico", fb: "kofitonics", note: "Music, coffee, fashion — a site would bring your community together." },
-
-            // Hair Salons from images
-            { name: "Hair by Jess", ig: "jessicaoesmyhair_", tag: "Hair Salon", city: "Marion, NC", fb: "jessicaoesmyhair_", note: "Hairstylist & lover of beauty, style, and slow moments. A website would help you share your work and book clients more easily." },
-            { name: "Lawt Hair Salon", ig: "lawt_hair_salon_", tag: "Hair Salon", city: "St. Albert, AB", fb: "lawt_hair_salon_", note: "Special 20% discounts for PwD, Seniors (65+), Veterans. A website would make your services and discounts more visible." },
-            { name: "Vogue Hair Salon", ig: "Vogue Hair Salon", tag: "Hair Salon", city: "Choppington, UK", fb: "Vogue Hair Salon", note: "23 years of making you feel amazing! A website would showcase your experience and attract new clients." },
-            { name: "Inspire Hair Salon", ig: "", tag: "Hair Salon", city: "Quezon City, PH", note: "Men and women Haircut & Hair Color Specialist. A website would help you showcase your work and book appointments." },
-            { name: "Headquarters Hair Salon", ig: "Headquarters Hair Salon", tag: "Beauty Store", city: "Boston, MA", fb: "Headquarters Hair Salon", note: "Our page will let people know about our specials. A website would make it easier to share your offers and services." },
-            { name: "Rebellious Artistry", ig: "", tag: "Beauty Salon", city: "Hayward, CA", note: "Making the world a brighter place one strand at a time. A website would help you showcase your artistry." },
-            { name: "TK Hair Salon", ig: "TK Hair Salon", tag: "Beauty Salon", city: "Zamboanga City, PH", fb: "TK Hair Salon", note: "New hair, new energy, new confidence. A website would help you reach more clients in your area." },
-            { name: "Taylor Mendoza", ig: "", tag: "Hair Stylist", city: "Glendora, CA", note: "Full salon days have me acting like I ran a marathon! A website would help you book clients and share your work." },
-            { name: "loannis Kostakis Hair Salon", ig: "ioannis_kostakis.hairsalon", tag: "Hair Salon", city: "Melíssia, Greece", fb: "ioannis_kostakis.hairsalon", note: "A website with online booking would make it easier for clients to schedule appointments." },
-            { name: "Morgan Delaney Taylor", ig: "", tag: "Hairstylist", city: "Statesboro, GA", note: "The perfect lived-in blonde! A website would help you showcase your work and book appointments." },
-            { name: "Kellie Hanson- Hair Stylist", ig: "", tag: "Hair Salon", city: "Garfield, VIC", note: "By Appointment Only. A website would make booking easier for your clients." },
-            { name: "Posh Hair Lounge", ig: "", tag: "Hair Salon", city: "USA", note: "Styling · Coloring · Luxury Salon. Your Premier Destination for Luxury Hair Services. A website would help you showcase your services and book appointments." },
-
-            // Bakeries
-            { name: "Ferry Good Treats", ig: "", tag: "Cake Shop", city: "Philadelphia, PA", note: "Just a girl baking herself happy. A website with your menu and order form would help you scale." },
-            { name: "Olde Village Bakery", ig: "oldevillagebakery", tag: "Dessert Shop", city: "North Rustico, PEI", fb: "oldevillagebakery", note: "A small but mighty bakery by the sea. A website would help you share your hours and menu." },
-            { name: "Noraya Bakery", ig: "", tag: "Bakery", city: "Sudbury, ON", note: "Freshly baked happiness. DM to order — a website with order form would save you time." },
-            { name: "Bleu Bear Bakery", ig: "", tag: "Bakery", city: "Oaklyn, NJ", note: "100% GLUTEN FREE BAKERY. A website would help you reach more celiac customers." },
-            { name: "Woops", ig: "", tag: "Bakery", city: "Coeur d'Alene, ID", note: "Largest French macaron company in the U.S. A website would help you showcase your locations." },
-            { name: "Saray Bakery", ig: "", tag: "Bakery", city: "Myrtle Beach, SC", note: "Myrtle Beach's favorite spot for daily fresh pastries. A website would help you reach more customers." },
-            { name: "The Bakery-Waterford", ig: "", tag: "Bakery", city: "Waterford Township, MI", note: "Custom cakes and the best cheesecakes. A website with your menu and ordering would help you scale." },
-            { name: "Rollhouse Bakery", ig: "rollhouse_bakery", tag: "Bakery", city: "Billings, MT", fb: "rollhouse_bakery", note: "OPEN 7 days a week 7AM–2PM. A website would help you share your daily menu and take orders." },
-            { name: "Butter & Bloom Bakery", ig: "butterandbloombakery25", tag: "Bakery", city: "Grafton, OH", fb: "butterandbloombakery25", note: "A website would help you showcase your baked goods and reach more customers in Ohio." },
-
-            // Others
-            { name: "Liberty Social", ig: "", tag: "Business", city: "Ontario", note: "Created for connection. A website would help you share your content and connect with your audience." },
-            { name: "Kristin Brunet", ig: "", tag: "Digital Creator", city: "Mandeville, LA", note: "Fitness Instructor and Personal Trainer. A website would help you share your services and book clients." }
+            { 
+                name: "Karlen Pogosyan Barber", 
+                ig: "barberkarlenpk", 
+                tag: "Barber", 
+                city: "Tyumen", 
+                note: "UGC creator & resident of POGOSYAN AURA BARBERSHOP. A website would help you showcase your work and attract more clients.",
+                signature: "barber skills"
+            },
+            { 
+                name: "Space Cafe", 
+                ig: "spaceae", 
+                tag: "Restaurant", 
+                city: "Abu Dhabi", 
+                note: "Find your S P A C E in Abu Dhabi and RAK. A website would help you showcase your menu and catering options.",
+                signature: "coffee and space"
+            },
+            { 
+                name: "Rio Barber", 
+                ig: "rio_rehan_cut", 
+                tag: "Barber", 
+                city: "Karachi", 
+                note: "Owner of ATTA KAIR MEN'S SALOON. A website would help you manage bookings and showcase your work.",
+                signature: "barber skills"
+            },
+            { 
+                name: "Mafia Barbershop", 
+                ig: "mafia_barbershop_tbilisi", 
+                tag: "Barber", 
+                city: "Tbilisi", 
+                note: "Hair and beard care only for men. A website would help you attract more clients and showcase your services.",
+                signature: "barber skills"
+            },
+            { 
+                name: "Kayir Beauty", 
+                ig: "kayir.beauty.abudhabi", 
+                tag: "Nails & Lashes", 
+                city: "Abu Dhabi", 
+                note: "Russian manicure, pedicure, lashes & brows. A website with online booking would make it easier for clients to book appointments.",
+                signature: "nail artistry"
+            },
+            { 
+                name: "Borodach Barbershop", 
+                ig: "borodach.uae", 
+                tag: "Barber", 
+                city: "Dubai", 
+                note: "Rock your individuality with the best haircuts & shaving. A website would help you showcase your services and book more clients.",
+                signature: "barber skills"
+            },
+            { 
+                name: "Fatboy Got Barz", 
+                ig: "fatboygotbarz", 
+                tag: "Barber", 
+                city: "San Francisco", 
+                note: "FGB Barber in SF. Has a Booksy link but no website. A proper site would help you stand out and attract more clients.",
+                signature: "barber skills"
+            },
+            { 
+                name: "Ilyushka Hrushka", 
+                ig: "ilyshkahrushka_", 
+                tag: "Barber", 
+                city: "Minsk/Moscow", 
+                note: "Digital creator & barber with 25K+ followers. A website would help you showcase your work and sell your brand.",
+                signature: "barber skills"
+            },
+            { 
+                name: "Gugu Hair Salon", 
+                ig: "guguhairsaloon", 
+                tag: "Hair Salon", 
+                city: "Johannesburg", 
+                note: "Unlock your beauty career! Expert-led courses. Has a basic site but could use a proper booking system.",
+                signature: "hair styling"
+            },
+            { 
+                name: "Beautiful U", 
+                ig: "", 
+                tag: "Hair Salon", 
+                city: "Harrisburg, PA", 
+                note: "Classic + Modern hair for women who love their own hair. A website would help you showcase your work and book appointments.",
+                signature: "hair styling"
+            },
+            { 
+                name: "MTS Woodwork", 
+                ig: "", 
+                tag: "Carpentry", 
+                city: "London", 
+                note: "Carpentry services in London. A website would help you showcase your portfolio and attract more clients.",
+                signature: "woodworking"
+            },
+            { 
+                name: "Arthur's Painting & Decorating", 
+                ig: "", 
+                tag: "Painter", 
+                city: "Holmfirth, UK", 
+                note: "Transforming your living space to the highest standard. A website would help you showcase your work and book more jobs.",
+                signature: "painting skills"
+            },
+            { 
+                name: "Lee Pearson Painting & Decorating", 
+                ig: "", 
+                tag: "Painter", 
+                city: "Salford, UK", 
+                note: "30+ years of experience in painting and decorating. A website would help you attract more clients.",
+                signature: "painting skills"
+            },
+            { 
+                name: "Bespoke Garden Rooms", 
+                ig: "", 
+                tag: "Construction", 
+                city: "Milton Keynes", 
+                note: "Signature garden rooms for offices, games rooms, studios & more. A website would help you showcase your work.",
+                signature: "garden rooms"
+            },
+            { 
+                name: "Barbers in the DFW", 
+                ig: "", 
+                tag: "Hair Salon", 
+                city: "Dallas-Fort Worth", 
+                note: "Color sale! Custom color, haircut & style for $250. A website would help you book more appointments.",
+                signature: "hair styling"
+            },
+            { 
+                name: "Interval Cafe", 
+                ig: "in.ter.val_", 
+                tag: "Coffee Shop", 
+                city: "Iași", 
+                note: "Urban coffee spot built between moments. A website would help you share your menu and attract more customers.",
+                signature: "coffee"
+            }
         ];
 
         const container = document.getElementById('businessList');
         let html = '';
 
         allBusinesses.forEach((biz, index) => {
-            let contactHtml = '';
             const igHandle = biz.ig || '';
 
-            // Build contact button
-            if (biz.contact === 'wa' && biz.wa) {
-                contactHtml = `<a href="https://wa.me/${biz.wa}" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
-            } else if (biz.contact === 'line' && biz.line) {
-                contactHtml = `<a href="https://lin.ee/${biz.line}" target="_blank" rel="noopener noreferrer" class="btn btn-line"><span>💬</span> Line</a>`;
-            } else if (biz.ig) {
-                contactHtml = `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
-            } else {
+            // Build contact buttons
+            let contactHtml = '';
+
+            // Instagram
+            if (biz.ig) {
+                contactHtml += `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
+            }
+
+            // Facebook (if IG exists, use same handle)
+            if (biz.ig) {
+                contactHtml += `<a href="https://facebook.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-fb"><span>📘</span> FB</a>`;
+                contactHtml += `<a href="https://m.me/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-messenger"><span>💬</span> Messenger</a>`;
+            }
+
+            // WhatsApp (for specific ones)
+            if (biz.name === "Rio Barber") {
+                contactHtml += `<a href="https://wa.me/923181857258" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+            }
+            if (biz.name === "Kayir Beauty") {
+                contactHtml += `<a href="https://wa.me/971503198650" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+            }
+            if (biz.name === "Borodach Barbershop") {
+                contactHtml += `<a href="https://wa.me/97148947494" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+            }
+            if (biz.name === "Fatboy Got Barz") {
+                contactHtml += `<a href="https://ftblendz.booksy.com" target="_blank" rel="noopener noreferrer" class="btn btn-booksy"><span>📅</span> Booksy</a>`;
+            }
+
+            // If no buttons were added, show "No contact"
+            if (!contactHtml) {
                 contactHtml = `<span class="btn" style="opacity:0.4;cursor:default;pointer-events:none;">No contact</span>`;
             }
 
-            // Facebook / Messenger link
-            const fbLink = biz.fb ? `https://facebook.com/${biz.fb}` : '#';
-            const messengerLink = biz.fb ? `https://m.me/${biz.fb}` : '#';
-
-            let actionsHtml = `
-                ${contactHtml}
-                <a href="${fbLink}" target="_blank" rel="noopener noreferrer" class="btn btn-fb" ${!biz.fb ? 'style="opacity:0.4;cursor:default;pointer-events:none;"' : ''}><span>📘</span> FB</a>
-                <a href="${messengerLink}" target="_blank" rel="noopener noreferrer" class="btn btn-messenger" ${!biz.fb ? 'style="opacity:0.4;cursor:default;pointer-events:none;"' : ''}><span>💬</span> Messenger</a>
-                <button class="btn btn-copy copy-btn" data-msg="${biz.note.replace(/"/g, '&quot;')}"><span>📋</span> Copy</button>
-                <button class="btn btn-done done-toggle" data-index="${index}"><span>☐</span> Done</button>
-            `;
+            // Build personalized outreach message
+            const outreachMsg = `Hi ${biz.name.split(' ')[0]}, Mahi here! Love your ${biz.signature || 'work'}. I made a tiny live demo website for ${biz.name} because I couldn't find one. Want a quick recording to see how customer-friendly it is?`;
 
             html += `
-                <div class="business-item" data-index="${index}">
+                <div class="business-item">
                     <div class="business-name">
                         ${biz.name} 
                         <span class="tag">${biz.tag}</span> 
                         <span class="city-tag">${biz.city}</span>
-                        <span class="done-check">✔️</span>
                     </div>
                     <div class="personal-note">${biz.note}</div>
                     <div class="business-actions">
-                        ${actionsHtml}
+                        ${contactHtml}
+                        <button class="btn btn-copy copy-btn" data-msg="${outreachMsg.replace(/"/g, '&quot;')}"><span>📋</span> Copy Outreach</button>
                     </div>
                 </div>
             `;
@@ -707,30 +733,7 @@
         container.innerHTML = html;
         document.getElementById('totalCount').textContent = allBusinesses.length;
 
-        // ── Done toggle ──
-        document.querySelectorAll('.done-toggle').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const index = this.getAttribute('data-index');
-                const item = document.querySelector(`.business-item[data-index="${index}"]`);
-                const check = item.querySelector('.done-check');
-                const isDone = item.classList.toggle('done');
-
-                if (isDone) {
-                    this.innerHTML = '<span>☑</span> Done';
-                    this.classList.add('active');
-                    check.style.display = 'inline-block';
-                    showToast('✓ Marked as done!');
-                } else {
-                    this.innerHTML = '<span>☐</span> Done';
-                    this.classList.remove('active');
-                    check.style.display = 'none';
-                    showToast('↻ Unmarked');
-                }
-            });
-        });
-
-        // ── Copy ──
+        // ── Copy functionality ──
         const toast = document.getElementById('toast');
         let toastTimeout = null;
 
@@ -743,13 +746,26 @@
             }, 2000);
         }
 
+        // Copy outreach template from top
+        window.copyOutreach = function() {
+            const template = document.getElementById('outreachTemplate').textContent.trim();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(template).then(() => {
+                    showToast('✓ Template copied!');
+                }).catch(() => fallbackCopy(template));
+            } else {
+                fallbackCopy(template);
+            }
+        };
+
+        // Copy individual outreach messages
         document.querySelectorAll('.copy-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const msg = this.getAttribute('data-msg') || 'Hello! I designed a clean website for your business. Mind if I send it?';
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(msg).then(() => {
-                        showToast('✓ Copied!');
+                        showToast('✓ Outreach copied!');
                     }).catch(() => fallbackCopy(msg));
                 } else {
                     fallbackCopy(msg);
