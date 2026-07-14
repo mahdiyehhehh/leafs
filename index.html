@@ -122,65 +122,6 @@
             background: rgba(170, 204, 177, 0.30);
         }
 
-        /* Outreach Template Box */
-        .outreach-box {
-            background: rgba(170, 204, 177, 0.20);
-            backdrop-filter: blur(8px);
-            border-radius: 16px;
-            padding: 14px 16px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            position: relative;
-            z-index: 1;
-        }
-
-        .outreach-box .label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #B01013;
-            margin-bottom: 6px;
-        }
-
-        .outreach-box .template {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #1e2a33;
-            font-weight: 450;
-            background: rgba(244, 242, 226, 0.5);
-            padding: 10px 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .outreach-box .template .highlight {
-            color: #B01013;
-            font-weight: 600;
-        }
-
-        .outreach-box .copy-btn {
-            margin-top: 8px;
-            background: rgba(176, 16, 19, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #B01013;
-            cursor: pointer;
-            backdrop-filter: blur(4px);
-            transition: 0.15s ease;
-        }
-
-        .outreach-box .copy-btn:hover {
-            background: rgba(176, 16, 19, 0.20);
-        }
-
-        .outreach-box .copy-btn:active {
-            transform: scale(0.95);
-        }
-
         .section-header {
             display: flex;
             align-items: center;
@@ -276,17 +217,22 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .personal-note {
+        .outreach-message {
             font-size: 0.78rem;
-            line-height: 1.5;
-            background: rgba(162, 185, 213, 0.15);
+            line-height: 1.6;
+            background: rgba(170, 204, 177, 0.15);
             backdrop-filter: blur(8px);
-            padding: 8px 16px;
+            padding: 10px 16px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #1e2a33;
             font-weight: 450;
             word-break: break-word;
+        }
+
+        .outreach-message .highlight {
+            color: #B01013;
+            font-weight: 600;
         }
 
         .business-actions {
@@ -330,14 +276,22 @@
 
         .btn-ig { background: rgba(162, 185, 213, 0.25); font-size: 0.6rem; }
         .btn-fb { background: rgba(162, 185, 213, 0.20); }
-        .btn-messenger { background: rgba(162, 185, 213, 0.20); }
-        .btn-line { background: rgba(170, 204, 177, 0.30); }
+        .btn-business { background: rgba(162, 185, 213, 0.20); }
         .btn-booksy { background: rgba(162, 185, 213, 0.25); }
-        .btn-link { background: rgba(162, 185, 213, 0.20); }
 
         .btn span {
             font-size: 0.8rem;
             line-height: 1;
+        }
+
+        .btn-copy {
+            background: rgba(176, 16, 19, 0.10);
+            border-color: rgba(176, 16, 19, 0.20);
+            font-weight: 600;
+        }
+
+        .btn-copy:hover {
+            background: rgba(176, 16, 19, 0.20);
         }
 
         .footer-stats {
@@ -458,7 +412,7 @@
         @media (max-width: 480px) {
             .container { padding: 14px 12px; }
             .business-item { padding: 14px 12px; }
-            .personal-note { font-size: 0.74rem; padding: 6px 14px; }
+            .outreach-message { font-size: 0.74rem; padding: 8px 12px; }
             .btn { font-size: 0.55rem; padding: 5px 10px; }
             .btn-ig { font-size: 0.55rem; }
             .time { font-size: 1.3rem; }
@@ -466,7 +420,6 @@
             .bottom-row .ron { font-size: 1.1rem; padding: 0 18px; }
             .section-header h2 { font-size: 0.95rem; }
             .drop { display: none; }
-            .outreach-box .template { font-size: 0.78rem; padding: 8px 12px; }
         }
 
         @media (max-width: 380px) {
@@ -491,17 +444,8 @@
         </div>
     </div>
 
-    <!-- Outreach Template -->
-    <div class="outreach-box">
-        <div class="label">📩 Outreach Message Template</div>
-        <div class="template" id="outreachTemplate">
-            <span class="highlight">Hi [Name]</span>, Mahi here! Love your [signature dish/spot]. I made a tiny live demo website for <span class="highlight">[Business]</span> because I couldn't find one. Want a quick recording to see how customer-friendly it is?
-        </div>
-        <button class="copy-btn" onclick="copyOutreach()">📋 Copy Template</button>
-    </div>
-
     <div class="section-header">
-        <h2>✨ New Businesses</h2>
+        <h2>✨ Businesses</h2>
         <span class="count-badge" id="totalCount">0</span>
         <div class="section-divider"></div>
     </div>
@@ -540,179 +484,233 @@
 
 <script>
     (function() {
-        // ── ALL BUSINESSES (only the ones from the new images) ──
+        // ── ALL BUSINESSES with personalized outreach ──
         const allBusinesses = [
             { 
                 name: "Karlen Pogosyan Barber", 
                 ig: "barberkarlenpk", 
                 tag: "Barber", 
-                city: "Tyumen", 
+                city: "Tyumen",
+                signature: "barber skills and UGC content",
                 note: "UGC creator & resident of POGOSYAN AURA BARBERSHOP. A website would help you showcase your work and attract more clients.",
-                signature: "barber skills"
+                outreach: "Hi Karlen, Mahi here! Love your barber skills and UGC content. I made a tiny live demo website for Karlen Pogosyan Barber because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Space Cafe", 
                 ig: "spaceae", 
                 tag: "Restaurant", 
-                city: "Abu Dhabi", 
+                city: "Abu Dhabi",
+                signature: "coffee and space vibes",
                 note: "Find your S P A C E in Abu Dhabi and RAK. A website would help you showcase your menu and catering options.",
-                signature: "coffee and space"
+                outreach: "Hi Space Cafe team, Mahi here! Love your coffee and space vibes. I made a tiny live demo website for Space Cafe because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Rio Barber", 
                 ig: "rio_rehan_cut", 
                 tag: "Barber", 
-                city: "Karachi", 
+                city: "Karachi",
+                signature: "barber skills",
                 note: "Owner of ATTA KAIR MEN'S SALOON. A website would help you manage bookings and showcase your work.",
-                signature: "barber skills"
+                outreach: "Hi Rio, Mahi here! Love your barber skills. I made a tiny live demo website for Rio Barber because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Mafia Barbershop", 
                 ig: "mafia_barbershop_tbilisi", 
                 tag: "Barber", 
-                city: "Tbilisi", 
+                city: "Tbilisi",
+                signature: "barber skills",
                 note: "Hair and beard care only for men. A website would help you attract more clients and showcase your services.",
-                signature: "barber skills"
+                outreach: "Hi Mafia Barbershop team, Mahi here! Love your barber skills. I made a tiny live demo website for Mafia Barbershop because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Kayir Beauty", 
                 ig: "kayir.beauty.abudhabi", 
                 tag: "Nails & Lashes", 
-                city: "Abu Dhabi", 
+                city: "Abu Dhabi",
+                signature: "nail artistry",
                 note: "Russian manicure, pedicure, lashes & brows. A website with online booking would make it easier for clients to book appointments.",
-                signature: "nail artistry"
+                outreach: "Hi Kayir Beauty team, Mahi here! Love your nail artistry. I made a tiny live demo website for Kayir Beauty because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Borodach Barbershop", 
                 ig: "borodach.uae", 
                 tag: "Barber", 
-                city: "Dubai", 
+                city: "Dubai",
+                signature: "barber skills",
                 note: "Rock your individuality with the best haircuts & shaving. A website would help you showcase your services and book more clients.",
-                signature: "barber skills"
+                outreach: "Hi Borodach team, Mahi here! Love your barber skills. I made a tiny live demo website for Borodach Barbershop because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Fatboy Got Barz", 
                 ig: "fatboygotbarz", 
                 tag: "Barber", 
-                city: "San Francisco", 
+                city: "San Francisco",
+                signature: "barber skills",
                 note: "FGB Barber in SF. Has a Booksy link but no website. A proper site would help you stand out and attract more clients.",
-                signature: "barber skills"
+                outreach: "Hi Fatboy, Mahi here! Love your barber skills. I made a tiny live demo website for Fatboy Got Barz because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Ilyushka Hrushka", 
                 ig: "ilyshkahrushka_", 
                 tag: "Barber", 
-                city: "Minsk/Moscow", 
+                city: "Minsk/Moscow",
+                signature: "barber skills and content",
                 note: "Digital creator & barber with 25K+ followers. A website would help you showcase your work and sell your brand.",
-                signature: "barber skills"
+                outreach: "Hi Ilyushka, Mahi here! Love your barber skills and content. I made a tiny live demo website for Ilyushka Hrushka because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Gugu Hair Salon", 
                 ig: "guguhairsaloon", 
                 tag: "Hair Salon", 
-                city: "Johannesburg", 
+                city: "Johannesburg",
+                signature: "hair styling and education",
                 note: "Unlock your beauty career! Expert-led courses. Has a basic site but could use a proper booking system.",
-                signature: "hair styling"
+                outreach: "Hi Gugu, Mahi here! Love your hair styling and education. I made a tiny live demo website for Gugu Hair Salon because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Beautiful U", 
                 ig: "", 
                 tag: "Hair Salon", 
-                city: "Harrisburg, PA", 
+                city: "Harrisburg, PA",
+                signature: "hair styling",
                 note: "Classic + Modern hair for women who love their own hair. A website would help you showcase your work and book appointments.",
-                signature: "hair styling"
+                outreach: "Hi Beautiful U team, Mahi here! Love your hair styling. I made a tiny live demo website for Beautiful U because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "MTS Woodwork", 
                 ig: "", 
                 tag: "Carpentry", 
-                city: "London", 
+                city: "London",
+                signature: "woodworking skills",
                 note: "Carpentry services in London. A website would help you showcase your portfolio and attract more clients.",
-                signature: "woodworking"
+                outreach: "Hi MTS Woodwork team, Mahi here! Love your woodworking skills. I made a tiny live demo website for MTS Woodwork because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Arthur's Painting & Decorating", 
                 ig: "", 
                 tag: "Painter", 
-                city: "Holmfirth, UK", 
+                city: "Holmfirth, UK",
+                signature: "painting skills",
                 note: "Transforming your living space to the highest standard. A website would help you showcase your work and book more jobs.",
-                signature: "painting skills"
+                outreach: "Hi Arthur, Mahi here! Love your painting skills. I made a tiny live demo website for Arthur's Painting & Decorating because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Lee Pearson Painting & Decorating", 
                 ig: "", 
                 tag: "Painter", 
-                city: "Salford, UK", 
+                city: "Salford, UK",
+                signature: "painting skills",
                 note: "30+ years of experience in painting and decorating. A website would help you attract more clients.",
-                signature: "painting skills"
+                outreach: "Hi Lee, Mahi here! Love your painting skills. I made a tiny live demo website for Lee Pearson Painting & Decorating because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Bespoke Garden Rooms", 
                 ig: "", 
                 tag: "Construction", 
-                city: "Milton Keynes", 
+                city: "Milton Keynes",
+                signature: "garden rooms",
                 note: "Signature garden rooms for offices, games rooms, studios & more. A website would help you showcase your work.",
-                signature: "garden rooms"
+                outreach: "Hi Bespoke Garden Rooms team, Mahi here! Love your garden rooms. I made a tiny live demo website for Bespoke Garden Rooms because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Barbers in the DFW", 
                 ig: "", 
                 tag: "Hair Salon", 
-                city: "Dallas-Fort Worth", 
+                city: "Dallas-Fort Worth",
+                signature: "hair styling",
                 note: "Color sale! Custom color, haircut & style for $250. A website would help you book more appointments.",
-                signature: "hair styling"
+                outreach: "Hi Barbers in the DFW team, Mahi here! Love your hair styling. I made a tiny live demo website for Barbers in the DFW because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             },
             { 
                 name: "Interval Cafe", 
                 ig: "in.ter.val_", 
                 tag: "Coffee Shop", 
-                city: "Iași", 
+                city: "Iași",
+                signature: "coffee",
                 note: "Urban coffee spot built between moments. A website would help you share your menu and attract more customers.",
-                signature: "coffee"
+                outreach: "Hi Interval Cafe team, Mahi here! Love your coffee. I made a tiny live demo website for Interval Cafe because I couldn't find one. Want a quick recording to see how customer-friendly it is?"
             }
         ];
 
         const container = document.getElementById('businessList');
         let html = '';
 
-        allBusinesses.forEach((biz, index) => {
+        allBusinesses.forEach((biz) => {
             const igHandle = biz.ig || '';
 
-            // Build contact buttons
+            // Build contact buttons: Instagram, Facebook, WhatsApp, Business
             let contactHtml = '';
 
             // Instagram
             if (biz.ig) {
-                contactHtml += `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> ${biz.ig}</a>`;
+                contactHtml += `<a href="https://instagram.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-ig"><span>📷</span> IG</a>`;
+            } else {
+                contactHtml += `<span class="btn" style="opacity:0.3;cursor:default;pointer-events:none;"><span>📷</span> IG</span>`;
             }
 
             // Facebook (if IG exists, use same handle)
             if (biz.ig) {
                 contactHtml += `<a href="https://facebook.com/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-fb"><span>📘</span> FB</a>`;
-                contactHtml += `<a href="https://m.me/${biz.ig}" target="_blank" rel="noopener noreferrer" class="btn btn-messenger"><span>💬</span> Messenger</a>`;
+            } else {
+                contactHtml += `<span class="btn" style="opacity:0.3;cursor:default;pointer-events:none;"><span>📘</span> FB</span>`;
             }
 
             // WhatsApp (for specific ones)
+            let hasWhatsApp = false;
             if (biz.name === "Rio Barber") {
                 contactHtml += `<a href="https://wa.me/923181857258" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
             }
             if (biz.name === "Kayir Beauty") {
                 contactHtml += `<a href="https://wa.me/971503198650" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
             }
             if (biz.name === "Borodach Barbershop") {
                 contactHtml += `<a href="https://wa.me/97148947494" target="_blank" rel="noopener noreferrer" class="btn btn-wa"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
+            }
+            if (biz.name === "Karlen Pogosyan Barber") {
+                contactHtml += `<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="opacity:0.4;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
+            }
+            if (biz.name === "Space Cafe") {
+                contactHtml += `<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="opacity:0.4;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
+            }
+            if (biz.name === "Mafia Barbershop") {
+                contactHtml += `<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="opacity:0.4;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
             }
             if (biz.name === "Fatboy Got Barz") {
+                contactHtml += `<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="opacity:0.4;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
+            }
+            if (biz.name === "Ilyushka Hrushka") {
+                contactHtml += `<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="opacity:0.4;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
+            }
+            if (biz.name === "Gugu Hair Salon") {
+                contactHtml += `<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="opacity:0.4;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
+            }
+            if (biz.name === "Interval Cafe") {
+                contactHtml += `<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="opacity:0.4;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</a>`;
+                hasWhatsApp = true;
+            }
+
+            // If no WhatsApp was added, add a disabled one
+            if (!hasWhatsApp && biz.ig) {
+                contactHtml += `<span class="btn" style="opacity:0.3;cursor:default;pointer-events:none;"><span>💬</span> WhatsApp</span>`;
+            }
+
+            // Business/Website link (Booksy or other)
+            if (biz.name === "Fatboy Got Barz") {
                 contactHtml += `<a href="https://ftblendz.booksy.com" target="_blank" rel="noopener noreferrer" class="btn btn-booksy"><span>📅</span> Booksy</a>`;
+            } else if (biz.ig) {
+                contactHtml += `<span class="btn" style="opacity:0.3;cursor:default;pointer-events:none;"><span>🌐</span> Business</span>`;
+            } else {
+                contactHtml += `<span class="btn" style="opacity:0.3;cursor:default;pointer-events:none;"><span>🌐</span> Business</span>`;
             }
-
-            // If no buttons were added, show "No contact"
-            if (!contactHtml) {
-                contactHtml = `<span class="btn" style="opacity:0.4;cursor:default;pointer-events:none;">No contact</span>`;
-            }
-
-            // Build personalized outreach message
-            const outreachMsg = `Hi ${biz.name.split(' ')[0]}, Mahi here! Love your ${biz.signature || 'work'}. I made a tiny live demo website for ${biz.name} because I couldn't find one. Want a quick recording to see how customer-friendly it is?`;
 
             html += `
                 <div class="business-item">
@@ -721,10 +719,10 @@
                         <span class="tag">${biz.tag}</span> 
                         <span class="city-tag">${biz.city}</span>
                     </div>
-                    <div class="personal-note">${biz.note}</div>
+                    <div class="outreach-message">${biz.outreach}</div>
                     <div class="business-actions">
                         ${contactHtml}
-                        <button class="btn btn-copy copy-btn" data-msg="${outreachMsg.replace(/"/g, '&quot;')}"><span>📋</span> Copy Outreach</button>
+                        <button class="btn btn-copy copy-btn" data-msg="${biz.outreach.replace(/"/g, '&quot;')}"><span>📋</span> Copy</button>
                     </div>
                 </div>
             `;
@@ -746,19 +744,6 @@
             }, 2000);
         }
 
-        // Copy outreach template from top
-        window.copyOutreach = function() {
-            const template = document.getElementById('outreachTemplate').textContent.trim();
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(template).then(() => {
-                    showToast('✓ Template copied!');
-                }).catch(() => fallbackCopy(template));
-            } else {
-                fallbackCopy(template);
-            }
-        };
-
-        // Copy individual outreach messages
         document.querySelectorAll('.copy-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
